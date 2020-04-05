@@ -1,0 +1,83 @@
+.footer .body .card .card-description-footer{
+    display: flex;
+    align-items: center;
+    min-width: 0;
+    margin-bottom: 0;
+    width: 100%;
+    border-right: 1px solid #9da4ac;
+}
+.footer .body .card .card-description-footer img{
+    height: auto;
+    width: 70px;
+    height: 70px;
+}
+.footer .body .card .card-description-footer .description{
+    padding-left: 30px;
+    line-height: 5px;
+}
+.footer .body .card .card-description-footer .description .title{
+    font-size: 1.1em;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.footer .body .card .card-description-footer .description p{
+    font-size: 0.8em;
+    color: #9da4ac;
+}
+.footer .body .card  .action-btn{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    width: 100px;
+    height: auto;
+}
+.footer .body .card  .action-btn a{
+    color: #9da4ac;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.4em;
+}
+
+/** Media querys **/
+@media (max-width: 575.98px) {
+    .footer{
+        width: 100%;
+    }
+    .footer .container-fluid{
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .footer .body{
+        padding: 20px 20px;
+        width: 100%;
+    }
+    .footer .body .card{
+        padding-left: 15px;
+        padding-right: 0;
+        border-radius: 20px;
+    }
+    .footer .body .card  .action-btn{
+        width: 80px;
+    }
+    .footer .body .card .card-description-footer img{
+        width: 50px;
+        height: 50px;
+    }
+    .footer .body .card .card-description-footer .description{
+        padding-right: 10px;
+        padding-left: 10px;
+        line-height: 0;
+    }   
+    .footer .body .card .card-description-footer .description .title{
+        font-size: 0.8em;
+        margin-bottom: 10px;    
+    }
+    .footer .body .card .card-description-footer .description p{
+        font-size: 0.7em;
+        margin-bottom: 0.7rem;
+    }
+    .footer .body .card  .action-btn a{
+        font-size: 1em;
+    }
+}

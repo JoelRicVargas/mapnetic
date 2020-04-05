@@ -1,0 +1,63 @@
+.wallet_banner{
+    height: 35vw;
+    background-image: none;
+    background-color: #eff0f0;
+}
+.wallet_banner .navbar{
+    padding: 0;
+    z-index: 99;
+}
+.wallet_banner .navbar .toggle-bottom {
+    margin-right: auto;
+}
+.wallet_banner .profile{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(to right,#3e509c,#b85999);
+    border-bottom-right-radius: 50%;
+}
+.wallet_banner .profile .content-user {
+    justify-content: center;
+}
+.wallet_banner .profile .content-user .user-img{
+    width: 11vw;
+    height: 11vw;
+}
+.wallet_banner .profile .content-user .description h3{
+    color: #FFF;
+    font-size: 3vw;
+}
+/** Media querys **/
+@media(max-width: 975.98px){
+    .wallet_banner{
+        height: 45vw;
+    }
+    .wallet_banner .profile .content-user .description p{
+        font-size: 0.8em;
+    }
+    .wallet_banner .profile .content-user .description h3{
+        color: #FFF;
+        font-size: 5vw;
+    }
+}
+@media(max-width: 575.98px){
+    .wallet_banner{
+        height: 55vw;
+    }
+    .wallet_banner .profile .content-user .description{
+        padding-left: 10px;
+    }
+    .wallet_banner .profile .content-user .description p{
+        font-size: 0.6em;
+    }
+    .wallet_banner .profile .content-user .user-img {
+        width: 20vw;
+        height: 20vw;
+    }
+}
+@media(max-width: 375.98px){
+    .wallet_banner{
+        height: 60vw;
+    }
+}

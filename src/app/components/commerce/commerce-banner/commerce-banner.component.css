@@ -1,0 +1,97 @@
+.banner {
+    height: 45vw;
+}
+.banner.bg-banner{
+    background-image: url("/assets/images/commerce/bg-banner.jpg");
+}
+.banner .profile{
+    background-color: #FFF;
+    padding: 0 20px 15px;
+    overflow: visible;
+    bottom: -2px;
+}
+.banner .content-user .user-img{
+    background-color: #FFF;
+    padding: 25px;
+    border-radius: 30px;
+    box-shadow: 0px 0px 5px 6px rgba(0,0,0,.1);
+    margin-top: -5vw;
+    transition: all 1s ease;
+}
+.banner .profile .content-user .description h3 {
+    font-weight: bold;
+    font-size: 2.5vw;
+}
+.banner .profile .content-user .stats{
+    margin-left: auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    min-width: 150px;
+    color: #919191;
+    transition: all 1s ease;
+}
+.banner .profile .content-user .stats a{
+    text-decoration: underline !important;
+}
+.banner .profile .content-user .stats .stats_description{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.banner .profile .content-user .stats .stats_description span > i{
+    padding-right: 3px;
+    color: #3e509c;
+}
+.banner .profile .content-user .stats .stats_description span  > i.fa-heart{
+    color: #b85999;
+}
+/** Media querys **/
+@media (max-width: 975.98px){
+    .banner .profile .content-user .description h3 {
+        font-size: 3.5vw;
+    }
+    .banner .profile .content-user .user-img {
+        width: 20vw;
+        height: 20vw;
+    }
+    .banner .profile .content-user .description p {
+        font-size: 0.9em;
+    }
+}
+@media (max-width: 575.98px){
+    .banner {
+        height: 80vw;
+    }
+    .banner .profile{
+        padding: 0 0 15px;
+    }
+    .banner .profile .content-user .description {
+        padding-left: 10px;
+    }
+    .banner .profile .content-user .description h3 {
+        font-size: 4.5vw;
+        margin-bottom: 5px !important;
+    }
+    .banner .profile .content-user .user-img {
+        width: 22vw;
+        height: 22vw;
+        padding: 10px;
+        border-radius: 10px;
+    }
+    .banner .profile .content-user .description p {
+        font-size: 0.8em;
+    }
+    .banner .profile .content-user .stats{
+        font-size: 0.9em;
+        min-width: 100px;
+        padding: 10px 0;
+    }
+}
+@media (max-width: 375.98px){
+    .banner .profile .content-user .stats{
+        font-size: 0.7em;
+        min-width: 70px;
+        padding: 5px 0;
+    }
+}

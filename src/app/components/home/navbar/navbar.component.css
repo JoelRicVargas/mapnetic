@@ -1,0 +1,102 @@
+.navbar {
+    width: 100%;
+    max-width: 800px;
+    min-width: 300px;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    margin: auto;
+    padding: 15px 10px;
+    border: none;
+    border-radius: 0;
+    margin-bottom: 40px;
+    /* box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1); */
+}
+.navbar .btn{
+    background: #FFF;
+}
+.navbar .navbar-search{
+    width: 100%;
+}
+.navbar .navbar-search form .input-group .form-control{
+    border-radius: 50px;
+    padding: 1.7em 2em;
+    box-shadow: 2px 2px 20px 2px rgba(0, 0, 0, 0.1);
+}
+.navbar .navbar-search form .input-group .form-control:focus{
+    border: inherit;
+}
+.navbar .navbar-search form .input-group .input-group-prepend{
+    margin-right: 10px;
+    color: #000;
+}
+.navbar .navbar-search form .input-group 
+.input-group-prepend .input-group-text > i{
+    margin-top: -5px;
+    color: #000;
+    font-size: 1.2em;
+}
+/** Styles boton toggle **/
+
+.navbar .btn{
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+    padding: 15px 0 9px;
+    width: 50px;
+    height: 50px;
+    background-color: #FFF;
+    border-color: inherit;
+    box-shadow: 2px 2px 20px 2px rgba(0, 0, 0, 0.1);
+    margin-right: 20px;
+}
+.navbar .btn > span.line{
+    display: block;
+    margin-right: auto;
+    margin-bottom: 5px;
+    background-color: #000;
+    width: 28px;
+    height: 2px;
+}
+.navbar .btn > span.line:nth-child(3){
+    width: 80%;
+}
+.navbar .btn > span.line:nth-child(4){
+    width: 50% !important;
+}
+
+/** iPhone 5/SE **/
+@media (max-width: 375.98px) {
+    .navbar .navbar-search {
+        height: auto;
+    }
+    .navbar .navbar-search form{
+        padding: 0 5px;
+    }
+    .navbar .navbar-search form .input-group .form-control{
+        border-radius: 35px;
+        padding: 20px 0;
+        padding-left: 1em;
+        font-size: 0.8em;
+        padding-right: 13%;
+    }
+    .navbar .navbar-search form .input-group .input-group-prepend{
+        margin-right: 5px;
+        color: #000;
+    }
+    .input-group-prepend .input-group-text > i{
+        font-size: 0.8em !important;
+    }
+    /* styles toggle */
+    .navbar .btn{
+        width: 41px;
+        height: 41px;
+        padding: 15px 0 9px;
+    }
+    .navbar .btn > span.line{
+        width: 20px;
+        margin-bottom: 2px;
+    }
+}

@@ -1,0 +1,25 @@
+
+.body{
+    background-color: #eff0f0;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+}
+/** Chat **/
+.body  .chat-networker{
+    display: flex;
+}
+/****/
+/** Media querys **/
+@media (max-width: 975.98px) {
+    .chat_content{
+        display: none;
+    }
+    .followers{
+        margin: auto;
+        width: 100%;
+    }
+}

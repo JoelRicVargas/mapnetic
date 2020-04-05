@@ -1,0 +1,86 @@
+
+.banner .overlayed::before{
+    display: block;
+    content: '';
+    width: 100%;
+    height: 100%;
+    background-image: url("/assets/images/global/bg-banner.png");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: bottom;
+    background-position-y: -20px;
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    right: 0;
+}
+.banner .profile .content-user .followers{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: 200px;
+    background-color: #a65ca2;
+    color: #FFF;
+    max-height: 30px;
+    height: auto;
+    padding: 5px 20px;
+    border-radius: 50px;
+    text-align: center;
+}
+.banner .profile .content-user .followers p{
+    margin-bottom: 0;
+    color: #FFF;
+}
+/** Media querys**/
+@media (max-width: 992.98px) {
+    .banner .overlayed::before{
+        background-position-y: bottom;
+    }
+    .banner .profile .content-user .followers{
+        margin-right: 100px;
+    }
+}
+@media (max-width: 768.98px) {
+    .banner .profile .content-user .followers{
+        margin-right: 60px;
+    }
+}
+@media (max-width: 575.98px) {
+    
+    .banner .profile .content-user .followers{
+        margin-right: 40px;
+        padding: 5px 10px;
+        height: 20px;
+    }
+    .banner .profile .content-user .followers p{
+        font-size: 0.6em;
+    }
+    .banner .profile .content-user .description p{
+        font-size: 0.9em;
+        line-height: 0;
+    }
+}
+@media (max-width: 375.98px) {
+    .banner .profile{
+        padding: 0;
+        padding-bottom: 5px;
+    }
+    .banner .profile .content-user .followers{
+        margin-right: 20px
+    }
+    .banner .profile .content-user .followers p{
+        font-size: 0.5em;
+    }
+    .banner .profile .content-user .description{
+        padding-left: 10px;
+    }
+    .banner .profile .content-user .description h3{
+        margin-bottom: 5px !important;
+    }
+    .banner .profile .content-user .description p{
+        font-size: 0.7em;
+        line-height: 1.2em;
+        margin-bottom: 0;
+    }
+}

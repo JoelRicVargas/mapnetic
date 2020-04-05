@@ -1,0 +1,36 @@
+.wallet_money_content .card-description{
+    padding: 30px 20px;
+    flex-direction: column;
+}
+.wallet_money_content .head{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+.wallet_money_content h3{
+    font-weight: 400;
+    font-size: 1.3em;
+    margin-left: 20px;
+    margin-bottom: 0;
+}
+.wallet_money_content .head .balance_content{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.wallet_money_content .body_dinner{
+    width: 100%;
+    padding: 10px 0;
+}
+.wallet_money_content .body_dinner .card_dinner{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+    padding: 10px 10px;
+    border-right: 4px solid #b85999;
+    border-top: 1px solid #838383;
+    border-bottom: 1px solid #838383;
+    border-left: 2px solid #b85999;
+}

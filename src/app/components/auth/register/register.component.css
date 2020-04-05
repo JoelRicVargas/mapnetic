@@ -1,0 +1,27 @@
+.col-lg-5{
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+}
+.register .head .title > b {
+    font-size: 1.5em;
+}
+.register form{
+    background-color: #FFF;
+}
+.register form .form-check{
+    margin-top: 20px;
+    justify-content: center;
+}
+.register .custom-control{
+    padding-right: 1.5rem;
+    padding-left: 0;
+}
+.form-check .mapnetic-control-indicator{
+    right: 0;
+    margin-left: auto;
+}
+@media (max-width: 375.98px) {
+    .register .head .title > b {
+        font-size: 1.1em;
+    }
+}

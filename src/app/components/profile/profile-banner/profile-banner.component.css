@@ -1,0 +1,75 @@
+.banner .navbar h3 {
+    margin-left: 25px;
+}
+.banner .profile .content-user{
+    flex-direction: column;
+    align-items: center;
+    width: auto;
+    margin: auto;
+}
+.banner .profile .content-user .description h3{
+    font-size: 2.6vw;
+    color: #FFF;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.banner .profile .content-user .user-img{
+    position: relative;
+    overflow: inherit;
+    z-index: 0;
+}
+.banner .profile .content-user .user-img img {
+    border-radius: 50%;
+}
+.banner .profile .content-user .user-img .buttom-add-image{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #848484;
+    bottom: 0;
+    right: 0;
+    z-index: 1;
+}
+.banner .profile .content-user .user-img .buttom-add-image i{
+    color: #FFF;
+    font-size: 1.5em;
+}
+/** Media querys **/
+@media (max-width: 975.98px) {
+    .banner .profile .content-user .user-img {
+        width: 15vw;
+        height: 15vw;
+    }
+}
+@media (max-width: 775.98px) {
+    .banner .profile .content-user .user-img {
+        width: 18vw;
+        height: 18vw;
+    }
+    .banner .profile .content-user .user-img .buttom-add-image{
+        width: 25px;
+        height: 25px;
+    }
+    .banner .profile .content-user .user-img .buttom-add-image i{
+        font-size: 0.9em;
+    }
+    .banner .profile .content-user .description {
+        padding-left: 0;
+    }
+    .banner .profile .content-user .description h3{
+        margin-top: 5px;
+    }
+}
+@media (max-width: 375.98px) {
+    .banner .profile .content-user .user-img {
+        width: 22vw;
+        height: 22vw;
+    }
+    .banner .profile .content-user .description h3{
+        font-size: 1.1em;
+    }
+}

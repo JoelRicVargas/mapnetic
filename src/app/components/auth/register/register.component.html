@@ -1,0 +1,90 @@
+<div class="row">
+    <div class="col-lg-7 d-custom aside">
+        <app-overlayed></app-overlayed>
+    </div>
+    <div class="col-lg-5 col-sm-12 col-xs-12">
+        <div class="register form-global">
+            <div class="head">
+                <h1 class="title">Hola,<br><b>Registrate</b></h1>
+            </div>
+            <form>
+                <div class="form-group">
+                  <input type="text" class="form-control" placeholder="Nombres">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Apellidos">
+                  </div>
+                  <div class="form-group">
+                    <input type="email" class="form-control" placeholder="Correo">
+                  </div>
+                <div class="input-group mb-2">
+                    <input type="password" class="form-control form-custom"  placeholder="Contraseña">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text"><i class="far fa-eye"></i></div>
+                    </div>
+                </div>
+                <div class="input-group mb-2">
+                    <input type="password" class="form-control form-custom"  placeholder="Confirmar contraseña">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text"><i class="far fa-eye"></i></div>
+                    </div>
+                </div>
+                <div class="form-check d-flex mb-3">
+                    <label class="custom-control mapnetic-checkbox">
+                        <span class="mapnetic-control-description">Acepto los <a data-toggle="modal" data-target="#terminosCondiciones" class="link">terminos y condiciones</a></span>
+                        <input type="checkbox" class="mapnetic-control-input">
+                        <span class="mapnetic-control-indicator"></span>
+                    </label>
+                </div>
+                <button type="submit" class="btn" routerLink="/home">Registrarse</button>
+                <p class="description">Si ya tienes una cuenta ingresa <a routerLink="/" class="link">aquí</a></p>
+            </form>   
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="terminosCondiciones" tabindex="-1" role="dialog" aria-labelledby="terminosCondiciones" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h2>Terminos y condiciones</h2>
+          <p class="description">Lois consequuntur fugiat, sit excepturi</p>
+        </div>
+        <div class="modal-body">
+            <h4><i class="fas fa-stop-circle"></i>Lorem tis consequuntur fugiat</h4>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quae obcaecati hic esse velit 
+            amet voluptas deserunt nisi error quod, ad earum. Rerum voluptatum laboriosam dignissimos
+            perspiciatis consequuntur fugiat, sit excepturi.</p>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Modi fuga odio voluptatum quis 
+            animi laboriosam dolore, velit quisquam dolorum deleniti saepe, a eum magni consectetur culpa, 
+            esse voluptatem quas amet.</p>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quae obcaecati hic esse velit 
+            amet voluptas deserunt nisi error quod, ad earum. Rerum voluptatum laboriosam dignissimos
+            perspiciatis consequuntur fugiat, sit excepturi.</p>
+            <h4><i class="fas fa-stop-circle"></i>Lorem tis consequuntur fugiat</h4>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Modi fuga odio voluptatum quis 
+            animi laboriosam dolore, velit quisquam dolorum deleniti saepe, a eum magni consectetur culpa, 
+            esse voluptatem quas amet.</p>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quae obcaecati hic esse velit 
+            amet voluptas deserunt nisi error quod, ad earum. Rerum voluptatum laboriosam dignissimos
+            perspiciatis consequuntur fugiat, sit excepturi.</p>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Modi fuga odio voluptatum quis 
+            animi laboriosam dolore, velit quisquam dolorum deleniti saepe, a eum magni consectetur culpa, 
+            esse voluptatem quas amet.</p>
+            <h4><i class="fas fa-stop-circle"></i>Lorem tis consequuntur fugiat</h4>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quae obcaecati hic esse velit 
+            amet voluptas deserunt nisi error quod, ad earum. Rerum voluptatum laboriosam dignissimos
+            perspiciatis consequuntur fugiat, sit excepturi.</p>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Modi fuga odio voluptatum quis 
+            animi laboriosam dolore, velit quisquam dolorum deleniti saepe, a eum magni consectetur culpa, 
+            esse voluptatem quas amet.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>

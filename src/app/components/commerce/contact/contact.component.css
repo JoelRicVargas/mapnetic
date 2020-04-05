@@ -1,0 +1,22 @@
+.item-feature {
+    border-bottom: inherit !important;
+    margin-bottom: 10px;
+    padding: 0 !important;
+    /* max-width: 1000px; */
+}
+.item-feature .subtitle,
+.item-feature .description-content{
+    color: #000;
+    margin-bottom: 10px;
+}
+.item-feature .info-contact{
+    display: flex;
+    justify-content: space-between;
+    transition: all 1s ease;
+}
+/** Media querys **/
+@media (max-width: 975.98px) {
+    .item-feature .info-contact {
+        flex-direction: column;
+    }
+}

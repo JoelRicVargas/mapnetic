@@ -1,1 +1,715 @@
-/* You can add global styles to this file, and also import other style files */
+/* Global styles */
+html{
+    background-color: #eff0f0;
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+/* width */
+::-webkit-scrollbar {
+    width: 5px;
+}
+/* Track */
+::-webkit-scrollbar-track {
+    box-shadow: inherit; 
+}  
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #5d6dae; 
+    border-radius: 10px;
+}
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #6572a7; 
+}
+a:hover{
+    text-decoration: none;
+}
+ul{
+    list-style: none;
+}
+p{
+    color: #000;
+    font-size: 0.9em;
+}
+.title{
+    margin-bottom: 20px;
+}
+.title{
+    margin-top: 20px;
+}
+.row{
+    margin-right: 0; 
+    margin-left: 0;
+}
+.link{
+    color: #5d6dae !important;
+    cursor: pointer;
+}
+.link:hover{
+    text-decoration: underline !important;
+}
+/** Forms global styles **/
+.form-global{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    max-width: 100%;
+    height: 100vh;
+    min-height: 600px;
+    margin: auto;
+    vertical-align: middle;
+    max-width: 450px;
+    padding: 10px 20px;    
+}
+.form-global p.description{
+    text-align: center;
+    font-size: 1em;
+    margin-top: 15px;
+}
+.form-global .head{
+    padding: 0 20px;
+}
+.form-global .head .title{
+    font-size: 2em;
+}
+form{
+    padding: 0 20px;
+}
+form .form-control{
+    border-radius: inherit;
+    border: inherit;
+    border-bottom: 1px solid #E1E1E1;
+    padding: 25px 0;
+}
+form .form-control.form-custom{
+    padding-right: 42px;
+}
+form .form-control::placeholder{
+    color: #E1E1E1;
+}
+form .form-control:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: #000;
+    outline: 0;
+    box-shadow: inherit;
+}
+form .form-check{
+    font-size: 0.8em;
+}
+form .input-group-prepend{
+    height: 100%;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: 99;
+}
+form .input-group-prepend .input-group-text{
+    background-color: transparent;
+    border: inherit;
+    color: #C6BDBD;
+}
+form .input-group-prepend .input-group-text i{
+    display: block;
+    margin-bottom: -5px;
+}
+/** end form global styles**/
+/** Form catalog global styles **/
+.form_custom .card-description{
+    flex-direction: column;
+    align-items: flex-start;
+    border-radius: 10px;
+    width: calc(100% - 10px) !important;
+    position: relative;
+}
+.form_custom .description{
+    margin-left: 10px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+.form_custom form {
+    width: 100%;
+    min-height: 400px;
+    /* max-width: 1000px; */
+    margin: auto;
+}
+.form_custom form input{
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid #838383;
+    padding: 10px;
+    margin: 5px 0;
+}
+.form_custom form .form-control:focus{
+    box-shadow: none;
+    border-bottom: 2px solid #ffbb1c;
+}
+.form_custom form input::placeholder{
+    color: #838383;
+    font-size: 0.8em;
+}
+.form_custom form textarea{
+    margin-top: 10px;
+    border-radius: 20px;
+    border: 2px solid #838383;
+    padding: 10px;
+    min-height: 180px;
+}
+.form_custom form textarea:focus{
+    border: 2px solid #ffbb1c;
+}
+.form_custom form textarea::placeholder{
+    color: #838383;
+}
+.form_custom form .btn{
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 10px;
+    margin-top: 50px;
+    background: #ffbb1c;
+    border-radius: 10px;
+    width: calc(100% - 20px);
+    /* max-width: 300px; */
+    margin: auto;
+}
+/** ende form catalog global styles **/
+/** footer global styles **/
+.footer{
+    display: flex;
+    position: fixed;
+    align-content: center;
+    justify-content: center;
+    flex-direction: column;
+    width: calc(100% - 20px);
+    height: auto;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: auto;
+    background-color: transparent;
+}
+.footer .body{
+    width: 100%;
+    padding: 15px 20px;
+    max-width: 470px;
+    min-width: 200px;
+    max-height: 130px;
+    background-color: #FFF;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    margin: auto;
+}
+.footer .body .card{
+    display: flex;
+    height: 100%;
+    flex-direction: row;
+    box-shadow: 2px 2px 20px 2px rgba(0, 0, 0, 0.1);
+    border: inherit;
+    padding: 5px 25px;
+    border-radius: 20px;
+}
+.footer ul{
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    height: auto;
+    margin-bottom: 0;
+}
+.footer ul a > i:hover{
+    opacity: .8;
+}
+.footer i{
+    color: #3e509c;
+    font-size: 1.5em;
+}
+/** Custom checkbox **/
+.form-check{
+    margin-top: 15px;
+    padding-left: 0;
+}
+.form-check .mapnetic-control-indicator{
+    display: inline-block;
+    position: absolute;
+    top: 2px;
+    left: 0;
+    width: 16px;
+    height: 16px;
+    border: 2px solid #aaa;
+    transition: .3s;
+}
+.form-check .mapnetic-control-input{
+    display: none; 
+}
+.form-check .mapnetic-control-input:checked~.mapnetic-control-indicator{
+    border-color: var(--color);
+    transform: rotateZ(45deg) translate(1px, -5px);
+    width: 10px;
+    margin-top: -2px;
+    border-top: 0px solid #fff;
+    border-left: 0px solid #fff;
+}
+/** end custom checkbox**/
+/** Custom botons **/
+.btn{
+    width: 100%;
+    background: linear-gradient(to right,#b85999,#3e509c);
+    border-color: inherit;
+    color: #FFF;
+    border-radius: 25px;
+    box-shadow: 10px 29px 41px -16px rgba(93,109,174,0.61);
+}
+.btn:focus{
+    box-shadow: inherit;
+}
+.btn:hover{
+    color: #FFF;
+    opacity: .9;
+}
+.btn.btn-secundary{
+    background-color: #FFF !important;
+    background: inherit;
+    border: 1px solid #5d6dae;
+    color: #5d6dae;
+}
+.btn.btn.btn-secundary:hover{
+    background-color: #5d6dae;
+    color: #FFF;
+}
+/** end custom botons**/
+/** Modal global Styles**/
+
+.modal .modal-content {
+    padding: 0.5rem 1.5rem;
+    border: inherit;
+}
+.modal .modal-header {
+    flex-direction: column;
+    border-bottom: inherit;
+    padding: 1em 1em 0;
+}
+.modal .modal-header h2{
+    font-size: 1.7em;
+}
+.modal .modal-header .description{
+    margin-top: -8px;
+}
+.modal .modal-header .close{
+    color: #5d6dae;
+}
+.modal .modal-body{
+    color: #c7cbcf;
+    max-height: 60vh;
+    overflow-y: scroll;
+}
+.modal .modal-body h4{
+    font-size: 1.25em;
+    color: #656666;
+}
+.modal .modal-body h4 > i{
+    font-size: 1em;
+    padding-right: 10px;
+    color: #5d6dae;
+}
+.modal .modal-body p{
+    color: #afb0b1;
+}
+.modal .modal-footer{
+    padding: 0.75em 0;
+    border-top: inherit;
+}
+.modal .modal-footer .btn{
+    max-width: 180px;
+    margin-left: auto;
+}
+/** end modal global styles**/
+/** Cards style global [Networker] **/
+.card-description{
+    display: flex;
+    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 25px;
+    padding: 20px;
+    background-color: #FFF;
+    width: calc(100% - 10px);
+    margin: auto;
+    margin-bottom: 10px;
+}
+.card-description p{
+    color: #838383;
+    font-size: 1em;
+    margin-bottom: 0;
+}
+.card-description.features {
+    flex-direction: column;
+}
+.card-description.features .item-feature{
+    height: 100%;
+    width: 100%;
+    border-bottom: 1px solid #dadada;
+    padding: 10px 25px;
+    margin-bottom: 10px;
+}
+.card-description.features .item-feature h3{
+    color: #4a4a4a;
+    font-size: 1.2em;
+    margin-bottom: 0;
+}
+.card-company{
+    background-color: #FFF;
+    display: flex;
+    align-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 10px;
+    margin-left: auto;
+    width: 180px;
+    height: 180px;
+    min-width: 180px;
+    border-radius: 25px;
+    box-shadow: 0px 0px 14px 6px rgba(0,0,0,0.10);
+    margin: 10px;
+}
+.card-company img{
+    width: 100%;
+}
+/** end card global styles**/
+/** Banner global styles **/
+.banner{
+    width: 100%;
+    height: 40vw;
+    overflow: hidden;
+    position: relative;
+    transition: all 0.5s;
+}
+.banner.bg-banner{
+    background-image: url("/assets/images/global/caribe.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.banner .navbar{
+    margin-top: 3vw;
+    width: 100%;
+    height: auto;
+    color: #FFF;
+}
+.banner .navbar .container{
+    display: flex;
+    justify-content: center;
+}
+.banner .navbar .toggle-bottom{
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;   
+    color: #FFF;
+    width: 45px;
+    height: 45px;
+    padding: 7px;
+}
+.banner .navbar .toggle-bottom span{
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: #FFF;
+}
+.banner .navbar .toggle-bottom span:nth-child(2){
+    width: 80%;
+}
+.banner .navbar .toggle-bottom span:nth-child(3){
+    width: 50%;
+}
+.banner .navbar h3{
+    display: block;
+    margin-right: auto;
+    margin-bottom: 0;
+    margin-left: 50px;
+    font-size: 1.6em;
+}
+.banner .navbar a{
+    font-size: 1.5em;
+    color: #FFF;
+}
+.banner .navbar a > i{
+    margin-left: auto !important;
+}
+.banner .profile{
+    display: block;
+    position: absolute;
+    bottom: 0;
+    padding: 20px;
+    width: 100%;
+    height: auto;
+}
+.banner .profile .content-user{
+    display: flex;
+}
+.banner .profile .content-user .user-img{
+    width: 13vw;
+    height: 13vw;
+    overflow: hidden;
+    border-radius: 50%;
+}
+.banner .profile .content-user .user-img img{
+    width: 100%;
+    height: 100%;
+}
+.banner .profile .content-user .description{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 20px;
+}
+.banner .profile .content-user .description h3{
+    font-size: 4vw;
+}
+.banner .profile .content-user .description p{
+    font-size: 1em;
+    line-height: 0.2em;
+    color: #919191;
+}
+/** end banner global styles **/
+/** Tab pane global styles **/
+.nav.nav-tabs{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: #FFF;
+    font-size: 1.2em;
+}
+.nav.nav-tabs .nav-link{
+    color: #858585;
+    border: inherit;
+}
+.nav.nav-tabs .nav-link.active{
+    border-bottom: 3px solid #5d6dae;
+    color: #5d6dae;
+}
+.nav.nav-tabs .nav-link > i{
+    margin-right: 10px;
+}
+/** end tab pane global styles**/
+/** Catalog global styles **/
+.catalog{
+    background: linear-gradient(#3e509c, #b85999);
+    padding: 20px;
+}
+.catalog h3{
+    font-size: 1.4em;
+    margin-bottom: 20px;
+    color: #FFF;
+}
+.catalog .card-description{
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 20px;
+    height: 290px;
+    min-height: 290px;
+    padding: 35px;
+    font-size: 1.2em;
+    box-shadow: 0px 0px 14px 6px rgba(0,0,0,0.10);
+}
+.catalog .card-description img{
+    width: 100%;
+    margin-bottom: 35px;
+    max-width: 215px;
+    max-height: 215px;
+}
+.catalog .card-description .content-description{
+    position: absolute;
+    width: calc(100% - 50px);
+    left: 0;
+    right: 0;
+    margin: auto;
+    height: auto;
+    bottom: 20px;
+}
+.catalog .card-description .description{
+    font-size: 0.8em;
+}
+.catalog .card-description .name{
+    color: #000;
+}
+/** end catalog global styles**/
+/** Media query **/
+@media (max-width: 991.98px) {
+    .banner{
+        height: 50vw;
+    }
+    .d-custom{
+        display: none !important;
+    }
+}
+@media (max-width: 775.98px) {
+    .banner .navbar h3 {
+        font-size: 1.2em;
+        margin-left: 10px;
+    }
+    .banner{
+        height: 60vw;
+    }
+}
+@media (max-width: 575.98px) {
+    /***/
+    .content-form{
+        padding-right: 0;
+        padding-left: 0;
+    }
+    .form-global{
+        position: relative;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        max-width: inherit !important;
+        padding: 0;
+    }
+    .form-global .head{
+        position: relative;
+        background-image: url("assets/images/global/bg-login-responsive.png");
+        /* background: linear-gradient(60deg, #ab47bc, #7b1fa2); */
+        background-position: center center;
+        background-size: 100% 100%;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        display: flex;
+        align-items: center;
+        padding: 0 !important;
+        min-height: 280px;
+    }
+    .form-global .head .title{
+        position: relative;
+        margin-top: -80px;
+        margin-left: 50px;
+        padding-top: 10px;
+        font-size: 1.7em !important;
+        color: #FFF;
+    }
+    .form-global .head .bg-responsive{
+        display: block !important;
+        position: relative;
+        width: 100%;
+        height: 100%;
+        min-height: 200px;
+        max-height: 300px;
+        max-width: 500px;
+    }
+    .form-global form{
+        position: relative;
+        padding: 0 30px;
+    }
+    /***/
+    .card-description h1{
+        font-size: 1.3em;
+    }
+    .card-description.features .item-feature{
+        padding: 10px 0;
+    }
+    .card-description p{
+        font-size: 0.9em;
+    }
+    .card-description.features .item-feature h3{
+        font-size: 1em;
+    }
+    .card-description li{
+        font-size: 0.8em;
+    }
+    .card-company{
+        width: 140px;
+        min-width: 140px;
+        height: 140px;
+    }
+    /** Navbar **/
+    .banner .navbar .toggle-bottom{
+        width: 35px;
+        height: 35px;
+        padding: 7px;
+    }
+    .banner .navbar h3{
+        font-size: 1.2em;
+        margin-left: 10px;
+    }
+    .banner .navbar a > i {
+        font-size: 0.8em;
+    }
+    /** Profile description **/
+    .banner .profile{
+        padding-bottom: 0;
+    }
+    
+    .banner .profile .content-user .user-img{
+        width: 17vw;
+        height: 17vw;
+    }
+    /** Nav Tab**/
+    .nav.nav-tabs{
+        justify-content: space-evenly !important;
+    }
+    .nav.nav-tabs{
+        font-size: 0.9em;
+    }
+    /****/
+    /** Catalog **/
+    .catalog h3{
+        margin-top: 10px;
+        font-size: 1.1em;
+    }
+    .catalog{
+        padding: 0;
+    }
+    .catalog .card-description{
+        min-height: 230px;
+        height: 230px;
+        padding: 10px;
+    }
+    /****/
+}
+/** iPhone 5/SE **/
+@media (max-width: 375.98px) {
+    .form-global .head{
+        min-height: 250px;
+    }
+    .card-description.features .item-feature h3 {
+        font-size: 0.9em;
+    }
+    .card-description{
+        width: 100%;
+        padding: 10px 0;
+    }
+    .card-description h1{
+        font-size: 1em;
+    }
+    .card-description.features{
+        padding: 10px 20px;
+    }
+    .card-company{
+        margin: 5px;
+        width: 110px;
+        min-width: 110px;
+        height: 110px;
+    }
+    .card-description li{
+        font-size: 0.7em !important;
+    }
+    /**Nav Tab**/
+    .nav.nav-tabs .nav-item a{
+        padding: 5px;
+     }
+    /****/
+    /** Catalog **/
+    .catalog .card-description{
+        min-height: 210px;
+        height: 210px;
+        padding: 5px;
+    }
+    .catalog .card-description .content-description p{
+        font-size: 0.8em;
+    }
+    /****/
+}
+/** end media query **/

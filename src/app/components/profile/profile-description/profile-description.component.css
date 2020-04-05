@@ -1,0 +1,13 @@
+.card-description.profile{
+    margin-top: 20px;
+}
+.card-description.profile{
+    padding: 30px;
+}
+.card-description.profile .title{
+    margin-right: auto;
+}
+.card-description.profile p{
+    font-size: 0.9em;
+    margin-bottom: 10px;
+} 

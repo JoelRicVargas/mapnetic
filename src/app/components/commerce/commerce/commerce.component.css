@@ -1,0 +1,9 @@
+.body{
+    background-color: #eff0f0;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+}

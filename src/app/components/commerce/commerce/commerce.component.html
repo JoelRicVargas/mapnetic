@@ -1,0 +1,34 @@
+<app-commerce-banner></app-commerce-banner>
+<app-sidebar-menu></app-sidebar-menu>
+<div class="body">
+    <ul class="nav nav-tabs justify-content-center">
+        <li class="nav-item">
+            <a href="#products" class="nav-link active"  role="tab" data-toggle="tab">
+                <i class="fas fa-store"></i>Catalogo
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="#offers" class="nav-link" role="tab" data-toggle="tab">
+                <i class="fas fa-user"></i>Ofertas
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="#contact" class="nav-link"  role="tab" data-toggle="tab">
+                <i class="fas fa-id-card-alt"></i>Contacto
+            </a>
+        </li>
+    </ul>
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane" id="contact">
+            <app-contact></app-contact>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="offers">
+            <app-offer></app-offer>
+            <!-- <app-offer-form></app-offer-form> -->
+        </div>
+        <div role="tabpanel" class="tab-pane active" id="products">
+            <app-commerce-catalog></app-commerce-catalog>
+            <!-- <app-catalog-form></app-catalog-form> -->
+        </div>
+    </div>
+</div>

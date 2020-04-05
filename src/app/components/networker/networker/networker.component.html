@@ -1,0 +1,35 @@
+<app-networker-banner></app-networker-banner>
+<app-sidebar-menu></app-sidebar-menu>
+<div class="body">
+    <ul class="nav nav-tabs justify-content-center">
+        <li class="nav-item">
+            <a href="#profile" class="nav-link" role="tab" data-toggle="tab">
+                <i class="fas fa-user"></i>Perfil
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="#products" class="nav-link active"  role="tab" data-toggle="tab">
+                <i class="fas fa-store"></i>Catalogo
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="#followers" class="nav-link"  role="tab" data-toggle="tab">
+                <i class="fas fa-users"></i>Seguidores
+            </a>
+        </li>
+    </ul>
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane" id="profile">
+            <app-networker-profile></app-networker-profile>
+        </div>
+        <div role="tabpanel" class="tab-pane active"id="products">
+            <app-catalog></app-catalog>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="followers">
+            <div class="chat-networker">
+                <app-chat style="width: 100%;" class="chat_content"></app-chat>
+                <app-followers class="followers"></app-followers>
+            </div>
+        </div>
+    </div>
+</div>
