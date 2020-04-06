@@ -1,8 +1,41 @@
 <app-sidebar-menu></app-sidebar-menu>
 <app-wallet-banner></app-wallet-banner>
 <div class="body">
-    <div class="col-lg-6">
-        <app-wallet-money></app-wallet-money>
+    <ul class="nav nav-tabs justify-content-center">
+        <li class="nav-item">
+            <a href="#community" class="nav-link active" role="tab" data-toggle="tab">
+                <i class="fas fa-users"></i><span>Comunidad</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="#wallet" class="nav-link"  role="tab" data-toggle="tab">
+                <i class="fas fa-dollar-sign"></i><span>Billetera</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="#bonus" class="nav-link"  role="tab" data-toggle="tab">
+                <i class="fas fa-gift"></i><span>Bonus</span>
+            </a>
+        </li>
+    </ul>
+
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="community">
+            <app-wallet-community></app-wallet-community>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="wallet">
+            <div class="row">
+                <div class="col-lg-6">
+                    <app-wallet-money></app-wallet-money>
+                </div>
+                <div class="col-lg-6">
+                    <app-wallet-data></app-wallet-data>
+                </div>
+            </div>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="bonus">
+            <app-wallet-bonus></app-wallet-bonus>
+        </div>
     </div>
 </div>
 <!-- <app-footer></app-footer> -->

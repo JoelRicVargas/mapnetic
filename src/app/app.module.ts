@@ -18,6 +18,16 @@ import { CatalogFormComponent } from './components/commerce/catalog-form/catalog
 import { WalletComponent } from './components/wallet/wallet/wallet.component';
 import { WalletBannerComponent } from './components/wallet/wallet-banner/wallet-banner.component';
 import { WalletMoneyComponent } from './components/wallet/wallet-money/wallet-money.component';
+import { WalletDataComponent } from './components/wallet/wallet-data/wallet-data.component';
+import { WalletBonusComponent } from './components/wallet/wallet-bonus/wallet-bonus.component';
+import { WalletCommunityComponent } from './components/wallet/wallet-community/wallet-community.component';
+import { DashboardComponent } from './components/dashboard/dashboard/dashboard.component';
+import { DashboardBannerComponent } from './components/dashboard/dashboard-banner/dashboard-banner.component';
+import { GraficsComponent } from './components/dashboard/grafics/grafics.component';
+import { ChartsModule } from 'ng2-charts';
+import { PieChartComponent } from './components/dashboard/pie-chart/pie-chart.component';
+import { TransactionsComponent } from './components/dashboard/transactions/transactions.component';
+
 
 
 @NgModule({
@@ -38,11 +48,20 @@ import { WalletMoneyComponent } from './components/wallet/wallet-money/wallet-mo
     CatalogFormComponent,
     WalletComponent,
     WalletBannerComponent,
-    WalletMoneyComponent
+    WalletMoneyComponent,
+    WalletDataComponent,
+    WalletBonusComponent,
+    WalletCommunityComponent,
+    DashboardComponent,
+    DashboardBannerComponent,
+    GraficsComponent,
+    PieChartComponent,
+    TransactionsComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

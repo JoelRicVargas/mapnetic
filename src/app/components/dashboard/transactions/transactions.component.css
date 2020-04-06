@@ -1,0 +1,57 @@
+.body h5{
+    font-size: 1em;
+    margin-left: 10px;
+    padding-top: 10px;
+}
+.card-description{
+    flex-direction: column;
+}
+.transaction_content{
+    width: 100%;
+    display: flex;
+    padding: 15px 0;
+    border-bottom: 1px solid #9da4ac;
+}
+.transaction_content .icon{
+    width: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.3em;
+}
+.transaction_content .transaction_body{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 10px;
+}
+.transaction_content .transaction_body .dinner{
+    color: #3e509c;
+    font-size: 1.3em;
+    margin-bottom: 0;
+    padding-top: 10px;
+}
+.transaction_content .transaction_body .transaction_description{
+    line-height: 8px;
+}
+.transaction_content .transaction_body .transaction_description h4{
+    font-size: 1.2em;
+    margin-bottom: 0;
+}
+.transaction_content .transaction_body .transaction_description span{
+    color: #9da4ac;
+    font-size: 0.8em;
+}
+/** Media querys **/
+@media(max-width:375.98px){
+    .card-description {
+        padding: 10px 10px;
+    }
+    .transaction_content .transaction_body .dinner{
+        font-size: 1.2em;
+    }
+    .transaction_content .transaction_body .transaction_description h4{
+        font-size: 1.1em;
+    }
+}

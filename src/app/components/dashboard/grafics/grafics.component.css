@@ -1,0 +1,19 @@
+.content_grafics .card-description{
+    flex-direction: column;
+}
+.content_grafics .card-description .btn{
+    background: #3e509c;
+    max-width: 300px;
+}
+.content_grafics .card-description .body_grafics{
+    width: 100%;
+}
+.content_grafics .card-description .body_grafics canvas{
+    width: 100%;
+}
+@media(max-width:775.98px){
+    .content_grafics .card-description .btn{
+        font-size: 0.7em;
+        max-width: 200px;
+    }
+}

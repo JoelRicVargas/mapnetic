@@ -1,0 +1,17 @@
+<div class="content_grafics">
+    <div class="card-description">
+      <div class="body_grafics">
+        <canvas baseChart 
+            [datasets]="barChartData" 
+            [labels]="barChartLabels" 
+            [options]="barChartOptions"
+            [legend]="barChartLegend" 
+            [chartType]="barChartType"
+            [colors]="lineChartColors" 
+            (chartHover)="chartHovered($event)"
+          (chartClick)="chartClicked($event)"></canvas>
+      </div>
+      <button mat-button mat-raised-button color="primary" (click)="randomize()"
+      class="btn">Update</button>
+    </div>
+</div>

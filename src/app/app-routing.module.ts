@@ -20,6 +20,7 @@ import { ChatComponent } from './components/networker/chat/chat.component';
 import { CommerceComponent } from './components/commerce/commerce/commerce.component';
 import { CommerceBannerComponent } from './components/commerce/commerce-banner/commerce-banner.component';
 import { WalletComponent } from './components/wallet/wallet/wallet.component';
+import { DashboardComponent } from './components/dashboard/dashboard/dashboard.component';
 
 
 const routes: Routes = [
@@ -28,6 +29,7 @@ const routes: Routes = [
   { path : 'register', component : RegisterComponent },
   { path : 'usernamerecovery', component : RecoveryPasswordComponent },
   { path : 'home', component : HomeComponent },
+  { path : 'dashboard', component : DashboardComponent},
   { path : 'networker' , component : networkerComponent },
   { path : 'chat', component : ChatComponent},
   { path : 'commerce', component : CommerceComponent },
@@ -57,5 +59,4 @@ export const routingComponents = [
   ProfileComponent,
   CommerceComponent,
   CommerceBannerComponent
-
 ];

@@ -29,8 +29,28 @@
     justify-content: flex-end;
     align-items: flex-end;
     padding: 10px 10px;
-    border-right: 4px solid #b85999;
+    border-right: 6px solid #b85999;
     border-top: 1px solid #838383;
     border-bottom: 1px solid #838383;
-    border-left: 2px solid #b85999;
+    border-left: 3px solid #b85999;
+    margin-top: 10px;
+}
+.wallet_money_content .body_dinner .card_dinner h3{
+    font-weight: 500;
+    font-size: 1.6em;
+}
+/** Media querys **/
+@media(max-width:575.98px){
+    .wallet_money_content h3{
+        font-size: 1.2em;
+        margin-left: 0;
+    }
+    .wallet_money_content .head{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+    .wallet_money_content .body_dinner .card_dinner h3{
+        font-size: 1.3em;
+    }
 }

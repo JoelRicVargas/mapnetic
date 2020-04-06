@@ -1,0 +1,13 @@
+.body{
+    background-color: #eff0f0; 
+}
+@media(max-width:575.98px){
+    .container-fluid{
+        padding-right: 0;
+        padding-left: 0;
+    }
+    .container-fluid .row .col-lg-6{
+        padding-right: 5px;
+        padding-left: 5px;
+    }
+}
