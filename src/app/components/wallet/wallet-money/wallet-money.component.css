@@ -2,6 +2,17 @@
     padding: 30px 20px;
     flex-direction: column;
 }
+.wallet_money_content .alert{
+    background-color: #b85999;
+    margin-left: auto;
+    margin-top: 5px;
+    font-size: 0.7em;
+    border-radius: 35px;
+    padding: 4px 10px;
+}
+.wallet_money_content .alert p{
+    color: #FFF;
+}
 .wallet_money_content .head{
     display: flex;
     justify-content: space-between;

@@ -20,20 +20,25 @@
                     <li><a href="#">Home 3</a></li>
                 </ul>
             </li> -->
+            <li><a routerLink="/home"><i class="fas fa-home"></i>Home</a></li>
             <li><a routerLink="/profile"><i class="fas fa-user-alt"></i>Perfil</a></li>
+            <li><a routerLink="/package"><i class="fas fa-box"></i>Paquetes</a></li>
             <li><a href="/dashboard"><i class="fas fa-tachometer-alt"></i>Dashboard</a></li>
             <li><a href="/networker"><i class="fas fa-project-diagram"></i>Networker</a></li>
             <li><a href="/commerce"><i class="fas fa-dumpster"></i>Comercio</a></li>
-            <li><a href="/wallet"><i class="fas fa-dumpster"></i>Billetera</a></li>
+            <li><a href="/wallet"><i class="fas fa-wallet"></i>Billetera</a></li>
             <li><a href="#"><i class="fas fa-comment-alt"></i>Notificaciónes</a></li>
         </ul>
 
         <ul class="list-unstyled CTAs">
-            <li><a href="#">Configuración</a></li>
-            <li><a href="#">Acerca de</a></li>
-            <li><a href="#">Cerrar sesión</a></li>
+            <li><a data-toggle="modal" data-target="#configurationModal">Configuración</a></li>
+            <li><a data-toggle="modal" data-target="#modalText">Acerca de</a></li>
+            <li><a data-toggle="modal" data-target="#modalText">Terminos y condiciones</a></li>
+            <li><a data-toggle="modal" data-target="#modalConfirm">Cerrar sesión</a></li>
         </ul>
     </nav>
 
 </div>
 <div class="overlay"></div>
+<app-terms></app-terms>
+<app-configuration></app-configuration>

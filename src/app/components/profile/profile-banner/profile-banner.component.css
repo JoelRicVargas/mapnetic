@@ -8,10 +8,23 @@
     margin: auto;
 }
 .banner .profile .content-user .description h3{
-    font-size: 2.6vw;
+    font-size: 2.4vw;
     color: #FFF;
     margin-top: 20px;
     margin-bottom: 20px;
+    text-shadow: 2px -1px 0 rgba(0,0,0,.3);
+    padding: 10px 20px;
+    background-color: rgb(132, 132, 132,.7);
+    border-radius: 30px;
+}
+.banner .profile .content-user .description h3 > i{
+    font-size: 0.9em;
+    transition: all 1s ease;
+}
+.banner .profile .content-user .description h3 > i:hover{
+    text-shadow: none;
+    cursor: pointer;
+    color: #3e509c;
 }
 .banner .profile .content-user .user-img{
     position: relative;
@@ -70,6 +83,8 @@
         height: 22vw;
     }
     .banner .profile .content-user .description h3{
-        font-size: 1.1em;
+        font-size: 1em;
+        padding: 5px 10px;
+        margin-bottom: 10px !important;
     }
 }

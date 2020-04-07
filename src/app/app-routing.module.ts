@@ -21,6 +21,8 @@ import { CommerceComponent } from './components/commerce/commerce/commerce.compo
 import { CommerceBannerComponent } from './components/commerce/commerce-banner/commerce-banner.component';
 import { WalletComponent } from './components/wallet/wallet/wallet.component';
 import { DashboardComponent } from './components/dashboard/dashboard/dashboard.component';
+import { PackageComponent } from './components/package/package/package.component';
+import { PackageBuyComponent } from './components/package/package-buy/package-buy.component';
 
 
 const routes: Routes = [
@@ -33,7 +35,9 @@ const routes: Routes = [
   { path : 'networker' , component : networkerComponent },
   { path : 'chat', component : ChatComponent},
   { path : 'commerce', component : CommerceComponent },
-  { path : 'wallet', component : WalletComponent}
+  { path : 'wallet', component : WalletComponent },
+  { path : 'package', component : PackageComponent },
+  { path : 'packagebuy',component : PackageBuyComponent }
 ];
 
 @NgModule({

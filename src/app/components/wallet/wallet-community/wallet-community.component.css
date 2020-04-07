@@ -91,10 +91,26 @@
 }
 .wallet_content_code .btn_copy{
     right: 0;
-    top: 0;
+    top: 10px;
     position: absolute;
 }
+.link_code span{
+    background-color: #3e509c;
+    border: 1px solid #3e509c;
+    color: #FFF;
+    font-size: 1em;
+    cursor: pointer;
+}
+.link_code input{
+    border: 1px solid #969696;
+    color: #838383;
+}
 /** Media querys **/
+@media(max-width:775.98px){
+    .link_code span{
+        font-size: 0.7em;
+    }
+}
 @media(max-width:575.98px){
     .wallet_content_code .wallet_info{
         flex-direction: column;

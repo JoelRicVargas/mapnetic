@@ -281,7 +281,9 @@ form .input-group-prepend .input-group-text i{
 }
 /** end custom botons**/
 /** Modal global Styles**/
-
+.modal{
+    z-index: 99999 !important;
+}
 .modal .modal-content {
     padding: 0.5rem 1.5rem;
     border: inherit;
@@ -329,6 +331,7 @@ form .input-group-prepend .input-group-text i{
 /** Cards style global [Networker] **/
 .card-description{
     display: flex;
+    position: relative;
     justify-content: center;
     justify-content: space-between;
     align-items: center;
@@ -360,6 +363,32 @@ form .input-group-prepend .input-group-text i{
     font-size: 1.2em;
     margin-bottom: 0;
 }
+.card-description input{
+    width: 100%;
+    padding: 5px 10px;
+}
+.edit{
+    border: 1px solid #afb0b1 !important;
+    padding: 5px 5px !important;
+    margin: 2px;
+    font-size: 0.8em;
+}
+.card-description input:focus{
+    box-shadow: none;
+    border-color: #3e509c;
+    border: 1px solid #3e509c;
+}
+.card-description input{
+    color: #4a4a4a;
+    font-size: 1.2em;
+    font-weight: 500;
+    transition: all 1s ease;
+}
+.edit_input{
+    padding: 0 0;
+    border: none;
+    pointer-events: none; 
+}
 .card-company{
     background-color: #FFF;
     display: flex;
@@ -387,6 +416,21 @@ form .input-group-prepend .input-group-text i{
     position: relative;
     transition: all 0.5s;
 }
+.banner .overlayed{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .5);
+    transition: all 1s ease;
+    display: none;
+    top: 0;
+}
+.banner .edit_banner{
+    z-index: 99;
+    position: absolute;
+    right: 15px;
+    bottom: 0;
+}
 .banner.bg-banner{
     background-image: url("/assets/images/global/caribe.jpg");
     background-size: cover;
@@ -402,6 +446,7 @@ form .input-group-prepend .input-group-text i{
 .banner .navbar .container{
     display: flex;
     justify-content: center;
+    z-index: 9999;
 }
 .banner .navbar .toggle-bottom{
     cursor: pointer;
@@ -433,12 +478,20 @@ form .input-group-prepend .input-group-text i{
     font-size: 1.6em;
 }
 .banner .navbar a{
+    background-color: #3e509c;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
     font-size: 1.5em;
     color: #FFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
 }
-.banner .navbar a > i{
+/* .banner .navbar a > i{
     margin-left: auto !important;
-}
+} */
 .banner .profile{
     display: block;
     position: absolute;
@@ -455,6 +508,7 @@ form .input-group-prepend .input-group-text i{
     height: 13vw;
     overflow: hidden;
     border-radius: 50%;
+    z-index: 999 !important;
 }
 .banner .profile .content-user .user-img img{
     width: 100%;
@@ -465,16 +519,43 @@ form .input-group-prepend .input-group-text i{
     flex-direction: column;
     justify-content: center;
     padding-left: 20px;
+    z-index: 999 !important;
 }
+
+.banner .profile .content-user .description .name,
 .banner .profile .content-user .description h3{
-    font-size: 4vw;
+    font-size: 3vw;
+    font-weight: 600;
 }
-.banner .profile .content-user .description p{
+.banner .profile .content-user .description p,
+.banner .profile .content-user .description .info_input{
     font-size: 1em;
     line-height: 0.2em;
     color: #919191;
 }
+.banner .profile .content-user .description span{
+    color: #3e509c;
+    font-size: 0.7em;
+    text-decoration: underline;
+    cursor: pointer;
+    transition: all 1s ease;
+}
 /** end banner global styles **/
+/** Custom File Input global styles **/
+.custom-file-label::after {
+    color: #FFF;
+    content: "Buscar";
+    background-color: #3e509c;
+    border-radius: 0 0.25rem 0.25rem 0;
+}
+.custom-file-input:focus ~ .custom-file-label {
+    border-color: rgb(63, 80, 157);
+    box-shadow: inherit;
+}
+.custom-file-input:lang(en) ~ .custom-file-label::after {
+    content: "Buscar";
+}
+/** end custom file input**/
 /** Tab pane global styles **/
 .nav.nav-tabs{
     margin-top: 10px;
@@ -528,22 +609,42 @@ form .input-group-prepend .input-group-text i{
     right: 0;
     margin: auto;
     height: auto;
-    bottom: 20px;
+    bottom: 10px;
 }
 .catalog .card-description .description{
     font-size: 0.8em;
+    color: #838383 !important;
+    font-weight: 300;
 }
 .catalog .card-description .name{
     color: #000;
+    font-size: 1em;
+    font-weight: 400;
 }
 /** end catalog global styles**/
 /** Media query **/
+@media (max-width: 1275.98px) {
+    /** Edit custom**/
+    .banner .profile .content-user .description .edit_input.name.edit,
+    .banner .profile .content-user .description .edit_input.info_input.edit{
+        font-size: 1em;
+        margin-bottom: 2px !important;
+        padding: 2px 2px !important;
+    }
+}
 @media (max-width: 991.98px) {
     .banner{
         height: 50vw;
     }
     .d-custom{
         display: none !important;
+    }
+    /** Edit custom**/
+    .banner .profile .content-user .description .edit_input.name.edit,
+    .banner .profile .content-user .description .edit_input.info_input.edit{
+        font-size: 0.8em;
+        margin-bottom: 2px !important;
+        padding: 2px 2px !important;
     }
 }
 @media (max-width: 775.98px) {
@@ -553,6 +654,17 @@ form .input-group-prepend .input-group-text i{
     }
     .banner{
         height: 60vw;
+    }
+     /** Edit custom**/
+    .banner .profile .content-user .description .edit_input.name.edit,
+    .banner .profile .content-user .description .edit_input.info_input.edit{
+        font-size: 0.7em;
+        margin-bottom: 2px !important;
+        padding: 2px 2px !important;
+    }
+    .card-description input {
+        padding: 2px 2px !important;
+        font-size: 0.8em !important;
     }
 }
 @media (max-width: 575.98px) {
@@ -635,6 +747,11 @@ form .input-group-prepend .input-group-text i{
         font-size: 1.2em;
         margin-left: 10px;
     }
+    .banner .navbar a {
+        width: 30px;
+        height: 30px;
+        font-size: 1em;
+    }
     .banner .navbar a > i {
         font-size: 0.8em;
     }
@@ -646,6 +763,9 @@ form .input-group-prepend .input-group-text i{
     .banner .profile .content-user .user-img{
         width: 17vw;
         height: 17vw;
+    }
+    .banner .profile .content-user .description {
+        padding-left: 10px;
     }
     /** Nav Tab**/
     .nav.nav-tabs{
@@ -680,7 +800,7 @@ form .input-group-prepend .input-group-text i{
     }
     .card-description{
         width: 100%;
-        padding: 10px 0;
+        padding: 20px 0;
     }
     .card-description h1{
         font-size: 1em;
@@ -695,6 +815,10 @@ form .input-group-prepend .input-group-text i{
         height: 110px;
     }
     .card-description li{
+        font-size: 0.7em !important;
+    }
+    .card-description input {
+        padding: 2px 2px !important;
         font-size: 0.7em !important;
     }
     /**Nav Tab**/
@@ -712,5 +836,12 @@ form .input-group-prepend .input-group-text i{
         font-size: 0.8em;
     }
     /****/
+     /** Edit custom**/
+     .banner .profile .content-user .description .edit_input.name.edit,
+     .banner .profile .content-user .description .edit_input.info_input.edit{
+         font-size: 0.6em;
+         margin-bottom: 2px !important;
+         padding: 2px 2px !important;
+     }
 }
 /** end media query **/

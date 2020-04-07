@@ -1,0 +1,15 @@
+.body{
+    background-color: #eff0f0;
+}
+.body form .form-control{
+    border: 1px solid #838383;
+    background-color: #eff0f0;
+    padding: 20px 10px;
+}
+.body form .form-control::placeholder{
+    color: #9c9898;
+}
+.body form .btn{
+    background: #ffbb1c;
+    border-radius: 5px;
+}

@@ -1,5 +1,5 @@
 <div class="banner bg-banner">
-    <div class="overlayed">
+    <div class="overlayed_bg">
         <div class="navbar">
             <div class="container">
                 <div class="toggle-bottom" id="sidebarCollapse">
@@ -18,9 +18,14 @@
                         <img src="/assets/images/global/user.jpg" alt="">
                     </div>
                     <div class="description">
-                        <h3 class="mb-3">Tony Stark</h3>
-                        <p>Software Engineer</p>
-                        <p>Arequipa, Peru</p>
+                        <input type="text" value="Tony Stark" class="mb-2 edit_input name" placeholder="Nombres">
+                        <!-- <h3 class="mb-3">Tony Stark</h3> -->
+                        <input type="text" value="Software Engineer" class="edit_input info_input" placeholder="Nombres">
+                        <input type="text" value="Arequipa, Peru" class="edit_input info_input" placeholder="Nombres">
+
+                        <!-- <p>Software Engineer</p>
+                        <p>Arequipa, Peru</p> -->
+                        <span onclick="edit_module()">Editar</span>
                     </div>
                     <div class="followers">
                         <p>Seguidores 4k</p>
@@ -28,5 +33,7 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div class="overlayed">
     </div>
 </div>

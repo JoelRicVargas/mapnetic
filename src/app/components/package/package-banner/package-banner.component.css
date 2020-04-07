@@ -1,0 +1,13 @@
+
+.banner{
+    height: auto !important;
+    background-image: none;
+    background-color: #eff0f0;
+}
+.banner .navbar h3 {
+    color: #000;
+    font-weight: 400;
+}
+.banner .navbar .toggle-bottom span{
+    background-color: #000;
+}

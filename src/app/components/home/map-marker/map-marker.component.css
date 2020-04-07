@@ -2,7 +2,10 @@
     width: auto;
     height: auto;
     background-color: transparent;
-}
+    max-width: 250px;
+    margin: auto;
+    position: relative;
+  }
 .pin{
     width : 50px;
     height : 50px;
@@ -57,6 +60,38 @@
     opacity: 0.0;
     box-shadow: 0 0 1px 2px #b85999;
     animation-delay: 1.1s;
+}
+.description_mark{
+  background-color: #FFF;
+  width: 150px;
+  height: auto;
+  position: absolute;
+  right: -45px;
+  top: -31px;
+  padding: 10px;
+  border-radius: 14px;
+  box-shadow: 2px 2px 20px 2px rgba(0, 0, 0, 0.1);
+  font-size: 0.8em;
+  line-height: 15px;
+  color: #9da4ac;
+}
+.description_mark::after{
+  content: '';
+  width: 10px;
+  height: 10px;
+  background-color: #FFF;
+  position: absolute;
+  top: 12px;
+  left: -4px;
+  transform: rotate(-135deg);
+}
+.description_mark:hover{
+  z-index: 9999;
+  color: #000;
+}
+.mark:hover{
+  z-index: 9999;
+  cursor: pointer;
 }
 @keyframes pulsate{
   0%{

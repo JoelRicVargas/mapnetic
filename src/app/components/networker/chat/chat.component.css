@@ -27,8 +27,12 @@
 }
 .chat-head .title a{
     display: none;
+    margin-right: auto;
+    color: #000;
+    cursor: pointer;
 }
 .chat-head .title h3{
+    margin-right: auto;
     font-size: 1.3em;
 }
 .chat-body{
@@ -127,6 +131,9 @@
         height: 100vh;
         min-height: 100vh;
         margin-bottom: 0;
+    }
+    .chat-head .title a{
+        display: block;
     }
     .chat-head .title h3{
         font-size: 1em;

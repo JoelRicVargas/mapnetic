@@ -27,6 +27,13 @@ import { GraficsComponent } from './components/dashboard/grafics/grafics.compone
 import { ChartsModule } from 'ng2-charts';
 import { PieChartComponent } from './components/dashboard/pie-chart/pie-chart.component';
 import { TransactionsComponent } from './components/dashboard/transactions/transactions.component';
+import { ButtomHelpComponent } from './components/home/buttom-help/buttom-help.component';
+import { PackageComponent } from './components/package/package/package.component';
+import { PackageBannerComponent } from './components/package/package-banner/package-banner.component';
+import { PackageCardComponent } from './components/package/package-card/package-card.component';
+import { PackageBuyComponent } from './components/package/package-buy/package-buy.component';
+import { TermsComponent } from './components/auth/terms/terms.component';
+import { ConfigurationComponent } from './components/configuration/configuration/configuration.component';
 
 
 
@@ -56,7 +63,14 @@ import { TransactionsComponent } from './components/dashboard/transactions/trans
     DashboardBannerComponent,
     GraficsComponent,
     PieChartComponent,
-    TransactionsComponent
+    TransactionsComponent,
+    ButtomHelpComponent,
+    PackageComponent,
+    PackageBannerComponent,
+    PackageCardComponent,
+    PackageBuyComponent,
+    TermsComponent,
+    ConfigurationComponent
   ],
   imports: [
     BrowserModule,

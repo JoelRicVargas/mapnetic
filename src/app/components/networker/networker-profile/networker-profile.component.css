@@ -3,8 +3,17 @@
     margin-left: 20px;
     color: #4a4a4a;
 }
+.card-description .firma{
+    font-size: 2.5rem;
+    color: #000;
+}
 .card-description li{
     font-size: 1.1em;
+}
+.card-description li > input{
+    font-size: 1.1em;
+    color: #4a4a4a;
+    font-weight: 400;
 }
 .card-description .body{
     max-width: 520px;
@@ -21,6 +30,19 @@
     font-size: 1.1em;
 }
 /** Media querys **/
-@media (max-width: 575.98px) {
-
+@media (max-width:775.98px) {
+    .card-description .firma{
+        font-size: 1.2em !important;
+        color: #000;
+    }
+}
+@media (max-width:375.98px) {
+    .card-description {
+        width: 100%;
+        padding: 10px 10px;
+    }
+    .card-description .firma{
+        font-size: 1em !important;
+        color: #000;
+    }
 }
