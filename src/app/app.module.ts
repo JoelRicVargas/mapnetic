@@ -35,6 +35,12 @@ import { PackageBuyComponent } from './components/package/package-buy/package-bu
 import { TermsComponent } from './components/auth/terms/terms.component';
 import { ConfigurationComponent } from './components/configuration/configuration/configuration.component';
 
+//firebase
+import { FormsModule } from '@angular/forms';
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { environment } from 'src/environments/environment';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
 
 
 @NgModule({
@@ -75,7 +81,13 @@ import { ConfigurationComponent } from './components/configuration/configuration
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ChartsModule
+    ChartsModule,
+    FormsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule,
+    AngularFirestoreModule,
+
+
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -9,12 +9,13 @@
                 <img src="../../../../assets/images/global/logo.jpg" alt="" class="img-fluid logo d-custom">
                 <h1 class="title">Bienvenido,<br><b>Inicia Sesión!</b></h1>
             </div>
-            <form>
+            <form  (ngSubmit)="registrar()">
                 <div class="form-group">
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                    <!--{{observador()}}-->
+                  <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" [(ngModel)]="item.email" name="email">
                 </div>
                 <div class="input-group mb-2">
-                    <input type="password" class="form-control form-custom" id="inlineFormInputGroup" placeholder="Password">
+                    <input type="password" class="form-control form-custom" id="contrasena" placeholder="Password" [(ngModel)]="item.contra" name="contra">
                     <div class="input-group-prepend">
                         <div class="input-group-text"><i class="far fa-eye"></i></div>
                     </div>
@@ -27,7 +28,8 @@
                     </label>
                     <a routerLink="/usernamerecovery" class="link">Ólvide mi contraseña</a>
                 </div>
-                <button type="submit" class="btn" routerLink="/home">Ingresar</button>
+                <!-- routerLink="/home" -->
+                <button type="submit" class="btn">Ingresar</button>
                 <p class="description">Nuestras redes sociales:</p>
                 <div class="form-social-networks">
                     <div class="social-media-btn">
