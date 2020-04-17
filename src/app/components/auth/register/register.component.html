@@ -9,22 +9,22 @@
             </div>
             <form>
                 <div class="form-group">
-                  <input type="text" class="form-control" placeholder="Nombres">
+                  <input type="text" class="form-control" placeholder="Nombres" [(ngModel)]="registro.nombres" name="nombres">
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Apellidos">
+                    <input type="text" class="form-control" placeholder="Apellidos" [(ngModel)]="registro.apellidos" name="apellidos">
                   </div>
                   <div class="form-group">
-                    <input type="email" class="form-control" placeholder="Correo">
+                    <input type="email" class="form-control" placeholder="Correo" [(ngModel)]="registro.correo" name="correo">
                   </div>
                 <div class="input-group mb-2">
-                    <input type="password" class="form-control form-custom"  placeholder="Contraseña">
+                    <input type="password" class="form-control form-custom"  placeholder="Contraseña" [(ngModel)]="registro.contrasena" name="contrasena">
                     <div class="input-group-prepend">
                         <div class="input-group-text"><i class="far fa-eye"></i></div>
                     </div>
                 </div>
                 <div class="input-group mb-2">
-                    <input type="password" class="form-control form-custom"  placeholder="Confirmar contraseña">
+                    <input type="password" class="form-control form-custom"  placeholder="Confirmar contraseña" [(ngModel)]="registro.confirmar" name="confirmar">
                     <div class="input-group-prepend">
                         <div class="input-group-text"><i class="far fa-eye"></i></div>
                     </div>
@@ -37,7 +37,7 @@
                         <span class="mapnetic-control-indicator"></span>
                     </label>
                 </div>
-                <button type="submit" class="btn" routerLink="/home">Registrarse</button>
+                <button type="submit" class="btn" (click)="insertarRegistro()" routerLink="/">Registrarse</button>
                 <p class="description">Si ya tienes una cuenta ingresa <a routerLink="/" class="link">aquí</a></p>
             </form>   
         </div>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +8,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+
+   }
 
   ngOnInit(): void {
+  }
+
+  //verificarUser();
+
+  verificarUser(){
+
+    var user = firebase.auth().currentUser;
+
+    console.log(user)
+
+    user.sendEmailVerification().then(function() {
+      console.log('enviando correo');
+      console.log(user);
+    // Email sent.
+    }).catch(function(error) {
+      // An error happened.
+      console.log(error);
+    });
+
   }
 
 }

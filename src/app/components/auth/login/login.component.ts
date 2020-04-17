@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { element } from 'protractor';
 import * as firebase from 'firebase';
+import { userInfo } from 'os';
 
 @Component({
   selector: 'app-login',
@@ -25,24 +26,28 @@ export class LoginComponent implements OnInit {
     this.router.navigate(['register']);
   };
 
-  registrar() {
-
-    firebase.auth().createUserWithEmailAndPassword(this.item.email, this.item.contra)
+  ingresar(){
+    firebase.auth().signInWithEmailAndPassword(this.item.email, this.item.contra)
     .catch(function(error) {
       // Handle Errors here.
-      var errorCode = error.code;
-      var errorMessage = error.message;
-
-      console.log(errorCode);
-      console.log(errorCode);
+      //var errorCode = error.code;
+      //var errorMessage = error.message;
       // ...
     });
-
     this.verificarUser();
-    console.log(this.item);
-    //console.log(this.item);
-    
-  };
+  }
+
+  cerrar(){
+
+    firebase.auth().signOut()
+    .then(function () {
+      console.log('saliendo...');
+    })
+    .catch(function (error) {
+      console.log('error...');
+    })
+
+  }
 
   verificarUser(){
 
@@ -59,17 +64,7 @@ export class LoginComponent implements OnInit {
 
   }
 
-  cerrar(){
-
-    firebase.auth().signOut()
-    .then(function () {
-      console.log('saliendo...');
-    })
-    .catch(function (error) {
-      console.log('error...');
-    })
-
-  }
+  observador();
 
   observador() {
     
