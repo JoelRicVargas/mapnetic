@@ -25,23 +25,32 @@ export class RegisterComponent implements OnInit {
 
   insertarRegistro(){
 
-    this.db.collection("users").add({
-      nombres : this.registro.nombres,
-      apellidos : this.registro.apellidos,
-      correo : this.registro.correo,
-      contrasena : this.registro.contrasena,
-      codigo : 'TEST1452'
+    if(this.registro.contrasena == this.registro.confirmar){
 
-    })
-    .then(function(docRef) {
-      console.log("Document written with ID: ", docRef.id);
-    })
-    .catch(function(error) {
-      console.error("Error adding document: ", error);
-    });
+      this.db.collection("users").add({
+        nombres : this.registro.nombres,
+        apellidos : this.registro.apellidos,
+        correo : this.registro.correo,
+        contrasena : this.registro.contrasena,
+        direccion : '',
+        telefono : '',
 
-    this.registrar();
-
+        codigo_ref : '',
+        plan_actual : 'Ninguno',
+        cantidad_ref : 0,
+        dinero_generado : 0.00,
+        perfil_aprovado : false
+  
+      })
+      .then(function(docRef) {
+        console.log("Document written with ID: ", docRef.id);
+      })
+      .catch(function(error) {
+        console.error("Error adding document: ", error);
+      });
+  
+      this.registrar();
+    }
   }
 
   registrar() {
