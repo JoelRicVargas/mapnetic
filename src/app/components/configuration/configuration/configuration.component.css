@@ -1,7 +1,9 @@
 /**Custom pretty checkbox**/
 /**.p-switch**/
-.pretty {
-    margin-top: 15px;
+.pretty .state label:before, .pretty .state label:after {
+    width: calc(1em + 3px);
+    height: calc(1em + 3px);
+    top: calc((0% - (100% - 1.1em)) - 8%);
 }
 .pretty.p-icon.p-round.p-pulse{
     margin-right: 0;
