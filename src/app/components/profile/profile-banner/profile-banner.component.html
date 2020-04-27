@@ -1,13 +1,31 @@
-<div class="banner profile-banner bg-banner">
+<div class="banner profile-banner bg-banner" id="banner_profile">
     <div class="navbar">
-            <div class="container">
-                <div class="toggle-bottom" id="sidebarCollapse">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-                <h3>Perfil</h3>
+        <div class="container">
+            <div class="toggle-bottom" id="sidebarCollapse">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
+            <h3>Perfil</h3>
+            <div class="options">
+                <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" 
+                id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                   Acciones
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <input type="file" class="input_file foto" id="input_file_foto" accept="image/" 
+                    (change)="uploadPerfil($event)"> 
+                    <label for="input_file_foto" class="dropdown-item" >Cambiar perfil</label>
+                    <input type="text" [value]="urlImageFoto | async" #imgUser id="photo_profile">
+                    <input type="file" class="input_file" id="input_file_portada" accept="image/" 
+                    (change)="uploadPortada($event)"> 
+                    <label for="input_file_portada" class="dropdown-item" >Cambiar portada</label>
+                    <input type="text" [value]="urlImagePortada | async" #imgUser id="portada_profile">
+                </div>
+                </div>
+            </div>
+        </div>
     </div>
     <div class="profile">
             <div class="container">
@@ -16,11 +34,11 @@
                         <div class="buttom-add-image">
                             <a href=""><i class="fas fa-image"></i></a>
                         </div>
-                        <img src="/assets/images/global/user.jpg" alt="">
+                        <img alt="" src="../../../../assets/images/profile/unnamed.jpg" class="foto_profile">
                     </div>
                     <div class="description">
-                        <h3 class="mb-3 btn_edit">Tony Stark
-                            <i class="far fa-edit" onclick="edit_module()"></i>
+                        <h3 class="mb-3 btn_edit nombres_text">
+                            <!-- <i class="far fa-edit" onclick="edit_module()"></i> -->
                         </h3>
                     </div>
                 </div>

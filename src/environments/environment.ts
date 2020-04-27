@@ -2,6 +2,8 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+import { BehaviorSubject } from 'rxjs';
+
 export const environment = {
   production: false,
 
@@ -18,6 +20,14 @@ export const environment = {
 
 };
 
+export const FirestoreStub = {
+  collection: (name: string) => ({
+    doc: (_id: string) => ({
+      valueChanges: () => new BehaviorSubject({ foo: 'bar' }),
+      set: (_d: any) => new Promise((resolve, _reject) => resolve()),
+    }),
+  }),
+};
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.

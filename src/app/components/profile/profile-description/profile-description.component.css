@@ -1,3 +1,6 @@
+form {
+    padding: 0 0; 
+}
 .card-description.profile{
     margin-top: 20px;
 }
@@ -11,3 +14,38 @@
     font-size: 0.9em;
     margin-bottom: 10px;
 } 
+.card-description.profile #btn_copy{
+    border-radius: inherit;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    background: #3e509c;
+    font-size: 0.8em;
+}
+.card-description.profile .stats{
+    display: flex;
+    width: 100%;
+    height: auto;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+.card-description.profile .stats .stats_content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #3e509c;
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    padding: 0 15px;
+    margin: 5px;
+}
+.card-description.profile .stats .stats_content h3{
+    color: #3e509c;
+    font-size: 1em;
+}
+.card-description.profile .stats .stats_content .description{
+    text-align: center;
+    font-size: 0.7em;
+    margin-top: 10px;
+}

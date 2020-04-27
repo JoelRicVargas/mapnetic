@@ -23,21 +23,25 @@ import { WalletComponent } from './components/wallet/wallet/wallet.component';
 import { DashboardComponent } from './components/dashboard/dashboard/dashboard.component';
 import { PackageComponent } from './components/package/package/package.component';
 import { PackageBuyComponent } from './components/package/package-buy/package-buy.component';
-
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
+  //Auth
   { path : '', component : LoginComponent },
-  { path : 'profile', component : ProfileComponent},
   { path : 'register', component : RegisterComponent },
+  { path : 'register/:token', component : RegisterComponent },
   { path : 'usernamerecovery', component : RecoveryPasswordComponent },
-  { path : 'home', component : HomeComponent },
-  { path : 'dashboard', component : DashboardComponent},
-  { path : 'networker' , component : networkerComponent },
-  { path : 'chat', component : ChatComponent},
-  { path : 'commerce', component : CommerceComponent },
-  { path : 'wallet', component : WalletComponent },
-  { path : 'package', component : PackageComponent },
-  { path : 'packagebuy',component : PackageBuyComponent }
+
+  //Body
+  { path : 'profile', component : ProfileComponent},
+  { path : 'home', component : HomeComponent, canActivate : [AuthGuard] },
+  { path : 'dashboard', component : DashboardComponent, canActivate : [AuthGuard] },
+  { path : 'networker' , component : networkerComponent, canActivate : [AuthGuard] },
+  { path : 'chat', component : ChatComponent, canActivate : [AuthGuard] },
+  { path : 'commerce', component : CommerceComponent, canActivate : [AuthGuard] },
+  { path : 'wallet', component : WalletComponent, canActivate : [AuthGuard] },
+  { path : 'package', component : PackageComponent, canActivate : [AuthGuard] },
+  { path : 'packagebuy',component : PackageBuyComponent, canActivate : [AuthGuard] }
 ];
 
 @NgModule({
