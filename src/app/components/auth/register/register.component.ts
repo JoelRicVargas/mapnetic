@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as firebase from 'firebase';
 import { ApiService } from 'src/app/services/api.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -9,79 +10,80 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class RegisterComponent implements OnInit {
 
-  registro : any = {
-    nombres : '',
-    apellidos : '',
-    correo : '',
-    contrasena : '',
-    confirmar : ''
+  registro: any = {
+    nombres: '',
+    apellidos: '',
+    correo: '',
+    contrasena: '',
+    confirmar: ''
   }
 
   db = firebase.firestore();
 
   constructor(
-    private apiService : ApiService,
+    private apiService: ApiService,
+    private authService: AuthService,
   ) { }
 
   ngOnInit(): void {
   }
 
-  insertarRegistro(){
-
-    if(this.registro.contrasena == this.registro.confirmar){
-      this.apiService.register({
-        nombres : this.registro.nombres,
-        apellidos : this.registro.apellidos,
-        correo : this.registro.correo,
-        contrasena : this.registro.contrasena,
-        direccion : '',
-        telefono : '',
-
-        codigo_ref : '',
-        plan_actual : 'Ninguno',
-        cantidad_ref : 0,
-        dinero_generado : 0.00,
-        perfil_aprovado : false
-  
-      }).subscribe(res=>{
-        console.log("Registro Exitoso");
-        firebase.auth().signInWithEmailAndPassword(this.registro.correo, this.registro.contrasena).then(res=>{
-          this.SendVerificationMail();
-        }).catch(err=>{
+  insertarRegistro() {
+    if (this.registro.contrasena == this.registro.confirmar) {
+      let data = {
+        nombres: this.registro.nombres,
+        apellidos: this.registro.apellidos,
+        correo: this.registro.correo,
+        contrasena: this.registro.contrasena,
+        direccion: '',
+        telefono: '',
+        plan_actual: 'Ninguno',
+        cantidad_ref: 0,
+        dinero_generado: 0.00,
+        perfil_aprovado: false
+      }
+      this.apiService.register(data).subscribe(res => {
+        firebase.auth().signInWithEmailAndPassword(this.registro.correo, this.registro.contrasena).then(res => {
+          this.authService.updateProfile(data).subscribe(res => {
+            console.log(res);
+          }, err => {
+            console.log(err);
+          })
+        }).catch(err => {
           console.error(err);
         });
-      },error=>{
+      }, error => {
         alert("Ha ocurrido un error");
       });
       //this.registrar();
     }
   }
 
-    // Send email verfificaiton when new user sign up
-    SendVerificationMail() {
-      return firebase.auth().currentUser.sendEmailVerification()
+  // Send email verfificaiton when new user sign up
+  SendVerificationMail() {
+    return firebase.auth().currentUser.sendEmailVerification()
       .then(() => {
-       // this.router.navigate(['<!-- enter your route name here -->']);
+        // this.router.navigate(['<!-- enter your route name here -->']);
       })
-    }
-  
+  }
+
 
   registrar() {
 
     firebase.auth().createUserWithEmailAndPassword(this.registro.correo, this.registro.contrasena).then(
-      res=>{
+      res => {
         console.log(res);
       })
-    .catch(function(error) {
-      // Handle Errors here.
-      var errorCode = error.code;
-      var errorMessage = error.message;
+      .catch(function (error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
 
-      console.log(errorCode);
-      console.log(errorCode);
-      // ...
-    });
-    
+        console.log(errorCode);
+        console.log(errorCode);
+        // ...
+      });
+
   };
 
 }

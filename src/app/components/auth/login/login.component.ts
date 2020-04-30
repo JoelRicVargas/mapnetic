@@ -16,6 +16,7 @@ export class LoginComponent implements OnInit {
     email : '',
     contra : ''
   }
+  code : any = null;
   constructor(
     private router: Router,
     private authService : AuthService,
@@ -42,15 +43,15 @@ export class LoginComponent implements OnInit {
           console.log("  Email: " + profile.email);
           console.log("  Photo URL: " + profile.photoURL);
           if(!user.emailVerified){
-            user.sendEmailVerification()
-            .then(function() {
-              console.log('enviando correo');
-              console.log(user);
-            // Email sent.
-            }).catch(function(error) {
-              // An error happened.
-              console.log(error);
-            });
+            // user.sendEmailVerification()
+            // .then(function() {
+            //   console.log('enviando correo');
+            //   console.log(user);
+            // // Email sent.
+            // }).catch(function(error) {
+            //   // An error happened.
+            //   console.log(error);
+            // });
       
           }else{
             console.log('El usuario ya verifico su correo');
@@ -87,7 +88,7 @@ export class LoginComponent implements OnInit {
     this.authService.googleSignin().then(res=>{
       let data : any = res.credential;
       localStorage.setItem("mapneticCredential",data.idToken);
-      console.log(res,data.idToken);
+      if(false) this.refered(this.code);
     },
     err=>{
       alert("Ha ocurrido un error");
@@ -96,7 +97,7 @@ export class LoginComponent implements OnInit {
 
   loginWithFacebook(){
     this.authService.facebookSignin().then(res=>{
-      console.log(res);
+      if(false) this.refered(this.code);
     },
     err=>{
       alert("Ha ocurrido un error");
@@ -116,8 +117,6 @@ export class LoginComponent implements OnInit {
         var isAnonymous = user.isAnonymous;
         var uid = user.uid;
         var providerData = user.providerData;
-        
-        // ...
       } else {
         console.log('sin usuario');
         // User is signed out.
@@ -125,6 +124,16 @@ export class LoginComponent implements OnInit {
       }
     });
 
-  }  
+  }
+  
+  refered(code){
+    this.authService.referedBy({referCode : code}).subscribe(
+      res => {
+        console.log("Codigo de referencia actualizado");
+      },
+      err => {
+        console.log(err);
+      });
+  }
 
 }

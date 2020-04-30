@@ -15,9 +15,7 @@ export class AuthService {
   constructor(
     private afAuth: AngularFireAuth,
     private http: HttpClient,
-    ){
-
-  }
+    ){}
 
   async googleSignin() {
     const provider = new auth.GoogleAuthProvider();
@@ -29,6 +27,21 @@ export class AuthService {
     return this.http.post<any>(environment.url+ "auth/register",data).pipe();
   }
 
+  updateProfile(data): Observable<any> {
+    return this.http.post<any>(environment.url+ "auth/updateProfile",data).pipe();
+  }
+
+  getAuth(data): Observable<any> {
+    return this.http.post<any>(environment.url+ "auth/getAuth",data).pipe();
+  }
+
+  referedBy(data): Observable<any> {
+    return this.http.post<any>(environment.url+ "auth/referedBy",data).pipe();
+  }
+
+  resendVerificationEmail(data): Observable<any> {
+    return this.http.post<any>(environment.url+ "resendVerificationEmail", data).pipe();
+  }
 
   async facebookSignin(){
     const provider = new auth.FacebookAuthProvider();
