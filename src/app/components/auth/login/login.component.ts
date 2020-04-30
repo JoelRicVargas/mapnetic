@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { element } from 'protractor';
 import * as firebase from 'firebase';
 import { userInfo } from 'os';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,10 @@ export class LoginComponent implements OnInit {
     email : '',
     contra : ''
   }
-  constructor(private router: Router) { }
+  constructor(
+    private router: Router,
+    private authService : AuthService,
+    ) { }
 
   ngOnInit(): void {
   }
@@ -28,6 +32,7 @@ export class LoginComponent implements OnInit {
   ingresar(){
     firebase.auth().signInWithEmailAndPassword(this.item.email, this.item.contra)
     .then((res)=>{
+      console.log(res);
       var user = firebase.auth().currentUser;
       if (user != null) {
         user.providerData.forEach((profile) => {
@@ -76,6 +81,26 @@ export class LoginComponent implements OnInit {
     }else{
       console.log('El usuario ya verifico su correo');
     }
+  }
+
+  loginWithGoogle(){
+    this.authService.googleSignin().then(res=>{
+      let data : any = res.credential;
+      localStorage.setItem("mapneticCredential",data.idToken);
+      console.log(res,data.idToken);
+    },
+    err=>{
+      alert("Ha ocurrido un error");
+    })
+  }
+
+  loginWithFacebook(){
+    this.authService.facebookSignin().then(res=>{
+      console.log(res);
+    },
+    err=>{
+      alert("Ha ocurrido un error");
+    })
   }
 
   observador();
