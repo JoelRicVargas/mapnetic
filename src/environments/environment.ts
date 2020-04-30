@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-
+  url : "",
   firebase:{
     apiKey: "AIzaSyCEh3cKNt_hw0KnUXe17Hrrrxs6wdq7ppg",
     authDomain: "mapnetic-575d0.firebaseapp.com",

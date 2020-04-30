@@ -27,16 +27,16 @@ export class LoginComponent implements OnInit {
 
   ingresar(){
     firebase.auth().signInWithEmailAndPassword(this.item.email, this.item.contra)
-    .then(function(){
+    .then((res)=>{
       var user = firebase.auth().currentUser;
       if (user != null) {
-        user.providerData.forEach(function (profile) {
+        user.providerData.forEach((profile) => {
           console.log("Sign-in provider: " + profile.providerId);
           console.log("  Provider-specific UID: " + profile.uid);
           console.log("  Name: " + profile.displayName);
           console.log("  Email: " + profile.email);
           console.log("  Photo URL: " + profile.photoURL);
-          if(user.emailVerified == false){
+          if(!user.emailVerified){
             user.sendEmailVerification()
             .then(function() {
               console.log('enviando correo');
@@ -44,7 +44,7 @@ export class LoginComponent implements OnInit {
             // Email sent.
             }).catch(function(error) {
               // An error happened.
-              //console.log(error);
+              console.log(error);
             });
       
           }else{
@@ -68,7 +68,6 @@ export class LoginComponent implements OnInit {
     if(user.emailVerified == false){
       user.sendEmailVerification().then(function() {
         console.log('enviando correo');
-        console.log(user);
       // Email sent.
       }).catch(function(error) {
         // An error happened.
@@ -82,7 +81,7 @@ export class LoginComponent implements OnInit {
   observador();
 
   observador() {
-    firebase.auth().onAuthStateChanged(function(user) {
+    firebase.auth().onAuthStateChanged((user)=> {
       if (user) {
         // User is signed in.
         var displayName = user.displayName;
@@ -92,7 +91,7 @@ export class LoginComponent implements OnInit {
         var isAnonymous = user.isAnonymous;
         var uid = user.uid;
         var providerData = user.providerData;
-        console.log(user.emailVerified);
+        
         // ...
       } else {
         console.log('sin usuario');

@@ -41,6 +41,7 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { environment } from 'src/environments/environment';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -86,7 +87,7 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFirestoreModule,
-
+    HttpClientModule,
 
   ],
   providers: [],

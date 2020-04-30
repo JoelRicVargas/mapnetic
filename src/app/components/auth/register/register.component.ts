@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as firebase from 'firebase';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-register',
@@ -18,7 +19,9 @@ export class RegisterComponent implements OnInit {
 
   db = firebase.firestore();
 
-  constructor() { }
+  constructor(
+    private apiService : ApiService,
+  ) { }
 
   ngOnInit(): void {
   }
@@ -26,8 +29,7 @@ export class RegisterComponent implements OnInit {
   insertarRegistro(){
 
     if(this.registro.contrasena == this.registro.confirmar){
-
-      this.db.collection("users").add({
+      this.apiService.register({
         nombres : this.registro.nombres,
         apellidos : this.registro.apellidos,
         correo : this.registro.correo,
@@ -41,21 +43,35 @@ export class RegisterComponent implements OnInit {
         dinero_generado : 0.00,
         perfil_aprovado : false
   
-      })
-      .then(function(docRef) {
-        console.log("Document written with ID: ", docRef.id);
-      })
-      .catch(function(error) {
-        console.error("Error adding document: ", error);
+      }).subscribe(res=>{
+        console.log("Registro Exitoso");
+        firebase.auth().signInWithEmailAndPassword(this.registro.correo, this.registro.contrasena).then(res=>{
+          this.SendVerificationMail();
+        }).catch(err=>{
+          console.error(err);
+        });
+      },error=>{
+        alert("Ha ocurrido un error");
       });
-  
-      this.registrar();
+      //this.registrar();
     }
   }
 
+    // Send email verfificaiton when new user sign up
+    SendVerificationMail() {
+      return firebase.auth().currentUser.sendEmailVerification()
+      .then(() => {
+       // this.router.navigate(['<!-- enter your route name here -->']);
+      })
+    }
+  
+
   registrar() {
 
-    firebase.auth().createUserWithEmailAndPassword(this.registro.correo, this.registro.contrasena)
+    firebase.auth().createUserWithEmailAndPassword(this.registro.correo, this.registro.contrasena).then(
+      res=>{
+        console.log(res);
+      })
     .catch(function(error) {
       // Handle Errors here.
       var errorCode = error.code;
@@ -65,13 +81,6 @@ export class RegisterComponent implements OnInit {
       console.log(errorCode);
       // ...
     });
-
-    //console.log(userInfo)
-
-    //this.verificarUser();
-
-    //this.verificarUser();
-    //console.log(this.item);
     
   };
 
