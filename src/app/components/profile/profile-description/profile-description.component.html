@@ -1,40 +1,69 @@
 <div class="row">
     <div class="col-lg-6 col-xs-12">
-        <div class="card-description profile features">
-            <p class="title">Datos personales</p>
-            <div class="item-feature">
-                <input type="text" value="--" class="edit_input" id="documento" disabled>
-                <p class="description ml-2">CODIGO REFERIDO</p>
-                <input type="text" value="Tony" class="edit_input" placeholder="Nombres" id="nombres" [(ngModel)]="registro.nombres" name="nombres">
-                <p class="description ml-2">Nombre</p>
-                <input type="text" value="Stark" class="edit_input" placeholder="Apellidos" id="apellidos" [(ngModel)]="registro.apellidos" name="apellidos">
-                <p class="description ml-2">Apellidos</p>
-                <input type="text" value="***********" class="edit_input" placeholder="Contraseña" id="contrasena" [(ngModel)]="registro.contrasena" name="contrasena">
-                <p class="description ml-2">Contraseña</p>
-                <input type="text" value="tony.stark.iron@gmail.com" class="edit_input" placeholder="Correo electronico" id="correo" [(ngModel)]="registro.correo" name="correo">
-                <p class="description ml-2">Correo electronico</p>
-                <input type="text" value="Nueva York City, Malibu point 205" class="edit_input" placeholder="Direccion" id="direccion" [(ngModel)]="registro.direccion" name="direccion">
-                <p class="description ml-2">Dirección</p>
-                <input type="text" value="+51 983548715" class="edit_input" placeholder="Telefono" id="telefono" [(ngModel)]="registro.telefono" name="telefono">
-                <p class="description ml-2">Telefono</p>
+        <form class="frm" #formulario="ngForm" (ngSubmit)="actualizar()" ngNativeValidate>
+            <div class="card-description profile features">
+                <p class="title">Datos personales</p>
+                <div class="item-feature">
+                    <input type="hidden" id="documento">
+                    <!-- <input type="text" value="--" class="edit_input" id="documento" disabled> -->
+                    <input type="text" value="-" class="edit_input" placeholder="Nombres" 
+                    id="nombres" name="nombres" #nombres="ngModel" ngModel required>
+                    <p class="description ml-2">Nombre</p>
+                    <input type="text" value="-" class="edit_input" placeholder="Apellidos" 
+                    id="apellidos" name="apellidos" #apellidos="ngModel" ngModel required>
+                    <p class="description ml-2">Apellidos</p>
+                    <!-- <input type="email" value="-" class="edit_input" placeholder="Correo electronico" 
+                    id="correo" name="correo" #correo="ngModel" ngModel required>
+                    <p class="description ml-2">Correo electronico</p> -->
+                    <input type="text" value="-" class="edit_input" placeholder="Contraseña" 
+                    id="contrasena" name="contrasena" #contrasena="ngModel" ngModel required>
+                    <p class="description ml-2">Contraseña</p>
+                    <input type="text" value="-" class="edit_input" placeholder="Direccion" 
+                    id="direccion" name="direccion" #direccion="ngModel" ngModel required>
+                    <p class="description ml-2">Dirección</p>
+                    <input type="text" value="-" class="edit_input" placeholder="Telefono" 
+                    id="telefono" name="telefono" #telefono="ngModel" ngModel required>
+                    <p class="description ml-2">Telefono</p>
+                </div>
+                <div class="edit_content">
+                    <i class="fas fa-pencil-alt" onclick="edit_module()"></i>
+                </div>
+                <button type="submit" class="btn btn-custom" id="btn_actualizar">Actualizar</button>
             </div>
-            <button type="submit" class="btn" (click)="actualizar()" routerLink="/home">Actualizar</button>
-        </div>
+        </form>
     </div>
     <div class="col-lg-6 col-xs-12">
         <div class="card-description profile features">
             <p class="title">Otros datos personales</p>
             <div class="item-feature">
-                <h3 id="codigo_ref">dg218916sdgseeHMNIKV41</h3>
+                <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text btn" id="btn_copy" (click)="copiarAlPortapapeles()">
+                          Copiar</div>
+                    </div>
+                    <input type="text" value="--" class="form-control" id="cod_referidos" 
+                    placeholder="Codigo de referido" disabled>
+                </div>
+                <p id="state_copy"></p>
                 <p class="description ml-2">Codigo de Referido</p>
-                <h3 id="plan_actual">Sin Planes comprados</h3>
-                <p class="description ml-2">Plan Actual</p>
-                <h3 id="cantidad_ref">0</h3>
-                <p class="description ml-2">Cantidad de Referidos</p>
-                <h3 id="dinero_generado">0.00</h3>
-                <p class="description ml-2">Dinero generado</p>
-                <h3 id="perfil_aprovado">No</h3>
-                <p class="description ml-2">Perfil Aprovado</p>
+                <div class="stats">
+                    <div class="stats_content">
+                        <h3 id="plan_actual">-</h3>
+                        <p class="description">Plan Actual</p>
+                    </div>
+                    <div class="stats_content">
+                        <h3 id="cantidad_ref">0</h3>
+                        <p class="description">Cantidad de Referidos</p>
+                    </div>
+                    <div class="stats_content">
+                        <h3 id="dinero_generado">0.00</h3>
+                        <p class="description">Dinero generado</p>
+                    </div>
+                    <div class="stats_content">
+                        <h3 id="perfil_aprovado">No</h3>
+                        <p class="description">Perfil Aprovado</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

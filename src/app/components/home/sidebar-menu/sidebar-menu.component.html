@@ -4,11 +4,11 @@
         <!-- <div id="dismiss"><i class="glyphicon glyphicon-arrow-left"></i></div> -->
         <div class="sidebar-header user">
             <div class="user-img">
-                <img src="../../../../assets/images/global/user.jpg" alt="" class="img-fluid">
+                <img src="../../../../assets/images/profile/unnamed.jpg" alt="" class="foto_profile img-fluid">
             </div>
             <div class="user-description">
                 <p>Hola</p>
-                <h3>Tony S.</h3>    
+                <h3 class="nombres_text">--</h3>    
             </div>
         </div>
         <ul class="list-unstyled components">
@@ -29,15 +29,13 @@
             <li><a href="/wallet"><i class="fas fa-wallet"></i>Billetera</a></li>
             <li><a href="#"><i class="fas fa-comment-alt"></i>Notificaciónes</a></li>
         </ul>
-
         <ul class="list-unstyled CTAs">
             <li><a data-toggle="modal" data-target="#configurationModal">Configuración</a></li>
             <li><a data-toggle="modal" data-target="#modalText">Acerca de</a></li>
             <li><a data-toggle="modal" data-target="#modalText">Terminos y condiciones</a></li>
-            <li><a data-toggle="modal" data-target="#modalConfirm">Cerrar sesión</a></li>
+            <li><a onclick="mostrarModelConfirm('modalConfirm', '¿Estas seguro que desea salir?')">Cerrar sesión</a></li>
         </ul>
     </nav>
-
 </div>
 <div class="overlay"></div>
 <app-terms></app-terms>

@@ -1,3 +1,4 @@
+ <a id="modalMail" onclick="sendMailModal()" style="display:none;"></a>
 <div class="row">
     <div class="col-lg-7 d-custom aside">
         <app-overlayed></app-overlayed>
@@ -7,40 +8,45 @@
             <div class="head">
                 <h1 class="title">Hola,<br><b>Registrate</b></h1>
             </div>
-            <form>
+            <form #f="ngForm" (ngSubmit)="registrar(f.value)" ngNativeValidate>
                 <div class="form-group">
-                  <input type="text" class="form-control" placeholder="Nombres" [(ngModel)]="registro.nombres" name="nombres">
+                  <input type="text" class="form-control" placeholder="Nombres" 
+                  name="nombres" #nombres="ngModel" ngModel required>
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Apellidos" [(ngModel)]="registro.apellidos" name="apellidos">
-                  </div>
-                  <div class="form-group">
-                    <input type="email" class="form-control" placeholder="Correo" [(ngModel)]="registro.correo" name="correo">
-                  </div>
+                    <input type="text" class="form-control" placeholder="Apellidos" 
+                    name="apellidos" #apellidos="ngModel" ngModel required>
+                </div>
+                <div class="form-group">
+                    <input type="email" class="form-control" placeholder="Correo" 
+                    name="correo" #correo="ngModel" ngModel required>
+                </div>
                 <div class="input-group mb-2">
-                    <input type="password" class="form-control form-custom"  placeholder="Contraseña" [(ngModel)]="registro.contrasena" name="contrasena">
+                    <input type="password" class="contra form-control form-custom"  placeholder="Contraseña" 
+                    name="contrasena" #contrasena="ngModel" ngModel required id="contra">
                     <div class="input-group-prepend">
-                        <div class="input-group-text"><i class="far fa-eye"></i></div>
+                        <div class="input-group-text"><i class="icon_change_pass far fa-eye" onclick="mostrarContrasena('contra')"></i></div>
                     </div>
                 </div>
                 <div class="input-group mb-2">
-                    <input type="password" class="form-control form-custom"  placeholder="Confirmar contraseña" [(ngModel)]="registro.confirmar" name="confirmar">
-                    <div class="input-group-prepend">
-                        <div class="input-group-text"><i class="far fa-eye"></i></div>
-                    </div>
-                </div>
-                <div class="form-check d-flex mb-3">
+                    <input type="password" class="contra form-control form-custom"  placeholder="Confirmar contraseña"
+                    name="confirmar" #confirmar="ngModel" ngModel required>
+                </div>  
+                <!-- <div class="form-check d-flex mb-3">
                     <label class="custom-control mapnetic-checkbox">
                         <span class="mapnetic-control-description">Acepto los <a data-toggle="modal" 
-                          data-target="#terminosCondiciones" class="link">terminos y condiciones</a></span>
+                          data-target="#modalText" class="link">terminos y condiciones</a></span>
                         <input type="checkbox" class="mapnetic-control-input">
                         <span class="mapnetic-control-indicator"></span>
                     </label>
-                </div>
-                <button type="submit" class="btn" (click)="insertarRegistro()" routerLink="/">Registrarse</button>
+                </div> -->
+                <label for="" id="error"></label>
+                <!-- <button type="button" class="btn" (click)="registerGoogleUSer()">Registrarse Gmail</button> -->
+                <button type="submit" class="btn">Registrarse</button>
                 <p class="description">Si ya tienes una cuenta ingresa <a routerLink="/" class="link">aquí</a></p>
-            </form>   
+            </form> 
         </div>
     </div>
 </div>
 <app-terms></app-terms>
+<app-modal-login></app-modal-login>

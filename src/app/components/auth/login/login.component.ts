@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { element } from 'protractor';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import * as firebase from 'firebase';
+
 import { userInfo } from 'os';
 import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-login',
@@ -11,6 +12,7 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+
 
   item: any = {
     email: '',
@@ -22,8 +24,10 @@ export class LoginComponent implements OnInit {
     private authService: AuthService,
   ) { }
 
+
   ngOnInit(): void {
   }
+
 
   /* Otra opcion de ruteo */
   navRegister() {
@@ -74,7 +78,9 @@ export class LoginComponent implements OnInit {
         //var errorMessage = error.message;
         // ...
       });
-  }
+    }
+  
+ 
 
   verificarUser() {
     var user = firebase.auth().currentUser;
@@ -142,6 +148,7 @@ export class LoginComponent implements OnInit {
     });
   }
 
+
   refered(code) {
     this.authService.referedBy({ referCode: code }).subscribe(
       res => {
@@ -151,5 +158,6 @@ export class LoginComponent implements OnInit {
         console.log(err);
       });
   }
+
 
 }

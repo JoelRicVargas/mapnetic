@@ -41,10 +41,16 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { environment } from 'src/environments/environment';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
+
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './interceptors/token.interceptors';
 
+import { AngularFireStorageModule } from 'angularfire2/storage';
 
+
+//Services
+import { AuthService } from './services/service-auth.service';
+import { ModalLoginComponent } from './components/auth/modal-login/modal-login.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -78,11 +84,13 @@ import { TokenInterceptor } from './interceptors/token.interceptors';
     PackageCardComponent,
     PackageBuyComponent,
     TermsComponent,
-    ConfigurationComponent
+    ConfigurationComponent,
+    ModalLoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    AngularFireStorageModule,    
     ChartsModule,
     FormsModule,
     AngularFireModule.initializeApp(environment.firebase),

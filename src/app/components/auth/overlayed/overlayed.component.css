@@ -31,16 +31,18 @@
 
 .overlayed .content-overlayed h1{
     font-size: 3em;
+    color: #b85999;
 }
 .overlayed .content-overlayed h3{
     text-align: center;
     margin-top: 15px;
     font-size: 1.5em;
     font-weight: 400;
+    color: #b85999;
 }
 .overlayed .content-overlayed .btn.btn-secundary{
     margin-top: 40px;
-    background-color: transparent !important;
+    background-color: rgba(184, 89, 153,.5) !important;
     color: #FFF;
     border-color: #FFF;
     max-width: 350px;

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as firebase from 'firebase';
+
 import { ApiService } from 'src/app/services/api.service';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -10,6 +11,7 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class RegisterComponent implements OnInit {
 
+
   registro: any = {
     nombres: '',
     apellidos: '',
@@ -18,7 +20,11 @@ export class RegisterComponent implements OnInit {
     confirmar: ''
   }
 
+
   db = firebase.firestore();
+  private tokenRef = "";
+  timeLeft: number = 60;
+
 
   constructor(
     private apiService: ApiService,
@@ -92,5 +98,5 @@ export class RegisterComponent implements OnInit {
       });
 
   };
-
 }
+

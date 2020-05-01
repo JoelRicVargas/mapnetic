@@ -11,6 +11,11 @@
     text-align: center;
     color: #000;
 }
+.modal .modal-body .question{
+    color: #000;
+    color: #3e509c;
+    font-size: 1.3em;
+}
 .modal .modal-footer .btn{
     margin-left: inherit;
     border-radius: 10px;

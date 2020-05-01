@@ -50,6 +50,16 @@ p{
 .link:hover{
     text-decoration: underline !important;
 }
+#error{
+    transition: all 0.5s ease;
+    color: #a51a1a;
+}
+#success{
+    color: #3e509c;
+}
+.fa-eye{
+    cursor:  pointer;
+}
 /** Forms global styles **/
 .form-global{
     display: flex;
@@ -279,6 +289,10 @@ form .input-group-prepend .input-group-text i{
     background-color: #5d6dae;
     color: #FFF;
 }
+#btn_actualizar{
+    transition: all 0.5s ease;
+    display: none;
+}
 /** end custom botons**/
 /** Modal global Styles**/
 .modal{
@@ -407,6 +421,13 @@ form .input-group-prepend .input-group-text i{
 .card-company img{
     width: 100%;
 }
+.edit_content > i{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+    color: #3e509c;
+}
 /** end card global styles**/
 /** Banner global styles **/
 .banner{
@@ -488,6 +509,48 @@ form .input-group-prepend .input-group-text i{
     justify-content: center;
     align-items: center;
     margin-left: auto;
+}
+.banner .navbar .options{
+    display: none;
+}
+.banner .navbar .options .dropdown-item{ 
+    width: 100%;
+    border-radius: inherit;
+    color: #4a4a4a;
+    background-color: #FFF;
+    font-size: 0.8em;
+    text-align: left;
+    height: 30px;
+    text-align: left;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+.banner .navbar .options .btn{
+    background: #FFF;
+    color: #4a4a4a;
+}
+.banner .navbar .options .dropdown-item:hover{ 
+    background-color: #5d6dae;
+    color: #FFF;;
+}
+/** Input File **/
+input[type="file"].input_file {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+label[for="input_file"] {
+    font-weight: 600;
+    color: #fff;
+    display: inline-block;
+    transition: all .5s;
+    cursor: pointer;
+    width: fit-content;
+    text-align: center;
 }
 /* .banner .navbar a > i{
     margin-left: auto !important;

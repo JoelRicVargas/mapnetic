@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import $ from 'jquery';
+import { ProfileService } from 'src/app/services/service-profile.service';
 
 @Component({
   selector: 'app-sidebar-menu',
@@ -8,7 +9,9 @@ import $ from 'jquery';
 })
 export class SidebarMenuComponent implements OnInit {
 
-  constructor() { }
+  constructor(private profileService : ProfileService) { 
+    this.profileService.obtener_usuario();
+  }
 
   ngOnInit(): void {
     $('#dismiss, .overlay').on('click', function () {
