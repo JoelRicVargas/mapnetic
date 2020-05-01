@@ -12,6 +12,7 @@ import { map, catchError } from 'rxjs/operators';
 import {
   Router
 } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 
 
 @Injectable()
@@ -19,12 +20,13 @@ export class TokenInterceptor implements HttpInterceptor {
   
   constructor(
     private router: Router,
+     private authService : AuthService
   ) {
 
   }
 
   getToken(){
-    let token = localStorage.getItem('token');
+    let token = this.authService.getTokenLocalstorage();
     if(token) return `Bearer ${token}`;
     return token;
   }

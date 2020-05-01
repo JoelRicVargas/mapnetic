@@ -4,6 +4,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import * as firebase from 'firebase';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +17,23 @@ export class AuthService {
     private afAuth: AngularFireAuth,
     private http: HttpClient,
     ){}
+
+  setTokenToLocalstorage(token){
+    if(!token) return
+    localStorage.setItem("mapnaticToken",token);
+  }
+
+  getTokenLocalstorage(){
+    return localStorage.getItem("mapnaticToken");
+  }
+
+  resetPassword(email){
+    firebase.auth().sendPasswordResetEmail(email).then(res=>{
+      console.log("Correo enviado exitosamente");
+    }).catch(err=>{
+      console.log("Error al enviar correo");
+    });
+  }
 
   async googleSignin() {
     const provider = new auth.GoogleAuthProvider();

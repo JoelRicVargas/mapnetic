@@ -26,6 +26,7 @@ export class RegisterComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    
   }
 
   insertarRegistro() {
@@ -42,18 +43,11 @@ export class RegisterComponent implements OnInit {
         dinero_generado: 0.00,
         perfil_aprovado: false
       }
-      this.apiService.register(data).subscribe(res => {
-        firebase.auth().signInWithEmailAndPassword(this.registro.correo, this.registro.contrasena).then(res => {
-          this.authService.updateProfile(data).subscribe(res => {
-            console.log(res);
-          }, err => {
-            console.log(err);
-          })
-        }).catch(err => {
-          console.error(err);
-        });
-      }, error => {
-        alert("Ha ocurrido un error");
+      firebase.auth().createUserWithEmailAndPassword(data.correo,data.contrasena).then(res=>{
+        return this.updateProfile(data);
+      }).catch(err=>{
+        console.log(err);
+        if(err.code === "auth/email-already-in-use") alert("Email ya registrado");
       });
       //this.registrar();
     }
@@ -67,6 +61,19 @@ export class RegisterComponent implements OnInit {
       })
   }
 
+  updateProfile(data){
+    firebase.auth().signInWithEmailAndPassword(data.correo,data.contrasena).then(async res=>{
+      let token = await firebase.auth().currentUser.getIdToken();
+      this.authService.setTokenToLocalstorage(token);
+      this.authService.updateProfile(data).subscribe(res => {
+        console.log(res);
+      }, err => {
+        console.log(err);
+      })
+    }).catch(err=>{
+      if(err.message === "EMAIL_EXISTS") alert("Ha ocurrido un error al registrarse");
+    });
+  }
 
   registrar() {
 

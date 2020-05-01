@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  url : "http://localhost:5001/mapnetic-b096b/us-central1/api/auth/",
+  url : "https://us-central1-mapnetic-b096b.cloudfunctions.net/api/",
   firebase:{
     apiKey: "AIzaSyBQuonUM8fK-FYKyTxdM7yM7dl_nyjEBCg",
     authDomain: "mapnetic-b096b.firebaseapp.com",
