@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import * as firebase from 'firebase';
-import * as $ from 'Jquery';
+import * as $ from 'jquery';
 import { Router ,ActivatedRoute, ParamMap } from '@angular/router';
 import { AuthService } from 'src/app/services/service-auth.service';
+import { AuthFirebaseService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -16,7 +17,9 @@ export class RegisterComponent implements OnInit {
 
   constructor(private router : Router, 
               private routerActive : ActivatedRoute,
-              private authService : AuthService) { }
+              private authService : AuthService,
+              private authFirebaseService : AuthFirebaseService
+              ) { }
 
   ngOnInit(): void {}
 
@@ -75,34 +78,136 @@ export class RegisterComponent implements OnInit {
   registrar(f) {
     var noError = true;
     $("#error").text("");
-    if(f.contrasena == f.confirmar){
-      firebase.auth().createUserWithEmailAndPassword(f.correo ,f.contrasena)
-      .catch(function(error) {
-        // Handle Errors here.
-        var errorCode = error.code;
-        var errorMessage = error.message;
+    if(f.contrasena == f.confirmar){      
+      let data = {
+        nombres : f.nombres,
+        apellidos : f.apellidos,
+        correo : f.correo,
+        contrasena : f.contrasena,
+      }
+      data["referCode"] = this.routerActive.snapshot.params.token;
+      firebase.auth().createUserWithEmailAndPassword(data.correo,data.contrasena).then(res=>{
+        this.router.navigate(['/']);
+        return this.updateProfileWithSing(data);
+      }).catch(err=>{
+        var errorCode = err.code;
+        var errorMessage = err.message;
 
         console.log(errorCode);
         console.log(errorCode);
         // ...
         noError = false;
-        $("#error").text("El correo ingresado ya está en uso");
-      }).then(() =>{
-        if(noError){
-          var user = firebase.auth().currentUser;
-          user.sendEmailVerification().then(function() {
-            // Email sent
-            console.log("Correo enviado.");
-          }).catch(function(error) {
-            $("#error").text("Ocurrio un error inesperado al tratar de enviar el correo de verificación.");
-            console.log(error);
-          });
-          this.insertarRegistro(f);
-        }
+
+        if(err.code === "auth/email-already-in-use") $("#error").text("El correo ingresado ya está en uso");
       });
+      
+      // firebase.auth().createUserWithEmailAndPassword(f.correo ,f.contrasena)
+      // .catch(function(error) {
+      //   // Handle Errors here.
+      //   var errorCode = error.code;
+      //   var errorMessage = error.message;
+
+      //   console.log(errorCode);
+      //   console.log(errorCode);
+      //   // ...
+      //   noError = false;
+      //   $("#error").text("El correo ingresado ya está en uso");
+      // }).then(() =>{
+      //   if(noError){
+      //     var user = firebase.auth().currentUser;
+      //     user.sendEmailVerification().then(function() {
+      //       // Email sent
+      //       console.log("Correo enviado.");
+      //     }).catch(function(error) {
+      //       $("#error").text("Ocurrio un error inesperado al tratar de enviar el correo de verificación.");
+      //       console.log(error);
+      //     });
+      //     this.insertarRegistro(f);
+      //   }
+      // });
     }else{
       $("#error").text("Las contraseñas no coinciden");
     }
+  }
+
+  updateProfileWithSing(data){
+    firebase.auth().signInWithEmailAndPassword(data.correo,data.contrasena).then(async res=>{
+      let token = await firebase.auth().currentUser.getIdToken();
+      this.authFirebaseService.setTokenToLocalstorage(token);
+      this.authFirebaseService.updateProfile(data).subscribe(res => {
+        console.log(res);
+      }, err => {
+        console.log(err);
+      })
+    }).catch(err=>{
+      console.log(err);
+    });
+  }
+
+  updateProfile(data){
+    this.authFirebaseService.updateProfile(data).subscribe(res => {
+      console.log(res);
+    }, err => {
+      console.log(err);
+    })
+  }
+
+  loginWithGoogle() {
+    this.authFirebaseService.googleSignin().then( async res => {
+      let token = await firebase.auth().currentUser.getIdToken();
+      this.authFirebaseService.setTokenToLocalstorage(token);
+      if (res.additionalUserInfo.isNewUser) {
+        let authenticateData = JSON.parse(JSON.stringify(res.additionalUserInfo.profile));
+        let dataUpdate = {
+          nombres: authenticateData.given_name,
+          apellidos: authenticateData.family_name,
+          direccion: '',
+          telefono: '',
+        }
+        if(this.routerActive.snapshot.params.token) dataUpdate["referCode"] = this.routerActive.snapshot.params.token;
+        return this.updateProfile(dataUpdate);
+      }
+      setTimeout(()=>{
+        this.router.navigate(["/profile"]);
+      },3000);
+    },
+      err => {
+        $("#error").text("Ha ocurrido un error");
+      })
+  }
+
+  loginWithFacebook() {
+    this.authFirebaseService.facebookSignin().then(async res => {
+      let token = await firebase.auth().currentUser.getIdToken();
+      this.authFirebaseService.setTokenToLocalstorage(token);
+      if (res.additionalUserInfo.isNewUser) {
+        let authenticateData = JSON.parse(JSON.stringify(res.additionalUserInfo.profile));
+        let dataUpdate = {
+          nombres: authenticateData.given_name,
+          apellidos: authenticateData.family_name,
+          direccion: '',
+          telefono: '',
+        }
+        if(this.routerActive.snapshot.params.token) dataUpdate["referCode"] = this.routerActive.snapshot.params.token;
+        return this.updateProfile(dataUpdate);
+      }
+      setTimeout(()=>{
+        this.router.navigate(["/profile"]);
+      },3000);
+    },
+      err => {
+        $("#error").text("Ha ocurrido un error");
+      })
+  }
+
+  refered(code) {
+    this.authFirebaseService.referedBy({ referCode: code }).subscribe(
+      res => {
+        console.log("Codigo de referencia actualizado");
+      },
+      err => {
+        console.log(err);
+      });
   }
 
   registerGoogleUSer(){

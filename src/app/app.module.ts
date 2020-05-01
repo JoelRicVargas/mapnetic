@@ -45,6 +45,8 @@ import { AngularFireStorageModule } from 'angularfire2/storage';
 
 //Services
 import { AuthService } from './services/service-auth.service';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptor } from './interceptors/token.interceptors';
 @NgModule({
   declarations: [
     AppComponent,
@@ -89,9 +91,15 @@ import { AuthService } from './services/service-auth.service';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFirestoreModule,
+    HttpClientModule,
   ],
   providers: [
     AuthService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    },
   ],
   bootstrap: [AppComponent]
 })

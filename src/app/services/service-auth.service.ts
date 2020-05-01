@@ -4,7 +4,8 @@ import { auth } from  'firebase/app';
 import { AngularFireAuth } from  "@angular/fire/auth";
 import * as firebase from 'firebase';
 import { AngularFirestore } from 'angularfire2/firestore';
-import * as $ from 'Jquery';
+import * as $ from 'jquery';
+import { AuthFirebaseService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,13 +15,17 @@ export class AuthService {
   private noError = true;
 
   constructor(public router: Router,
-              private routerActive : ActivatedRoute) { }
+              private routerActive : ActivatedRoute,
+              private authFirebaseService : AuthFirebaseService
+              ) { }
 
   loginUser(email, contra){
     $("#error").text("");
     firebase.auth().signInWithEmailAndPassword(email , contra)
-    .then(() => {
+    .then(async () => {
         var user = firebase.auth().currentUser;
+        let token = await user.getIdToken();
+        this.authFirebaseService.setTokenToLocalstorage(token);
         if (user != null) {
             user.providerData.forEach(function (profile) {
               console.log("Sign-in provider: " + profile.providerId);
@@ -30,12 +35,13 @@ export class AuthService {
               console.log("  Photo URL: " + profile.photoURL);
             });
             if(user.emailVerified == false){
+              $("#error").text("Su correo no fue verificado se enviará un nuevo link de verificación.");
               user.sendEmailVerification()
               .then(() =>  {
                 console.log('enviando correo');
                 console.log(user);
               }).catch(error => {
-                $("#error").text("Su correo no fue verificado se enviará un nuevo link de verificación.");
+                this.authFirebaseService.resendVerificationEmail();
               });
             }else{
               this.router.navigate(["/profile"]);

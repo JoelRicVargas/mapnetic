@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import * as firebase from 'firebase';
-import * as $ from 'Jquery';
+import * as $ from 'jquery';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/service-auth.service';
 import { NgForm } from '@angular/forms';
