@@ -5,7 +5,7 @@
     <div class="col-lg-5 content-form col-sm-12 col-xs-12">
         <div class="login form-global">
             <div class="head">
-                <img src="../../../../assets/images/global/logo.jpg" alt="" class="img-fluid logo d-custom">
+                <img src="../../../../assets/images/global/logo.png" alt="" class="img-fluid logo d-custom">
                 <h1 class="title">Bienvenido,<br><b>Inicia Sesión!</b></h1>
             </div>
             <form #f="ngForm" (ngSubmit)="login(f)" ngNativeValidate>
@@ -15,17 +15,17 @@
                   placeholder="Enter email" name="email" ngModel #email="ngModel" required>
                 </div>
                 <div class="input-group mb-2">
-                    <input type="password" class="form-control form-custom" id="contra" 
+                    <input type="password" class="contra form-control form-custom" id="contra" 
                     placeholder="Password" name="contra" ngModel #contra="ngModel" required>
                     <div class="input-group-prepend">
-                        <div class="input-group-text"><i class="far fa-eye"></i></div>
+                        <div class="input-group-text"><i class="icon_change_pass far fa-eye" onclick="mostrarContrasena('contra')"></i></div>
                     </div>
                 </div>
                 <div class="form-check d-flex mb-3">
                     <label class="custom-control mapnetic-checkbox">
-                        <input type="checkbox" class="mapnetic-control-input">
-                        <span class="mapnetic-control-indicator"></span>
-                        <span class="mapnetic-control-description">Mapnetic checkbox</span>
+                        <!-- <input type="checkbox" class="mapnetic-control-input">
+                        <span class="mapnetic-control-indicator"></span> -->
+                        <!-- <span class="mapnetic-control-description">Mapnetic checkbox</span> -->
                     </label>
                     <a routerLink="/usernamerecovery" class="link">Ólvide mi contraseña</a>
                 </div>
@@ -35,17 +35,17 @@
                 <p class="description">Nuestras redes sociales:</p>
                 <div class="form-social-networks">
                     <div class="social-media-btn">
-                        <i class="fab fa-facebook-f" (click)="loginFacebookUser()"></i>
+                        <a href="https://www.facebook.com/MapneticLatam/"><i class="fab fa-facebook-f"></i></a>
                     </div>
                     <div class="social-media-btn">
-                        <i class="fa fa-google" (click)="loginGoogleUSer()"></i>
+                        <i class="fa fa-google"></i>
                     </div>
                     <div class="social-media-btn">
                         <i class="fab fa-twitter"></i>
                     </div>
-                    <div class="social-media-btn">
+                    <!-- <div class="social-media-btn">
                         <i class="fab fa-github"></i>
-                    </div>
+                    </div> -->
                 </div>
                 <!-- <button type="button" class="btn btn-secundary">Continuar como visitante</button> -->
                 <p class="description">Si no tienes una cuenta registrarte <a routerLink="register">aquí</a></p>
@@ -53,3 +53,4 @@
         </div>
     </div>
 </div>
+<app-modal-login></app-modal-login>

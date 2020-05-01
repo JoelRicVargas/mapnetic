@@ -22,4 +22,5 @@ export class ProfileDescriptionComponent{
   copiarAlPortapapeles(){
     this.profileService.copiarAlPortapapeles();
   }
+  
 }

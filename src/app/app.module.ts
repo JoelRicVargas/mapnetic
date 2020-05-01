@@ -45,6 +45,7 @@ import { AngularFireStorageModule } from 'angularfire2/storage';
 
 //Services
 import { AuthService } from './services/service-auth.service';
+import { ModalLoginComponent } from './components/auth/modal-login/modal-login.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -78,7 +79,8 @@ import { AuthService } from './services/service-auth.service';
     PackageCardComponent,
     PackageBuyComponent,
     TermsComponent,
-    ConfigurationComponent
+    ConfigurationComponent,
+    ModalLoginComponent
   ],
   imports: [
     BrowserModule,

@@ -10,10 +10,11 @@ import * as firebase from 'firebase';
 })
 export class AuthGuard implements CanActivate {
   constructor(private router : Router){}
-  
+
   canActivate(){
     var user = firebase.auth();
-    if(user.currentUser){
+    var userLocal = JSON.parse(localStorage.getItem("user"));
+    if(user.currentUser || userLocal !== null){
       return true;
     }else{
       this.router.navigate(['/']);

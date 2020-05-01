@@ -54,6 +54,12 @@ p{
     transition: all 0.5s ease;
     color: #a51a1a;
 }
+#success{
+    color: #3e509c;
+}
+.fa-eye{
+    cursor:  pointer;
+}
 /** Forms global styles **/
 .form-global{
     display: flex;

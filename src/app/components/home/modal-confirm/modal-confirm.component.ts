@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import * as firebase from 'firebase';
 
 @Component({
@@ -8,13 +8,14 @@ import * as firebase from 'firebase';
 })
 export class ModalConfirmComponent implements OnInit {
 
+  @Input() question : String;
   constructor() { }
 
   ngOnInit(): void {
   }
 
   cerrar(){
-
+    localStorage.removeItem("user");
     firebase.auth().signOut()
     .then(function () {
       console.log('saliendo...');

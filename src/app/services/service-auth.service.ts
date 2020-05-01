@@ -18,61 +18,66 @@ export class AuthService {
 
   loginUser(email, contra){
     $("#error").text("");
-    firebase.auth().signInWithEmailAndPassword(email , contra)
-    .then(() => {
-        var user = firebase.auth().currentUser;
-        if (user != null) {
-            user.providerData.forEach(function (profile) {
-              console.log("Sign-in provider: " + profile.providerId);
-              console.log("  Provider-specific UID: " + profile.uid);
-              console.log("  Name: " + profile.displayName);
-              console.log("  Email: " + profile.email);
-              console.log("  Photo URL: " + profile.photoURL);
-            });
-            if(user.emailVerified == false){
-              user.sendEmailVerification()
-              .then(() =>  {
-                console.log('enviando correo');
-                console.log(user);
-              }).catch(error => {
-                $("#error").text("Su correo no fue verificado se enviará un nuevo link de verificación.");
+    return firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION)
+    .then(function() {
+      return firebase.auth().signInWithEmailAndPassword(email , contra)
+      .then(() => {
+          var user = firebase.auth().currentUser;
+          if (user !== null) {
+              user.providerData.forEach(function (profile) {
+                console.log("Sign-in provider: " + profile.providerId);
+                console.log("  Provider-specific UID: " + profile.uid);
+                console.log("  Name: " + profile.displayName);
+                console.log("  Email: " + profile.email);
+                console.log("  Photo URL: " + profile.photoURL);
               });
-            }else{
-              this.router.navigate(["/profile"]);
-            }
-        }else{
-          $("#error").text("El email ingresado no existe.");
+              localStorage.setItem('user', JSON.stringify(user));
+              console.log(JSON.stringify(user));
+              if(user.emailVerified == false){
+                $("#error").text("Su correo no fue verificado,revise la bandeja de entrada de su correo electronico.");
+              }else{
+                console.log("Ingreso exitoso !!");
+              }
+          }else{
+            localStorage.setItem('user', null);
+            $("#error").text("El email ingresado no existe.");
+          }
+      })
+      .catch( error => {
+        var error_msj : String = error.code;
+        console.log(error_msj);
+        console.log(error);
+        switch (error_msj){
+          case 'auth/user-not-found' : {
+            return $("#error").text("No hay registro del usuario ingresado." +
+            "El usuario puede haber sido eliminado.");
+          }
+          case 'auth/wrong-password' : {
+            return $("#error").text("La contraseña no es válida.");
+          }
+          case 'auth/network-request-failed' :{
+            return $("#error").text("Se ha producido un error de red (como tiempo de espera," +
+            "conexión interrumpida o no tiene acceso a internet).");
+          }
+          case 'auth/too-many-requests' :{
+            return $("#error").text("Demasiados intentos de inicio de sesión fallidos." +
+            "Por favor, inténtelo de nuevo más tarde.");
+          }
+          default: {
+            return $("#error").text("Error de inicio de sesión intente más tarde.");
+          }
         }
+      });
     })
-    .catch( error => {
-      var error_msj : String = error.code;
-      console.log(error_msj);
-      console.log(error);
-      switch (error_msj){
-        case 'auth/user-not-found' : {
-          return $("#error").text("No hay registro del usuario ingresado." +
-          "El usuario puede haber sido eliminado.");
-        }
-        case 'auth/wrong-password' : {
-          return $("#error").text("La contraseña no es válida.");
-        }
-        case 'auth/network-request-failed' :{
-          return $("#error").text("Se ha producido un error de red (como tiempo de espera," +
-          "conexión interrumpida o no tiene acceso a internet).");
-        }
-        case 'auth/too-many-requests' :{
-          return $("#error").text("Demasiados intentos de inicio de sesión fallidos." +
-          "Por favor, inténtelo de nuevo más tarde.");
-        }
-        default: {
-          return $("#error").text("Error de inicio de sesión intente más tarde.");
-        }
-      }
-    })
+    .catch(function(error) {
+      // Handle Errors here.
+      var errorCode = error.code;
+      var errorMessage = error.message;
+    });
+    
   }
 
   registerGoogleUSer(token){
-    var resultados : number;
     var provider = new firebase.auth.GoogleAuthProvider();
     return firebase.auth().signInWithPopup(provider).then((result) => {
       var nuevo_user = result.user;
@@ -89,10 +94,12 @@ export class AuthService {
         if(total_count == 0){
           //registra
           this.addRegisterUser(nombres,correo,contra,token);
-          //cambia la contra
-          this.cambiarPass(contra);
+          //Crea nuevo usuario
+          this.crearCuentaMailAndPassword(correo,contra);
+          //this.loginUser(correo,contra);
+          //this.cambiarPass(contra);
           //ingresa
-          this.loginUser(correo,contra);
+          
         }
       }); 
       
@@ -132,16 +139,45 @@ export class AuthService {
       cantidad_ref : 0,
       dinero_generado : 0.00,
       perfil_aprovado : false,
+      portada : '',
       foto : '',
     })
     .then(function(docRef) {
       console.log("Document written with ID: ", docRef.id);
+      localStorage.setItem("nuevo_usuario", JSON.stringify(docRef.id));
+      
     })
     .catch(function(error) {
       console.error("Error adding document: ", error);
     });
   }
 
+  crearCuentaMailAndPassword(correo,contrasena){
+    console.log("Creando nuevo usuario ...");
+    firebase.auth().createUserWithEmailAndPassword(correo ,contrasena)
+      .catch(function(error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+
+        console.log(errorCode);
+        console.log(errorMessage);
+        // ...
+        $("#error").text("El correo ingresado ya está en uso");
+      }).then(() =>{
+          var user = firebase.auth().currentUser;
+          user.sendEmailVerification().then(function() {
+            // Email sent
+            console.log("Correo enviado.");
+            $("#modalMail").click();
+          }).catch(function(error) {
+            $("#error").text("Ocurrio un error inesperado al tratar de enviar el correo de verificación.");
+            console.log(error);
+          });
+        }
+      );
+    //send login
+  }
   cambiarPass(contra){
     var user = firebase.auth().currentUser;
     var newPassword = contra;
@@ -152,4 +188,21 @@ export class AuthService {
     });
   }
 
+  recuperarPassword(password){
+    $("#error").text();
+    $("#sucess").text();
+    var auth = firebase.auth();
+    auth.sendPasswordResetEmail(password).then(function() {
+      console.log("Enviando correo de reestablecimiento de password...");
+      $("#success").text("El correo de reestablecimiento se envio correctamente");
+    }).catch(function(error) {
+      console.log(error.code);
+      console.log(error);
+      switch(error.code){
+        case 'auth/user-not-found':{
+          $("#error").text("El usuario que ingreso no existe, intente nuevamente!.");
+        }
+      }
+    });
+  }
 }

@@ -6,3 +6,32 @@ function edit_module(){
     $(".options").css('display','block');
 };
 
+function mostrarContrasena(input){
+    var tipo = $("."+input);
+    if(tipo.attr('type') == "password"){
+        tipo.attr('type', 'text');
+        $('.icon_change_pass').removeClass('fa fa-eye').addClass('fa fa-eye-slash');
+    }else{
+        tipo.attr('type', 'password');
+        $('.icon_change_pass').removeClass('fa fa-eye-slash').addClass('fa fa-eye');
+    }
+};
+
+function mostrarModelConfirm(modal, question){
+    var modal =  $("#"+ modal);
+    modal.modal("show");
+    $("#modalConfirm .modal-body .question").text(question);
+}
+
+function sendMailModal(){
+    var modal =  $("#modalSendMail");
+    modal.modal("show");
+    setInterval(() => {
+        modal.modal("hide");
+    },4000)
+    clearInterval();
+}
+
+$('#terminosCondiciones').on('click', function (e) {
+    alert("entro aqui");
+});

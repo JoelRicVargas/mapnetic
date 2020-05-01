@@ -15,29 +15,23 @@ import { error } from 'protractor';
 export class LoginComponent implements OnInit {
   
   @ViewChild('f') form : NgForm;
-  constructor(private router : Router, private authService : AuthService) { }
+  constructor(private router : Router,
+              private authService : AuthService) { }
 
   ngOnInit(): void {
   }
 
   login(f){
-    this.authService.loginUser(f.value.email, f.value.contra);
-  }
-
-  loginGoogleUSer() : void{
-    
-  }
-  
-  loginFacebookUser() : void{
-    alert("sasas");
-    this.authService.loginFacebookUser()
-    .then((response) => {
-      this.router.navigate(['/profile']);
-    }).catch(error => {
-      console.log(error);
+    this.authService.loginUser(f.value.email, f.value.contra).then((sucess) => {
+      console.log(sucess);
+      this.router.navigate(['profile']);
+    }).catch((error) =>{
       console.log(error.code);
+      console.log(error);
     });
   }
+  
+ 
 
   verificarUser(){
     var user = firebase.auth().currentUser;

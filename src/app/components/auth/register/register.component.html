@@ -1,3 +1,4 @@
+ <a id="modalMail" onclick="sendMailModal()" style="display:none;"></a>
 <div class="row">
     <div class="col-lg-7 d-custom aside">
         <app-overlayed></app-overlayed>
@@ -21,33 +22,31 @@
                     name="correo" #correo="ngModel" ngModel required>
                 </div>
                 <div class="input-group mb-2">
-                    <input type="password" class="form-control form-custom"  placeholder="Contraseña" 
-                    name="contrasena" #contrasena="ngModel" ngModel required>
+                    <input type="password" class="contra form-control form-custom"  placeholder="Contraseña" 
+                    name="contrasena" #contrasena="ngModel" ngModel required id="contra">
                     <div class="input-group-prepend">
-                        <div class="input-group-text"><i class="far fa-eye"></i></div>
+                        <div class="input-group-text"><i class="icon_change_pass far fa-eye" onclick="mostrarContrasena('contra')"></i></div>
                     </div>
                 </div>
                 <div class="input-group mb-2">
-                    <input type="password" class="form-control form-custom"  placeholder="Confirmar contraseña"
+                    <input type="password" class="contra form-control form-custom"  placeholder="Confirmar contraseña"
                     name="confirmar" #confirmar="ngModel" ngModel required>
-                    <div class="input-group-prepend">
-                        <div class="input-group-text"><i class="far fa-eye"></i></div>
-                    </div>
                 </div>  
-                <div class="form-check d-flex mb-3">
+                <!-- <div class="form-check d-flex mb-3">
                     <label class="custom-control mapnetic-checkbox">
                         <span class="mapnetic-control-description">Acepto los <a data-toggle="modal" 
                           data-target="#modalText" class="link">terminos y condiciones</a></span>
                         <input type="checkbox" class="mapnetic-control-input">
                         <span class="mapnetic-control-indicator"></span>
                     </label>
-                </div>
+                </div> -->
                 <label for="" id="error"></label>
-                <button type="button" class="btn" (click)="registerGoogleUSer()">Registrarse Gmail</button>
+                <!-- <button type="button" class="btn" (click)="registerGoogleUSer()">Registrarse Gmail</button> -->
                 <button type="submit" class="btn">Registrarse</button>
                 <p class="description">Si ya tienes una cuenta ingresa <a routerLink="/" class="link">aquí</a></p>
-            </form>   
+            </form> 
         </div>
     </div>
 </div>
 <app-terms></app-terms>
+<app-modal-login></app-modal-login>

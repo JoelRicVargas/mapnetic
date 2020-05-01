@@ -17,11 +17,11 @@
                     <input type="file" class="input_file foto" id="input_file_foto" accept="image/" 
                     (change)="uploadPerfil($event)"> 
                     <label for="input_file_foto" class="dropdown-item" >Cambiar perfil</label>
-                    <input type="text" [value]="urlImageFoto | async" #imgUser id="photo_profile">
+                    <input type="hidden" [value]="urlImageFoto | async" #imgUser id="photo_profile">
                     <input type="file" class="input_file" id="input_file_portada" accept="image/" 
                     (change)="uploadPortada($event)"> 
                     <label for="input_file_portada" class="dropdown-item" >Cambiar portada</label>
-                    <input type="text" [value]="urlImagePortada | async" #imgUser id="portada_profile">
+                    <input type="hidden" [value]="urlImagePortada | async" #imgUser id="portada_profile">
                 </div>
                 </div>
             </div>

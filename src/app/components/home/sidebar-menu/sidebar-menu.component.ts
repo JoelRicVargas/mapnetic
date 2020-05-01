@@ -10,24 +10,9 @@ import { ProfileService } from 'src/app/services/service-profile.service';
 export class SidebarMenuComponent implements OnInit {
 
   constructor(private profileService : ProfileService) { 
-    this.profileService.obtener_usuario(this.registro);
+    this.profileService.obtener_usuario();
   }
 
-  registro : any = {
-    nombres : '',
-    apellidos : '',
-    contrasena : '',
-    correo : '',
-    direccion : '',
-    telefono : '',
-
-    codigo_ref : '',
-    plan_actual : '',
-    cantidad_ref : '',
-    dinero_generado : '',
-    perfil_aprovado : false
-  }
-  
   ngOnInit(): void {
     $('#dismiss, .overlay').on('click', function () {
       $('#sidebar').removeClass('active');
