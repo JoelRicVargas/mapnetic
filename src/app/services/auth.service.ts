@@ -59,7 +59,7 @@ export class AuthFirebaseService {
     let authUser = firebase.auth().currentUser;
     authUser = JSON.parse(JSON.stringify(authUser));
     if(authUser.displayName){
-      let displayName = authUser.displayName.split("");
+      let displayName = authUser.displayName.split(" ");
       if(displayName.length>1){
         data["nombres"]=displayName[0];
         data["apellidos"]=displayName[1];
