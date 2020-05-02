@@ -41,7 +41,7 @@
                       <div class="input-group-text btn" id="btn_copy" (click)="copiarAlPortapapeles()">
                           Copiar</div>
                     </div>
-                    <input type="text" [value]="'http://localhost:4200/register/'+data.codigo_ref" readonly class="form-control" id="cod_referidos" 
+                    <input type="text" [value]="'http://localhost:4200/register/'+(data.codigo_ref ? data.codigo_ref : '' )" readonly class="form-control" id="cod_referidos" 
                     placeholder="Codigo de referido" disabled>
                 </div>
                 <p id="state_copy"></p>

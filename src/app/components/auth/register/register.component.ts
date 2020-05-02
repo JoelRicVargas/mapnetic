@@ -77,7 +77,7 @@ export class RegisterComponent implements OnInit {
   }
 
   registrar(f) {
-    var noError = true;
+    // var noError = true;
     $("#error").text("");
     if(f.contrasena == f.confirmar){      
       let data = {
@@ -86,21 +86,31 @@ export class RegisterComponent implements OnInit {
         correo : f.correo,
         contrasena : f.contrasena,
       }
-      data["referCode"] = this.routerActive.snapshot.params.token;
-      firebase.auth().createUserWithEmailAndPassword(data.correo,data.contrasena).then(res=>{
+      data["referedBy"] = this.routerActive.snapshot.params.token;
+      this.authFirebaseService.register(data).subscribe(res =>{
         this.router.navigate(['/']);
-        return this.updateProfileWithSing(data);
-      }).catch(err=>{
-        var errorCode = err.code;
-        var errorMessage = err.message;
+      },
+      err =>{
+        if(err.error.code === "auth/email-already-exists") $("#error").text("El correo ingresado ya está en uso");
+      })
+      
+      // .then(res=>{
+      //   this.updateProfileWithSing(data);
+      //   setTimeout(()=>{
+      //     this.router.navigate(['/']);  
+      //   },3000)
+      //   return 
+      // }).catch(err=>{
+      //   var errorCode = err.code;
+      //   var errorMessage = err.message;
 
-        console.log(errorCode);
-        console.log(errorCode);
-        // ...
-        noError = false;
+      //   console.log(errorCode);
+      //   console.log(errorCode);
+      //   // ...
+      //   noError = false;
 
-        if(err.code === "auth/email-already-in-use") $("#error").text("El correo ingresado ya está en uso");
-      });
+      //   if(err.code === "auth/email-already-in-use") $("#error").text("El correo ingresado ya está en uso");
+      // });
       
       // firebase.auth().createUserWithEmailAndPassword(f.correo ,f.contrasena)
       // .catch(function(error) {
@@ -131,18 +141,27 @@ export class RegisterComponent implements OnInit {
     }
   }
 
-  updateProfileWithSing(data){
-    firebase.auth().signInWithEmailAndPassword(data.correo,data.contrasena).then(async res=>{
-      let token = await firebase.auth().currentUser.getIdToken();
-      this.authFirebaseService.setTokenToLocalstorage(token);
-      this.authFirebaseService.updateProfile(data).subscribe(res => {
-        console.log(res);
-      }, err => {
+  updateProfileWithSing(data,id?){
+    const updateWithSing = () => {
+      firebase.auth().signInWithEmailAndPassword(data.correo,data.contrasena).then(async res=>{
+        let token = await firebase.auth().currentUser.getIdToken();
+        this.authFirebaseService.setTokenToLocalstorage(token);
+        this.authFirebaseService.updateProfile(data).subscribe(res => {
+            
+        }, err => {
+          console.log(err);
+        })
+      }).catch(err=>{
         console.log(err);
+      });
+    }
+    if(id){
+      this.db.collection("users").doc(id).set(data,{merge:true}).then(res=>{
+        console.log("Actualización Exitosa")
+      },err=>{
+        updateWithSing();
       })
-    }).catch(err=>{
-      console.log(err);
-    });
+    }else updateWithSing();
   }
 
   async updateProfileByDatabase(data){
@@ -166,6 +185,7 @@ export class RegisterComponent implements OnInit {
   redirectProfile(){
     this.router.navigate(["/profile"]);
   }
+  
   loginWithGoogle() {
     this.authFirebaseService.googleSignin().then( async res => {
       let currentUser = firebase.auth().currentUser;
