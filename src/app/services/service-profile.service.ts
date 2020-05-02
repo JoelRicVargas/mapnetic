@@ -111,6 +111,7 @@ export class ProfileService {
     });
   }
 
+
   getURL(path){
     // Create a reference to the file to delete
     const ref = this.storage.ref(path);

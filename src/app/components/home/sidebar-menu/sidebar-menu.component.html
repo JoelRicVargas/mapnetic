@@ -4,11 +4,11 @@
         <!-- <div id="dismiss"><i class="glyphicon glyphicon-arrow-left"></i></div> -->
         <div class="sidebar-header user">
             <div class="user-img">
-                <img src="../../../../assets/images/global/user.jpg" alt="" class="img-fluid">
+                <img [src]="data.photo || '../../../../assets/images/global/user.jpg'" alt="" class="img-fluid">
             </div>
             <div class="user-description">
                 <p>Hola</p>
-                <h3 class="nombres_text">--</h3>    
+                <h3 class="nombres_text">{{ data.nombres || ''}} {{ data.apellidos || '' }}</h3>    
             </div>
         </div>
         <ul class="list-unstyled components">

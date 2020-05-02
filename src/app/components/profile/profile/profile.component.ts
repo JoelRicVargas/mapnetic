@@ -1,16 +1,45 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, NgZone } from '@angular/core';
+import { AuthFirebaseService } from 'src/app/services/auth.service';
+import { ProfileService } from 'src/app/services/service-profile.service';
+import * as firebase from 'firebase';
+import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.css']
+  styleUrls: ['./profile.component.css'],
 })
-export class ProfileComponent implements OnInit {
+export class ProfileComponent implements AfterViewInit {
 
-  constructor() {  }
+  data : any;
+  db = firebase.firestore();
+  constructor(
+    private AuthFirebaseService : AuthFirebaseService,
+    private ngZone: NgZone
+    ) {
+      this.data = {};
+      firebase.auth().onAuthStateChanged((user) => {
+        if(user) this.getUserData();
+      });
+    }
 
-  ngOnInit(): void {
-
+  ngAfterViewInit(): void {
+    this.getUserData();
   }
+  
+
+  getUserData(){
+    return this.AuthFirebaseService.getUserData().then(res=> {
+      if(!res) return;
+      let dataAux = {};
+      Object.keys(res).map(key =>{
+        dataAux[key] = res[key];
+      })
+      this.ngZone.run( () => {
+        this.data = dataAux;
+     });
+    }).catch(err=>console.log(err));
+  }
+
 
 }

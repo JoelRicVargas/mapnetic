@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild, Input } from '@angular/core';
 import * as $ from 'jquery';
 import { AngularFireStorage } from 'angularfire2/storage';
 import { Observable } from 'rxjs/internal/Observable';
@@ -12,7 +12,8 @@ import * as firebase from 'firebase';
   styleUrls: ['./profile-banner.component.css']
 })
 export class ProfileBannerComponent implements OnInit {
-
+  @Input() urlPhoto : any;
+  @Input() urlPortada : any;
   urlImageFoto : Observable<string>;
   urlImagePortada : Observable<string>;
 

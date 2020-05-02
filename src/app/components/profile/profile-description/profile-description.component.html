@@ -6,22 +6,22 @@
                 <div class="item-feature">
                     <input type="hidden" id="documento">
                     <!-- <input type="text" value="--" class="edit_input" id="documento" disabled> -->
-                    <input type="text" value="-" class="edit_input" placeholder="Nombres" 
+                    <input type="text" [value]="data.nombres" class="edit_input" placeholder="Nombres" 
                     id="nombres" name="nombres" #nombres="ngModel" ngModel required>
                     <p class="description ml-2">Nombre</p>
-                    <input type="text" value="-" class="edit_input" placeholder="Apellidos" 
+                    <input type="text" [value]="data.apellidos" class="edit_input" placeholder="Apellidos" 
                     id="apellidos" name="apellidos" #apellidos="ngModel" ngModel required>
                     <p class="description ml-2">Apellidos</p>
-                    <input type="text" value="-" class="edit_input" placeholder="Correo electronico" 
-                    id="correo" name="correo" #correo="ngModel" ngModel required>
+                    <input type="text" [value]="data.correo" class="edit_input" placeholder="Correo electronico" 
+                    id="correo" name="correo" required>
                     <p class="description ml-2">Correo electronico</p>
                     <input type="text" value="-" class="edit_input" placeholder="Contraseña" 
                     id="contrasena" name="contrasena" #contrasena="ngModel" ngModel required>
                     <p class="description ml-2">Contraseña</p>
-                    <input type="text" value="-" class="edit_input" placeholder="Direccion" 
+                    <input type="text" [value]="data.direccion" class="edit_input" placeholder="Direccion" 
                     id="direccion" name="direccion" #direccion="ngModel" ngModel required>
                     <p class="description ml-2">Dirección</p>
-                    <input type="text" value="-" class="edit_input" placeholder="Telefono" 
+                    <input type="text" [value]="data.telefono" class="edit_input" placeholder="Telefono" 
                     id="telefono" name="telefono" #telefono="ngModel" ngModel required>
                     <p class="description ml-2">Telefono</p>
                 </div>
@@ -41,7 +41,7 @@
                       <div class="input-group-text btn" id="btn_copy" (click)="copiarAlPortapapeles()">
                           Copiar</div>
                     </div>
-                    <input type="text" value="--" class="form-control" id="cod_referidos" 
+                    <input type="text" [value]="'http://localhost:4200/register/'+data.codigo_ref" readonly class="form-control" id="cod_referidos" 
                     placeholder="Codigo de referido" disabled>
                 </div>
                 <p id="state_copy"></p>
@@ -52,7 +52,7 @@
                         <p class="description">Plan Actual</p>
                     </div>
                     <div class="stats_content">
-                        <h3 id="cantidad_ref">0</h3>
+                        <h3 id="cantidad_ref">{{data.referidos || 0}}</h3>
                         <p class="description">Cantidad de Referidos</p>
                     </div>
                     <div class="stats_content">

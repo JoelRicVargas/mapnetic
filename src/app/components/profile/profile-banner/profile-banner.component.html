@@ -1,4 +1,4 @@
-<div class="banner profile-banner bg-banner" id="banner_profile">
+<div class="banner profile-banner bg-banner" id="banner_profile" [style.background-image]="'url('+( urlPortada || '/assets/images/global/caribe.jpg')+')'">
     <div class="navbar">
         <div class="container">
             <div class="toggle-bottom" id="sidebarCollapse">
@@ -34,7 +34,7 @@
                         <div class="buttom-add-image">
                             <a href=""><i class="fas fa-image"></i></a>
                         </div>
-                        <img alt="" src="../../../../assets/images/profile/unnamed.jpg" class="foto_profile">
+                        <img alt="" [src]="urlPhoto || '../../../../assets/images/profile/unnamed.jpg'" class="foto_profile">
                     </div>
                     <div class="description">
                         <h3 class="mb-3 btn_edit nombres_text">

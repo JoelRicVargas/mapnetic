@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import $ from 'jquery';
 import { ProfileService } from 'src/app/services/service-profile.service';
+import { StorageService } from 'src/app/services/storage.service';
+import * as firebase from 'firebase';
+import { AuthFirebaseService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-sidebar-menu',
@@ -9,26 +12,45 @@ import { ProfileService } from 'src/app/services/service-profile.service';
 })
 export class SidebarMenuComponent implements OnInit {
 
-  constructor(private profileService : ProfileService) { 
-    this.profileService.obtener_usuario(this.registro);
+  data : any = {};  
+  constructor(
+    private ngZone: NgZone,
+    private StorageService : StorageService,
+    private AuthFirebaseService: AuthFirebaseService
+    ) { 
+    if(localStorage.getItem("userMapnetic")){
+      this.ngZone.run( () => {
+        this.getUserData();
+      });
+    };
+    firebase.auth().onAuthStateChanged((user) => {
+      if(user) this.getUserData();
+    });
+    //this.profileService.obtener_usuario(this.registro);
+    // this.StorageService.changes.subscribe(data=>{
+    //  if(data.key === "userMapnetic" && data.value) this.ngZone.run( () => {
+    //   this.data = Object.assign({}, data.value);
+    //   }); 
+    // })
   }
 
-  registro : any = {
-    nombres : '',
-    apellidos : '',
-    contrasena : '',
-    correo : '',
-    direccion : '',
-    telefono : '',
-
-    codigo_ref : '',
-    plan_actual : '',
-    cantidad_ref : '',
-    dinero_generado : '',
-    perfil_aprovado : false
+  getUserData(){
+    return this.AuthFirebaseService.getUserData().then(res=> {
+      if(!res) return;
+      let dataAux = {};
+      Object.keys(res).map(key =>{
+        dataAux[key] = res[key];
+      })
+      this.ngZone.run( () => {
+        this.data = dataAux;
+     });
+    }).catch(err=>console.log(err));
   }
-  
+
+  db = firebase.firestore();
+
   ngOnInit(): void {
+   // this.getUserData();
     $('#dismiss, .overlay').on('click', function () {
       $('#sidebar').removeClass('active');
       $('.overlay').fadeOut();

@@ -4,6 +4,7 @@ import * as $ from 'jquery';
 import { Router ,ActivatedRoute, ParamMap } from '@angular/router';
 import { AuthService } from 'src/app/services/service-auth.service';
 import { AuthFirebaseService } from 'src/app/services/auth.service';
+import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
   selector: 'app-register',
@@ -18,7 +19,7 @@ export class RegisterComponent implements OnInit {
   constructor(private router : Router, 
               private routerActive : ActivatedRoute,
               private authService : AuthService,
-              private authFirebaseService : AuthFirebaseService
+              private authFirebaseService : AuthFirebaseService,
               ) { }
 
   ngOnInit(): void {}
@@ -144,6 +145,16 @@ export class RegisterComponent implements OnInit {
     });
   }
 
+  async updateProfileByDatabase(data){
+    let token = await firebase.auth().currentUser;
+    this.db.collection("users").doc(token.uid).set(data,{merge:true}).then(res=>{
+      console.log(res);
+    }).catch(err => {
+      console.log(err);
+      this.updateProfile(data);
+    });
+  }
+
   updateProfile(data){
     this.authFirebaseService.updateProfile(data).subscribe(res => {
       console.log(res);
@@ -152,24 +163,32 @@ export class RegisterComponent implements OnInit {
     })
   }
 
+  redirectProfile(){
+    this.router.navigate(["/profile"]);
+  }
   loginWithGoogle() {
     this.authFirebaseService.googleSignin().then( async res => {
-      let token = await firebase.auth().currentUser.getIdToken();
+      let currentUser = firebase.auth().currentUser;
+      let token = await currentUser.getIdToken();
       this.authFirebaseService.setTokenToLocalstorage(token);
       if (res.additionalUserInfo.isNewUser) {
         let authenticateData = JSON.parse(JSON.stringify(res.additionalUserInfo.profile));
         let dataUpdate = {
           nombres: authenticateData.given_name,
           apellidos: authenticateData.family_name,
-          direccion: '',
-          telefono: '',
         }
+        // this.StorageService.store("userData",`${authenticateData.given_name} ${authenticateData.family_name}`);
+        // this.StorageService.store("urlPhoto",`${currentUser.photoURL}`);
         if(this.routerActive.snapshot.params.token) dataUpdate["referCode"] = this.routerActive.snapshot.params.token;
-        return this.updateProfile(dataUpdate);
+        setTimeout(()=>{
+          this.updateProfileByDatabase(dataUpdate);
+          this.redirectProfile()
+        },3000);
       }
-      setTimeout(()=>{
-        this.router.navigate(["/profile"]);
-      },3000);
+      else {
+        this.getData();
+        this.redirectProfile();
+      }
     },
       err => {
         $("#error").text("Ha ocurrido un error");
@@ -178,26 +197,37 @@ export class RegisterComponent implements OnInit {
 
   loginWithFacebook() {
     this.authFirebaseService.facebookSignin().then(async res => {
-      let token = await firebase.auth().currentUser.getIdToken();
+      let currentUser = await firebase.auth().currentUser;
+      let token = await currentUser.getIdToken();
       this.authFirebaseService.setTokenToLocalstorage(token);
       if (res.additionalUserInfo.isNewUser) {
         let authenticateData = JSON.parse(JSON.stringify(res.additionalUserInfo.profile));
         let dataUpdate = {
           nombres: authenticateData.given_name,
           apellidos: authenticateData.family_name,
-          direccion: '',
-          telefono: '',
         }
+        // this.StorageService.store("userData",`${authenticateData.given_name} ${authenticateData.family_name}`);
+        // this.StorageService.store("urlPhoto",`${currentUser.photoURL}`);
         if(this.routerActive.snapshot.params.token) dataUpdate["referCode"] = this.routerActive.snapshot.params.token;
-        return this.updateProfile(dataUpdate);
+        setTimeout(()=>{
+          this.updateProfileByDatabase(dataUpdate);
+          this.redirectProfile();
+        },3000);
       }
-      setTimeout(()=>{
-        this.router.navigate(["/profile"]);
-      },3000);
+      else {
+        this.getData();
+        this.redirectProfile();
+      }
     },
       err => {
         $("#error").text("Ha ocurrido un error");
       })
+  }
+
+  getData(){
+    this.authFirebaseService.getUserData().then(res=>{
+      console.log(res);
+    })
   }
 
   refered(code) {

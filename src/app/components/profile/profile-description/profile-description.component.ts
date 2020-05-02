@@ -1,25 +1,46 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Input, OnChanges, SimpleChanges } from '@angular/core';
 import * as firebase from 'firebase';
 import { QueryDocumentSnapshot, QuerySnapshot } from 'angularfire2/firestore';
 import * as $ from 'jquery';
 import { NgForm } from '@angular/forms';
 import { ProfileService } from 'src/app/services/service-profile.service';
+import { AuthFirebaseService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-profile-description',
   templateUrl: './profile-description.component.html',
   styleUrls: ['./profile-description.component.css']
 })
-export class ProfileDescriptionComponent{
-  //documento : any
-  constructor(private profileService : ProfileService) {
-    
+export class ProfileDescriptionComponent implements OnChanges {
+  @Input() data: any;
+  db = firebase.firestore();
+
+  constructor(
+    private profileService: ProfileService,
+    private AuthFirebaseService: AuthFirebaseService
+  ) {
+
   }
 
-  actualizar(){
+  ngOnChanges() {
+
+  }
+
+  actualizar() {
     this.profileService.actualizar();
   }
-  copiarAlPortapapeles(){
+
+  copiarAlPortapapeles() {
     this.profileService.copiarAlPortapapeles();
+  }
+
+
+  getAuth() {
+    this.AuthFirebaseService.getAuth().subscribe(res => {
+      this.data = res.user;
+    }, err => {
+      console.log(err);
+      alert("Ha ocurrido un error");
+    })
   }
 }
