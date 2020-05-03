@@ -58,6 +58,9 @@ export class AuthFirebaseService {
     let data: any = {}
     let authUser = firebase.auth().currentUser;
     authUser = JSON.parse(JSON.stringify(authUser));
+    if (!authUser) return new Promise(resolve => {
+      resolve(null)
+    });
     if(authUser.displayName){
       let displayName = authUser.displayName.split(" ");
       if(displayName.length>1){
@@ -65,9 +68,6 @@ export class AuthFirebaseService {
         data["apellidos"]=displayName[1];
       }
     }
-    if (!authUser) return new Promise(resolve => {
-      resolve(null)
-    });
     return firebase.firestore().collection("users").doc(authUser.uid).get().then(res => {
       data.correo = authUser.email;
       data.photo = authUser.photoURL;
