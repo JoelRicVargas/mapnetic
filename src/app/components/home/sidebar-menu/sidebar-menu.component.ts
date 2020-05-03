@@ -23,9 +23,6 @@ export class SidebarMenuComponent implements OnInit {
         this.getUserData();
       });
     };
-    firebase.auth().onAuthStateChanged((user) => {
-      if(user) this.getUserData();
-    });
     //this.profileService.obtener_usuario(this.registro);
     // this.StorageService.changes.subscribe(data=>{
     //  if(data.key === "userMapnetic" && data.value) this.ngZone.run( () => {

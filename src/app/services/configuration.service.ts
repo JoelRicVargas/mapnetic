@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import * as firebase from 'firebase';
+import { AngularFirestore } from 'angularfire2/firestore';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +9,9 @@ export class ConfigurationService {
     
     db = firebase.firestore();
 
-    constructor(){}
+    constructor(
+        private AngularFirestore : AngularFirestore
+    ){}
 
     async getConfig(){
         let authUser = firebase.auth().currentUser;

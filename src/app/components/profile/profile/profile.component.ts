@@ -18,9 +18,6 @@ export class ProfileComponent implements AfterViewInit {
     private ngZone: NgZone
     ) {
       this.data = {};
-      firebase.auth().onAuthStateChanged((user) => {
-        if(user) this.getUserData();
-      });
     }
 
   ngAfterViewInit(): void {

@@ -33,7 +33,7 @@ const routes: Routes = [
   { path : 'usernamerecovery', component : RecoveryPasswordComponent },
 
   //Body
-  { path : 'profile', component : ProfileComponent},
+  { path : 'profile', component : ProfileComponent, canActivate : [AuthGuard] },
   { path : 'home', component : HomeComponent, canActivate : [AuthGuard] },
   { path : 'dashboard', component : DashboardComponent, canActivate : [AuthGuard] },
   { path : 'networker' , component : networkerComponent, canActivate : [AuthGuard] },
