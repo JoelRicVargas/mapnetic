@@ -9,31 +9,26 @@
             </div>
             <form #f="ngForm" (ngSubmit)="registrar(f.value)" ngNativeValidate>
                 <div class="form-group">
-                  <input type="text" class="form-control" placeholder="Nombres" 
-                  name="nombres" #nombres="ngModel" ngModel required>
+                    <input type="text" class="form-control" placeholder="Nombres" name="nombres" #nombres="ngModel" ngModel required>
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Apellidos" 
-                    name="apellidos" #apellidos="ngModel" ngModel required>
+                    <input type="text" class="form-control" placeholder="Apellidos" name="apellidos" #apellidos="ngModel" ngModel required>
                 </div>
                 <div class="form-group">
-                    <input type="email" class="form-control" placeholder="Correo" 
-                    name="correo" #correo="ngModel" ngModel required>
+                    <input type="email" class="form-control" placeholder="Correo" name="correo" #correo="ngModel" ngModel required>
                 </div>
                 <div class="input-group mb-2">
-                    <input type="password" class="form-control form-custom"  placeholder="Contraseña" 
-                    name="contrasena" #contrasena="ngModel" ngModel required>
+                    <input type="password" class="form-control form-custom" placeholder="Contraseña" name="contrasena" #contrasena="ngModel" ngModel required>
                     <div class="input-group-prepend">
                         <div class="input-group-text"><i class="far fa-eye"></i></div>
                     </div>
                 </div>
                 <div class="input-group mb-2">
-                    <input type="password" class="form-control form-custom"  placeholder="Confirmar contraseña"
-                    name="confirmar" #confirmar="ngModel" ngModel required>
+                    <input type="password" class="form-control form-custom" placeholder="Confirmar contraseña" name="confirmar" #confirmar="ngModel" ngModel required>
                     <div class="input-group-prepend">
                         <div class="input-group-text"><i class="far fa-eye"></i></div>
                     </div>
-                </div>  
+                </div>
                 <div class="form-check d-flex mb-3">
                     <label class="custom-control mapnetic-checkbox">
                         <span class="mapnetic-control-description">Acepto los <a data-toggle="modal" 
@@ -47,7 +42,7 @@
                 <button type="button" class="btn" (click)="loginWithFacebook()">Registrarse Facebook</button>
                 <button type="submit" class="btn">Registrarse</button>
                 <p class="description">Si ya tienes una cuenta ingresa <a routerLink="/" class="link">aquí</a></p>
-            </form>   
+            </form>
         </div>
     </div>
 </div>

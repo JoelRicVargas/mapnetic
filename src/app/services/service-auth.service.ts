@@ -110,6 +110,40 @@ export class AuthService {
     });
   }
 
+  
+  registerFacebookUser(token){
+    var resultados : number;
+    var provider = new firebase.auth.FacebookAuthProvider();
+    return firebase.auth().signInWithPopup(provider).then((result) => {
+      var nuevo_user = result.user;
+      console.log("User creado " + nuevo_user.displayName);
+      console.log("User creado " + nuevo_user.email);
+      var nombres = nuevo_user.displayName;
+      var correo = nuevo_user.email;
+      var contra = nuevo_user.uid;     
+      this.db.collection('users').where("correo","==",correo).get().then(snapshot => {
+        let total_count = 0;
+        snapshot.forEach(doc => {
+            total_count += doc.data().count;
+        });
+        if(total_count == 0){
+          //registra
+          this.addRegisterUser(nombres,correo,contra,token);
+          //cambia la contra
+          this.cambiarPass(contra);
+          //ingresa
+          this.loginUser(correo,contra);
+        }
+      }); 
+      
+    }).catch(function(error) {
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      var email = error.email;
+      var credential = error.credential;
+    });
+  }
+
   loginFacebookUser(){
     var provider = new firebase.auth.FacebookAuthProvider();
     return firebase.auth().signInWithPopup(provider).then(function(result) {
