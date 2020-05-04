@@ -11,7 +11,7 @@ import { AuthFirebaseService } from 'src/app/services/auth.service';
   templateUrl: './profile-description.component.html',
   styleUrls: ['./profile-description.component.css']
 })
-export class ProfileDescriptionComponent implements OnChanges {
+export class ProfileDescriptionComponent implements OnInit {
   @Input() data: any;
   db = firebase.firestore();
 
@@ -22,8 +22,8 @@ export class ProfileDescriptionComponent implements OnChanges {
 
   }
 
-  ngOnChanges() {
-
+  ngOnInit() {
+    this.getAuth();
   }
 
   actualizar() {
@@ -37,7 +37,7 @@ export class ProfileDescriptionComponent implements OnChanges {
 
   getAuth() {
     this.AuthFirebaseService.getAuth().subscribe(res => {
-      this.data = res.user;
+      this.data = Object.assign(this.data,{plan:res.user.plan || null});
     }, err => {
       console.log(err);
       alert("Ha ocurrido un error");

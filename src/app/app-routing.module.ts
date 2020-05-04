@@ -41,7 +41,7 @@ const routes: Routes = [
   { path : 'commerce', component : CommerceComponent, canActivate : [AuthGuard] },
   { path : 'wallet', component : WalletComponent, canActivate : [AuthGuard] },
   { path : 'package', component : PackageComponent, canActivate : [AuthGuard] },
-  { path : 'packagebuy',component : PackageBuyComponent, canActivate : [AuthGuard] }
+  { path : 'packagebuy/:id',component : PackageBuyComponent, canActivate : [AuthGuard] }
 ];
 
 @NgModule({

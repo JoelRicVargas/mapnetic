@@ -20,4 +20,7 @@ export class ApiService {
     return this.http.get<any>(environment.url+ "packs").pipe();
   }
 
+  buyPackage(data) : Observable<any> {
+    return this.http.post<any>(environment.url+ "packs/buy",data).pipe();
+  }
 }
