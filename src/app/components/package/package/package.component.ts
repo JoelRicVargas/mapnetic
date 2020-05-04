@@ -23,8 +23,7 @@ export class PackageComponent implements OnInit {
     },
     err => {
       alert("Ha ocurrido un error al consultar los paquetes");
-    }
-    )
+    })
   }
 
 }

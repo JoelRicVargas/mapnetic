@@ -90,7 +90,7 @@ import { TokenInterceptor } from './interceptors/token.interceptors';
     FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
-    AngularFirestoreModule,
+    AngularFirestoreModule.enablePersistence(),
     HttpClientModule,
   ],
   providers: [

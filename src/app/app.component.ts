@@ -14,9 +14,9 @@ export class AppComponent {
   items: Observable<any[]>;
   constructor(firestore: AngularFirestore, private AuthFirebaseService : AuthFirebaseService ) {
     this.items = firestore.collection('items').valueChanges();
-    firebase.auth().onAuthStateChanged((user) => {
-      if(user) this.AuthFirebaseService.getUserData();
-    });
+    // firebase.auth().onAuthStateChanged((user) => {
+    //   if(user) this.AuthFirebaseService.getUserData();
+    // });
   }
   
   
