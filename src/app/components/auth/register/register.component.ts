@@ -223,9 +223,10 @@ export class RegisterComponent implements OnInit {
       if (res.additionalUserInfo.isNewUser) {
         let authenticateData = JSON.parse(JSON.stringify(res.additionalUserInfo.profile));
         let dataUpdate = {
-          nombres: authenticateData.given_name,
-          apellidos: authenticateData.family_name,
+          nombres: authenticateData.name,
+          apellidos: authenticateData.last_name,
         }
+        console.log(dataUpdate)
         // this.StorageService.store("userData",`${authenticateData.given_name} ${authenticateData.family_name}`);
         // this.StorageService.store("urlPhoto",`${currentUser.photoURL}`);
         if(this.routerActive.snapshot.params.token) dataUpdate["referCode"] = this.routerActive.snapshot.params.token;
