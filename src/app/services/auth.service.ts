@@ -70,11 +70,13 @@ export class AuthFirebaseService {
     }
     return firebase.firestore().collection("users").doc(authUser.uid).get().then(res => {
       data.correo = authUser.email;
-      data.photo = authUser.photoURL;
       let dataFS = res.data();
+      data.photo = authUser.photoURL;
       Object.keys(dataFS).map(key => {
         if (!data[key] && dataFS[key]) data[key] = dataFS[key];
+        else if((key === "photo" || key === "cover") && dataFS[key]) data[key] = dataFS[key];
       })
+      console.log(data);
       this.StorageService.store("userMapnetic", data);
       return data;
     });

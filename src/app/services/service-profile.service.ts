@@ -141,4 +141,32 @@ export class ProfileService {
     $(".banner .overlayed").css('display','none');
     $("#btn_actualizar").css('display','none');
   }
+
+  async updateRef(data){
+    let id = await firebase.auth().currentUser.uid;
+    this.db.collection("users").doc(id).get().then(res=>{
+      if(res.exists){
+        let document = res.data();
+        res.ref.set(data,{merge:true}).catch(err=>{
+          console.log("Ha ocurrido un error al realizar la operacion");
+        }).then(res=>{
+          console.log("operación exitosa");
+        })
+      }
+    })
+  }
+
+  deleteImageStorage(ref){
+    if(ref === null) return;
+    // Create a reference to the file to delete
+    var storageRef = firebase.storage().ref();
+    var desertRef = storageRef.child(ref);
+    console.log("Eliminando archivo anterior...");
+    // Delete the file
+    desertRef.delete().then(function() {
+      console.log("Se elimino correctamente la foto antigua!");
+    }).catch(function(error) {
+      // Uh-oh, an error occurred!
+    });
+  }
 }
