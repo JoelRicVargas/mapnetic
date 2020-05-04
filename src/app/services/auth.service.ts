@@ -92,8 +92,13 @@ export class AuthFirebaseService {
   }
 
   updateProfile(data): Observable<any> {
-    return this.http.post<any>(environment.url + "auth/updateUser", data).pipe();
+    return this.http.post<any>(environment.url + "auth/updateProfile", data).pipe();
   }
+
+  // updateUser(data): Observable<any> {
+  //   return this.http.post<any>(environment.url + "auth/updateUser", data).pipe();
+  // }
+
 
   getAuth(): Observable<any> {
     return this.http.get<any>(environment.url + "auth/getAuth").pipe();

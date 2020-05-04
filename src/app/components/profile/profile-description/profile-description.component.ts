@@ -4,7 +4,7 @@ import { QueryDocumentSnapshot, QuerySnapshot } from 'angularfire2/firestore';
 import * as $ from 'jquery';
 import { NgForm } from '@angular/forms';
 import { ProfileService } from 'src/app/services/service-profile.service';
-import { AuthFirebaseService } from 'src/app/services/auth.service';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-profile-description',
@@ -17,7 +17,7 @@ export class ProfileDescriptionComponent implements OnInit {
   user : any = {};
   constructor(
     private profileService: ProfileService,
-    private AuthFirebaseService: AuthFirebaseService
+    private ApiService: ApiService
   ) {
 
   }
@@ -27,7 +27,7 @@ export class ProfileDescriptionComponent implements OnInit {
   }
 
   actualizar(data) {
-    this.AuthFirebaseService.updateProfile(data).subscribe(res=>{
+    this.ApiService.update(data).subscribe(res=>{
       console.log("Actualización Exitosa");
     },err=>{
       console.log(err);
