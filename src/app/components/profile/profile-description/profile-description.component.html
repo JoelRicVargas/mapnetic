@@ -1,28 +1,28 @@
 <div class="row">
     <div class="col-lg-6 col-xs-12">
-        <form class="frm" #formulario="ngForm" (ngSubmit)="actualizar()" ngNativeValidate>
+        <form class="frm" #formulario="ngForm" (ngSubmit)="actualizar(data)" ngNativeValidate>
             <div class="card-description profile features">
                 <p class="title">Datos personales</p>
                 <div class="item-feature">
                     <input type="hidden" id="documento">
                     <!-- <input type="text" value="--" class="edit_input" id="documento" disabled> -->
-                    <input type="text" [value]="data.nombres" class="edit_input" placeholder="Nombres" 
-                    id="nombres" name="nombres" #nombres="ngModel" ngModel required>
+                    <input type="text" class="edit_input" placeholder="Nombres" 
+                    id="nombres" name="nombres"  [ngModelOptions]="{standalone: true}" [(ngModel)]="data.nombres" required>
                     <p class="description ml-2">Nombre</p>
                     <input type="text" [value]="data.apellidos" class="edit_input" placeholder="Apellidos" 
-                    id="apellidos" name="apellidos" #apellidos="ngModel" ngModel required>
+                    id="apellidos" name="apellidos" [ngModelOptions]="{standalone: true}" [(ngModel)]="data.apellidos" required>
                     <p class="description ml-2">Apellidos</p>
-                    <input type="text" [value]="data.correo" class="edit_input" placeholder="Correo electronico" 
-                    id="correo" name="correo" required>
+                    <input type="text" class="edit_input" placeholder="Correo electronico" 
+                    id="correo" name="correo" [ngModelOptions]="{standalone: true}" [(ngModel)]="data.correo" required>
                     <p class="description ml-2">Correo electronico</p>
                     <input type="text" value="-" class="edit_input" placeholder="Contraseña" 
-                    id="contrasena" name="contrasena" #contrasena="ngModel" ngModel required>
+                    id="contrasena" name="contrasena"[ngModelOptions]="{standalone: true}" [(ngModel)]="data.contrasena" type="password">
                     <p class="description ml-2">Contraseña</p>
                     <input type="text" [value]="data.direccion" class="edit_input" placeholder="Direccion" 
-                    id="direccion" name="direccion" #direccion="ngModel" ngModel required>
+                    id="direccion" name="direccion" [ngModelOptions]="{standalone: true}" [(ngModel)]="data.dirrecion"  required>
                     <p class="description ml-2">Dirección</p>
                     <input type="text" [value]="data.telefono" class="edit_input" placeholder="Telefono" 
-                    id="telefono" name="telefono" #telefono="ngModel" ngModel required>
+                    id="telefono" name="telefono" [ngModelOptions]="{standalone: true}" [(ngModel)]="data.telefono"  required>
                     <p class="description ml-2">Telefono</p>
                 </div>
                 <div class="edit_content">
@@ -48,11 +48,11 @@
                 <p class="description ml-2">Codigo de Referido</p>
                 <div class="stats">
                     <div class="stats_content">
-                        <h3 id="plan_actual">{{ data.plan ? (data.plan.name) : '-'}}</h3>
+                        <h3 id="plan_actual">{{ user.plan ? (user.plan.name) : '-'}}</h3>
                         <p class="description">Plan Actual</p>
                     </div>
                     <div class="stats_content">
-                        <h3 id="cantidad_ref">{{data.referidos || 0}}</h3>
+                        <h3 id="cantidad_ref">{{user.referidos || 0}}</h3>
                         <p class="description">Cantidad de Referidos</p>
                     </div>
                     <div class="stats_content">

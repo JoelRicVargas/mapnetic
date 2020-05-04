@@ -16,6 +16,10 @@ export class ApiService {
     return this.http.post<any>(environment.url+ "auth/register",data).pipe();
   }
 
+  update(data): Observable<any> {
+    return this.http.post<any>(environment.url+ "auth/updateUser",data).pipe();
+  }
+
   getPacks() : Observable<any> {
     return this.http.get<any>(environment.url+ "packs").pipe();
   }

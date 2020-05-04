@@ -75,8 +75,7 @@ export class AuthFirebaseService {
       Object.keys(dataFS).map(key => {
         if (!data[key] && dataFS[key]) data[key] = dataFS[key];
         else if((key === "photo" || key === "cover") && dataFS[key]) data[key] = dataFS[key];
-      })
-      console.log(data);
+      });
       this.StorageService.store("userMapnetic", data);
       return data;
     });
