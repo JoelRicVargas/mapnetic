@@ -41,11 +41,11 @@ export class ProfileDescriptionComponent implements OnInit {
 
 
   getAuth() {
-    this.AuthFirebaseService.getAuth().subscribe(res => {
-      this.user = res.user;
-    }, err => {
-      console.log(err);
-      alert("Ha ocurrido un error");
-    })
+    // this.AuthFirebaseService.getAuth().subscribe(res => {
+    //   this.user = res.user;
+    // }, err => {
+    //   console.log(err);
+    //   alert("Ha ocurrido un error");
+    // })
   }
 }
