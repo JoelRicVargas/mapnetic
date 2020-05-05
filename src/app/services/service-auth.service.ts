@@ -16,7 +16,7 @@ export class AuthService {
 
   constructor(public router: Router,
               private routerActive : ActivatedRoute,
-              private authFirebaseService : AuthFirebaseService
+              private authFirebaseService : AuthFirebaseService,
               ) { }
 
   loginUser(email, contra){
@@ -44,6 +44,7 @@ export class AuthService {
                 this.authFirebaseService.resendVerificationEmail();
               });
             }else{
+              this.authFirebaseService.getAuth();
               this.router.navigate(["/profile"]);
             }
         }else{
