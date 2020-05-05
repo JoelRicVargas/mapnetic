@@ -5,6 +5,7 @@ import * as $ from 'jquery';
 import { NgForm } from '@angular/forms';
 import { ProfileService } from 'src/app/services/service-profile.service';
 import { ApiService } from 'src/app/services/api.service';
+import { AuthFirebaseService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-profile-description',
@@ -17,7 +18,8 @@ export class ProfileDescriptionComponent implements OnInit {
   user : any = {};
   constructor(
     private profileService: ProfileService,
-    private ApiService: ApiService
+    private ApiService: ApiService,
+    private AuthFirebaseService: AuthFirebaseService,
   ) {
 
   }
