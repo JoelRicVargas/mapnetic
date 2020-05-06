@@ -2,34 +2,29 @@
     <div class="col-lg-12 col-xs-12">
         <div class="card-description features">
             <div class="item-feature">
-                <h3 class="title">Estilos SA</h3>
-                <p class="subtitle">Commerce title</p>
+                <h3 class="title">{{ data.company_name || '-'}}</h3>
+                <p class="subtitle">{{ data.company_commerce_name || '-' }}</p>
                 <p class="description">Información de la empresa</p>
-                <p class="description-content">Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                Aperiam, voluptate. Iste eius velit perspiciatis, delectus laborum repellat omnis neque 
-                voluptate ullam quis. Quaerat vel iusto repudiandae cupiditate fuga, perferendis aliquid?.
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Harum, veritatis quibusdam maxime 
-                illo expedita, asperiores voluptatibus nisi voluptates consectetur aperiam, velit sed alias. 
-                Laborum ducimus fugiat non modi eaque voluptate.</p>
+                <p class="description-content">{{data.info || 'Sin Información'}}</p>
 
             </div>
             <div class="item-feature">
                 <p class="description mb-3">Información de contacto</p>
                 <div class="info-contact">
                     <p class="">Pagina web</p>
-                    <a href="#">www.beecode.com</a>
+                    <a href="#">{{data.web || '-'}}</a>
                 </div>
                 <div class="info-contact">
                     <p class="">Telefono</p>
-                    <p class="description-content">(266)641-0915</p>
+                    <p class="description-content">{{data.phone || '-'}}</p>
                 </div>
                 <div class="info-contact">
                     <p class="">Correo empresarial</p>
-                    <p class="description-content">infobeecompany@gmail.com</p>
+                    <p class="description-content">{{data.email || '-'}}</p>
                 </div>
                 <div class="info-contact">
                     <p class="">Direccion</p>
-                    <p class="description-content">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+                    <p class="description-content">{{data.address || '-'}}</p>
                 </div> 
             </div>
         </div>
