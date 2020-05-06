@@ -1,11 +1,17 @@
 <div class="form_custom">
     <div class="card-description">
         <p class="description">Completar los siguientes pasos</p>
-        <form>
-            <input type="text" placeholder="Oferta">
+        <form #formulario="ngForm" (ngSubmit)="crearOferta(data)" ngNativeValidate>
+            <!-- <input type="text" placeholder="Oferta">
             <input type="text" placeholder="Tipo de recompensa">
             <input type="text" placeholder="Recompensa">
             <button type="button" class="btn btn_offer" data-toggle="modal" data-target="#modalConfirm">
+                Guardar
+            </button> -->
+            <input type="text" placeholder="Oferta" id="oferta" name="oferta" [(ngModel)]="data.ofert" required>
+            <input type="text" placeholder="Tipo de recompensa" id="rewardType" name="rewardType" [(ngModel)]="data.rewardType" required>
+            <input type="text" placeholder="Recompensa" id="reward" name="reward" [(ngModel)]="data.reward" required>
+            <button type="submit" class="btn btn_offer">
                 Guardar
             </button>
         </form>

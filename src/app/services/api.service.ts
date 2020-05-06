@@ -27,4 +27,13 @@ export class ApiService {
   buyPackage(data) : Observable<any> {
     return this.http.post<any>(environment.url+ "packs/buy",data).pipe();
   }
+
+  //Catalogo
+  createCatalogue(data) : Observable<any> {
+    return this.http.post<any>(environment.url+ "catalogue/create",data).pipe();
+  }
+   //Ofertas
+   createOffer(data) : Observable<any> {
+    return this.http.post<any>(environment.url+ "offer/create",data).pipe();
+  }
 }
