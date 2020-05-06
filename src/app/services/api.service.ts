@@ -24,6 +24,18 @@ export class ApiService {
     return this.http.get<any>(environment.url+ "packs").pipe();
   }
 
+  getConfigNetworker() : Observable<any> {
+    return this.http.get<any>(environment.url+ "config/networker").pipe();
+  }
+
+  getConfigCommerce() : Observable<any> {
+    return this.http.get<any>(environment.url+ "config/commerce").pipe();
+  }
+
+  setConfigCommerce(data) : Observable<any> {
+    return this.http.post<any>(environment.url+ "config/update/commerce",data).pipe();
+  }
+
   buyPackage(data) : Observable<any> {
     return this.http.post<any>(environment.url+ "packs/buy",data).pipe();
   }
@@ -36,4 +48,5 @@ export class ApiService {
    createOffer(data) : Observable<any> {
     return this.http.post<any>(environment.url+ "offer/create",data).pipe();
   }
+  
 }

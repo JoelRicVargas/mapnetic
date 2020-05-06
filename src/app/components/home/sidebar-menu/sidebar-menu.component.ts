@@ -47,7 +47,7 @@ export class SidebarMenuComponent implements OnInit {
   db = firebase.firestore();
 
   ngOnInit(): void {
-   // this.getUserData();
+    this.getUserData();
     $('#dismiss, .overlay').on('click', function () {
       $('#sidebar').removeClass('active');
       $('.overlay').fadeOut();

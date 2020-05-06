@@ -30,10 +30,11 @@ export class PackageBuyComponent implements OnInit {
   buyPackage(data){
     data.package =  this.routerActive.snapshot.params.id;
     this.ApiService.buyPackage(data).subscribe(res=>{
-
+      alert("Compra exitosa");
     }, 
     err=>{
-
+      console.log(err);
+      alert("Error al realizar la operación")
     })
   }
 

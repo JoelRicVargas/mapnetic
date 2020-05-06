@@ -197,13 +197,11 @@ export class RegisterComponent implements OnInit {
           nombres: authenticateData.given_name,
           apellidos: authenticateData.family_name,
         }
-        // this.StorageService.store("userData",`${authenticateData.given_name} ${authenticateData.family_name}`);
-        // this.StorageService.store("urlPhoto",`${currentUser.photoURL}`);
-        if(this.routerActive.snapshot.params.token) dataUpdate["referCode"] = this.routerActive.snapshot.params.token;
+        if(this.routerActive.snapshot.params.token) dataUpdate["referedBy"] = this.routerActive.snapshot.params.token;
         setTimeout(()=>{
           this.updateProfileByDatabase(dataUpdate);
           this.redirectProfile()
-        },3000);
+        },2000);
       }
       else {
         this.getData();
@@ -226,14 +224,11 @@ export class RegisterComponent implements OnInit {
           nombres: authenticateData.name,
           apellidos: authenticateData.last_name,
         }
-        console.log(dataUpdate)
-        // this.StorageService.store("userData",`${authenticateData.given_name} ${authenticateData.family_name}`);
-        // this.StorageService.store("urlPhoto",`${currentUser.photoURL}`);
-        if(this.routerActive.snapshot.params.token) dataUpdate["referCode"] = this.routerActive.snapshot.params.token;
+        if(this.routerActive.snapshot.params.token) dataUpdate["referedBy"] = this.routerActive.snapshot.params.token;
         setTimeout(()=>{
           this.updateProfileByDatabase(dataUpdate);
           this.redirectProfile();
-        },3000);
+        },2000);
       }
       else {
         this.getData();
