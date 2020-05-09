@@ -1,4 +1,4 @@
-<div class="banner bg-banner">
+<div class="banner bg-banner" [style.background-image]="'url('+( data.cover || '/assets/images/commerce/caribe.jpg')+')'">
     <div class="overlayed_bg">
         <div class="navbar">
             <div class="container">
@@ -15,10 +15,10 @@
             <div class="container">
                 <div class="content-user">
                     <div class="user-img">
-                        <img src="/assets/images/global/user.jpg" alt="">
+                        <img [src]="data.photo ||  '/assets/images/global/user.jpg'" alt="">
                     </div>
                     <div class="description">
-                        <input type="text" value="Tony Stark" class="mb-2 edit_input name" placeholder="Nombres">
+                        <input type="text" [(ngModel)]="data.displayName" class="mb-2 edit_input name" placeholder="Nombres">
                         <!-- <h3 class="mb-3">Tony Stark</h3> -->
                         <input type="text" value="Software Engineer" class="edit_input info_input" placeholder="Nombres">
                         <input type="text" value="Arequipa, Peru" class="edit_input info_input" placeholder="Nombres">

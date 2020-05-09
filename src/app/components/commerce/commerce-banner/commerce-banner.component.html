@@ -1,4 +1,4 @@
-<div class="banner bg-banner">
+<div class="banner bg-banner"  [style.background-image]="'url('+( data.cover || '/assets/images/commerce/bg-banner.jpg')+')'">
     <div class="">
         <div class="navbar">
             <div class="container">
@@ -14,11 +14,11 @@
             <div class="container">
                 <div class="content-user">
                     <div class="user-img">
-                        <img src="/assets/images/commerce/profile.png" alt="">
+                        <img [src]="data.photo || '/assets/images/commerce/profile.png'" alt="">
                     </div>
                     <div class="description">
-                        <h3 class="mb-3">Estilos S.A</h3>
-                        <p>Commerce title</p>
+                        <h3 class="mb-3">{{data.company_name}}</h3>
+                        <p>{{data.company_commerce_name}}</p>
                     </div>
                     <div class="stats">
                         <div class="stats_description">

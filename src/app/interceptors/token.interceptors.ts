@@ -12,7 +12,7 @@ import { map, catchError } from 'rxjs/operators';
 import {
   Router
 } from '@angular/router';
-import { AuthService } from '../services/auth.service';
+import { AuthFirebaseService } from '../services/auth.service';
 
 
 @Injectable()
@@ -20,7 +20,7 @@ export class TokenInterceptor implements HttpInterceptor {
   
   constructor(
     private router: Router,
-     private authService : AuthService
+     private authService : AuthFirebaseService
   ) {
 
   }

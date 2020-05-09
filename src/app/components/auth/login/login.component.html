@@ -5,7 +5,7 @@
     <div class="col-lg-5 content-form col-sm-12 col-xs-12">
         <div class="login form-global">
             <div class="head">
-                <img src="../../../../assets/images/global/logo.png" alt="" class="img-fluid logo d-custom">
+                <img src="../../../../assets/images/global/logo.png" alt="" class="img-fluid logo">
                 <h1 class="title">Bienvenido,<br><b>Inicia Sesión!</b></h1>
             </div>
             <form #f="ngForm" (ngSubmit)="login(f)" ngNativeValidate>
@@ -31,11 +31,11 @@
                 </div>
                 <!-- routerLink="/home" -->
 
-                <button type="submit" class="btn" (click)="ingresar()" routerLink="/home">Ingresar</button>
+                <button type="submit" class="btn"  >Ingresar</button>
 
-                <button type="button" (click)="loginWithGoogle()" >Google</button>
+                <!-- <button type="button" (click)="loginWithGoogle()" >Google</button> -->
 
-                <button type="button" (click)="loginWithFacebook()" >Facebook</button>
+                <!-- <button type="button" (click)="loginWithFacebook()" >Facebook</button> -->
 
                 <p class="description">Nuestras redes sociales:</p>
                 <div class="form-social-networks">
@@ -43,7 +43,7 @@
                         <a href="https://www.facebook.com/MapneticLatam/"><i class="fab fa-facebook-f"></i></a>
                     </div>
                     <div class="social-media-btn">
-                        <i class="fa fa-google"></i>
+                        <i class="fa fa-instagram"></i>
                     </div>
                     <div class="social-media-btn">
                         <i class="fab fa-twitter"></i>

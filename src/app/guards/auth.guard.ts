@@ -3,23 +3,29 @@ import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree } fro
 import { Observable } from 'rxjs';
 import { Router  } from '@angular/router';
 import * as firebase from 'firebase';
-
+import { AngularFireAuth } from 'angularfire2/auth';
+import { map } from 'rxjs/operators';
+import { StorageService } from '../services/storage.service';
+import { AuthFirebaseService } from '../services/auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate {
-  constructor(private router : Router){}
+  constructor(private afAuth: AngularFireAuth, private router: Router, private  AuthFirebaseService : AuthFirebaseService) {}
 
-  canActivate(){
-    var user = firebase.auth();
-    var userLocal = JSON.parse(localStorage.getItem("user"));
-    if(user.currentUser || userLocal !== null){
-      return true;
-    }else{
-      this.router.navigate(['/']);
-      return false;
-    }
-  }
+  canActivate(
+    next: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot): Observable<boolean> {
+      return this.afAuth.authState.pipe(map((res) => {
+        if (res && res.uid){
+          res.getIdToken().then(res=>{
+            this.AuthFirebaseService.setTokenToLocalstorage(res)
+          })
+          return true;
+        }
+        return false;
+     }));
+   }
   
 }

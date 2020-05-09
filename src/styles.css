@@ -744,11 +744,11 @@ label[for="input_file"] {
         max-width: inherit !important;
         padding: 0;
     }
-    .form-global .head{
+    /* .form-global .head{
         position: relative;
         background-image: url("assets/images/global/bg-login-responsive.png");
         /* background: linear-gradient(60deg, #ab47bc, #7b1fa2); */
-        background-position: center center;
+       /* background-position: center center;
         background-size: 100% 100%;
         margin: 0;
         padding: 0;
@@ -757,14 +757,14 @@ label[for="input_file"] {
         align-items: center;
         padding: 0 !important;
         min-height: 280px;
-    }
+    } */
     .form-global .head .title{
         position: relative;
-        margin-top: -80px;
-        margin-left: 50px;
+        /* margin-top: -80px; */
+        margin-left: 200px;
         padding-top: 10px;
         font-size: 1.7em !important;
-        color: #FFF;
+        color: #000;
     }
     .form-global .head .bg-responsive{
         display: block !important;

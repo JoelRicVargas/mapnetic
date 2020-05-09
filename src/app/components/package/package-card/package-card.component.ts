@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-package-card',
@@ -7,7 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PackageCardComponent implements OnInit {
 
-  constructor() { }
+  @Input() data;
+  constructor() {
+   }
 
   ngOnInit(): void {
   }

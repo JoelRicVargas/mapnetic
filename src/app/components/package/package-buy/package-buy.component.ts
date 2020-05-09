@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from 'src/app/services/api.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-package-buy',
@@ -7,9 +9,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PackageBuyComponent implements OnInit {
 
-  constructor() { }
+  form = {
+    email : null,
+    password : null,
+    address1 : null,
+    address2 : null,
+    city : null,
+    zip : null,
+    card : null
+  }
+  constructor(
+    private ApiService : ApiService,
+    private routerActive : ActivatedRoute,
+  ) { }
+  
 
   ngOnInit(): void {
+  }
+
+  buyPackage(data){
+    data.package =  this.routerActive.snapshot.params.id;
+    this.ApiService.buyPackage(data).subscribe(res=>{
+      alert("Compra exitosa");
+    }, 
+    err=>{
+      console.log(err);
+      alert("Error al realizar la operación")
+    })
   }
 
 }

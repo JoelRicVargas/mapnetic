@@ -6,17 +6,26 @@ import { BehaviorSubject } from 'rxjs';
 
 export const environment = {
 
-  production: false,
+  // firebase:{
+  //   apiKey: "AIzaSyCEh3cKNt_hw0KnUXe17Hrrrxs6wdq7ppg",
+  //   authDomain: "mapnetic-575d0.firebaseapp.com",
+  //   databaseURL: "https://mapnetic-575d0.firebaseio.com",
+  //   projectId: "mapnetic-575d0",
+  //   storageBucket: "mapnetic-575d0.appspot.com",
+  //   messagingSenderId: "837465815622",
+  //   appId: "1:837465815622:web:71f51a5bbb4bdec7532847",
+  //   measurementId: "G-YTPBKM1L75"
+  // }
   url : "https://us-central1-mapnetic-b096b.cloudfunctions.net/api/",
   firebase:{
-    apiKey: "AIzaSyCEh3cKNt_hw0KnUXe17Hrrrxs6wdq7ppg",
-    authDomain: "mapnetic-575d0.firebaseapp.com",
-    databaseURL: "https://mapnetic-575d0.firebaseio.com",
-    projectId: "mapnetic-575d0",
-    storageBucket: "mapnetic-575d0.appspot.com",
-    messagingSenderId: "837465815622",
-    appId: "1:837465815622:web:71f51a5bbb4bdec7532847",
-    measurementId: "G-YTPBKM1L75",
+    apiKey: "AIzaSyBQuonUM8fK-FYKyTxdM7yM7dl_nyjEBCg",
+    authDomain: "mapnetic-b096b.firebaseapp.com",
+    databaseURL: "https://mapnetic-b096b.firebaseio.com",
+    projectId: "mapnetic-b096b",
+    storageBucket: "mapnetic-b096b.appspot.com",
+    messagingSenderId: "596624856836",
+    appId: "1:596624856836:web:be53ce1566edd0b561a251",
+    measurementId: "G-8M9HJ9RC9P",
     // apiKey: "AIzaSyCEh3cKNt_hw0KnUXe17Hrrrxs6wdq7ppg",
     // authDomain: "mapnetic-575d0.firebaseapp.com",
     // databaseURL: "https://mapnetic-575d0.firebaseio.com",

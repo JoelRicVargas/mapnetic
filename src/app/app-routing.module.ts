@@ -33,24 +33,15 @@ const routes: Routes = [
   { path : 'usernamerecovery', component : RecoveryPasswordComponent },
 
   //Body
-  { path : 'profile', component : ProfileComponent,canActivate : [AuthGuard]},
+  { path : 'profile', component : ProfileComponent, canActivate : [AuthGuard] },
   { path : 'home', component : ProfileComponent, canActivate : [AuthGuard] },
   { path : 'dashboard', component : ProfileComponent, canActivate : [AuthGuard] },
   { path : 'networker' , component : ProfileComponent, canActivate : [AuthGuard] },
-  { path : 'chat', component : ProfileComponent, canActivate : [AuthGuard] },
-  { path : 'commerce', component : ProfileComponent, canActivate : [AuthGuard] },
+  { path : 'chat', component :ProfileComponent, canActivate : [AuthGuard] },
+  { path : 'commerce', component :ProfileComponent, canActivate : [AuthGuard] },
   { path : 'wallet', component : ProfileComponent, canActivate : [AuthGuard] },
   { path : 'package', component : ProfileComponent, canActivate : [AuthGuard] },
-  { path : 'packagebuy',component : ProfileComponent, canActivate : [AuthGuard] }
-  // { path : 'profile', component : ProfileComponent,canActivate : [AuthGuard]},
-  // { path : 'home', component : HomeComponent, canActivate : [AuthGuard] },
-  // { path : 'dashboard', component : DashboardComponent, canActivate : [AuthGuard] },
-  // { path : 'networker' , component : networkerComponent, canActivate : [AuthGuard] },
-  // { path : 'chat', component : ChatComponent, canActivate : [AuthGuard] },
-  // { path : 'commerce', component : CommerceComponent, canActivate : [AuthGuard] },
-  // { path : 'wallet', component : WalletComponent, canActivate : [AuthGuard] },
-  // { path : 'package', component : PackageComponent, canActivate : [AuthGuard] },
-  // { path : 'packagebuy',component : PackageBuyComponent, canActivate : [AuthGuard] }
+  { path : 'packagebuy/:id',component : ProfileComponent, canActivate : [AuthGuard] }
 ];
 
 @NgModule({

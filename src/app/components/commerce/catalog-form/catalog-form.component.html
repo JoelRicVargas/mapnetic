@@ -1,20 +1,27 @@
 <div class="form_custom">
     <div class="card-description">
         <p class="description">Completar los siguientes pasos</p>
-        <form>
+        <form #formulario="ngForm" (ngSubmit)="crearCatalogo(data)" ngNativeValidate>
             <div class="content_form">
                 <div class="form_inputs">
-                    <input class="form-control" type="text" placeholder="Oferta">
-                    <input class="form-control" type="text" placeholder="Tipo de recompensa">
+                    <!-- <input class="form-control" type="text" placeholder="Oferta"> -->
+                    <!-- <input class="form-control" type="text" placeholder="Tipo de recompensa"> -->
+                    <input type="text" placeholder="Oferta" id="oferta" name="oferta" [(ngModel)]="data.ofert" required>
+                    <input type="text" placeholder="Tipo de recompensa" id="rewardType" name="rewardType" [(ngModel)]="data.rewardType" required>
                 </div>
+
                 <div class="form_input_img">
                     <i class="fas fa-image"></i>
                 </div>
             </div>
-            <textarea class="form-control" id="" rows="3" placeholder="Descripcion"></textarea>
-            <button type="button" class="btn btn_offer" data-toggle="modal" data-target="#modalConfirm">
+            <textarea class="form-control" id="" rows="3" placeholder="Descripcion" id="description" name="description" [(ngModel)]="data.description" required></textarea>
+            <button type="submit" class="btn btn_offer">
                 Guardar
             </button>
+            <!-- <button type="button" class="btn btn_offer" data-toggle="modal" data-target="#modalConfirm">
+                Guardar
+            </button> -->
+
         </form>
     </div>
 </div>

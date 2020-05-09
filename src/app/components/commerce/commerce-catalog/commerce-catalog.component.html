@@ -3,7 +3,28 @@
         <div class="row">
             <div class="col-xs-6 col-lg-3 col-6 ">
                 <div class="card-description btn">
-                    <a href="">
+                    <a data-toggle="modal" data-target="#catalogform" >
+
+                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
                         <i class="fas fa-plus"></i>
                     </a>
                 </div>
@@ -74,3 +95,47 @@
         </div>
     </div>
 </div>
+ 
+<div class="modal fade" id="catalogform" tabindex="-1" role="dialog" aria-labelledby="catalogform" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                    <div class="form_custom">
+                            <div class="card-description">
+                                <p class="description">Completar los siguientes pasos</p>
+                                <form #formulario="ngForm" (ngSubmit)="crearCatalogo(data)" ngNativeValidate>
+                                    <div class="content_form">
+                                        <div class="form_inputs">
+                                            <!-- <input class="form-control" type="text" placeholder="Oferta"> -->
+                                            <!-- <input class="form-control" type="text" placeholder="Tipo de recompensa"> -->
+                                            <input type="text" placeholder="Oferta" id="oferta" name="oferta" [(ngModel)]="data.ofert" required>
+                                            <input type="text" placeholder="Tipo de recompensa" id="rewardType" name="rewardType" [(ngModel)]="data.rewardType" required>
+                                            <input type="file" placeholder="imagen">
+                                        </div>
+                        
+                                        <div class="form_input_img">
+                                            <i class="fas fa-image"></i>
+                                        </div>
+                                    </div>
+                                    <textarea class="form-control" id="" rows="3" placeholder="Descripcion" id="description" name="description" [(ngModel)]="data.description" required></textarea>
+                                    <button type="submit" class="btn btn_offer">
+                                        Guardar
+                                    </button>
+                                    <!-- <button type="button" class="btn btn_offer" data-toggle="modal" data-target="#modalConfirm">
+                                        Guardar
+                                    </button> -->
+                        
+                                </form>
+                            </div>
+                        </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>

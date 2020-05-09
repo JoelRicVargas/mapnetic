@@ -15,7 +15,8 @@ export class ModalConfirmComponent implements OnInit {
   }
 
   cerrar(){
-    localStorage.removeItem("user");
+    localStorage.removeItem("mapnaticToken");
+    localStorage.removeItem("userMapnetic");
     firebase.auth().signOut()
     .then(function () {
       console.log('saliendo...');
