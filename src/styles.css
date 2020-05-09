@@ -761,10 +761,11 @@ label[for="input_file"] {
     .form-global .head .title{
         position: relative;
         /* margin-top: -80px; */
-        margin-left: 200px;
+        /* margin-left: 200px; */
         padding-top: 10px;
         font-size: 1.7em !important;
         color: #000;
+        text-align: center;
     }
     .form-global .head .bg-responsive{
         display: block !important;

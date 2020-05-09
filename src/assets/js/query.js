@@ -31,6 +31,18 @@ function sendMailModal(){
     },4000)
     clearInterval();
 }
+function changePass(){
+    $('.content_change_pass').css('visibility','visible');
+    $('.content_change_pass').css('display','block');
+    $('.pass_modal').css('display','none');
+    $('.no_change_pass').css('display','block');
+}
+function noChangePass(){
+    $('.pass_modal').css('display','block');
+    $('.no_change_pass').css('display','none');
+    $('.content_change_pass').css('visibility','hidden');
+    $('.content_change_pass').css('display','none');
+}
 
 $('#terminosCondiciones').on('click', function (e) {
     alert("entro aqui");

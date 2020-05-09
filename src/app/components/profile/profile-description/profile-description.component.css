@@ -49,3 +49,25 @@ form {
     font-size: 0.7em;
     margin-top: 10px;
 }
+.card-description.profile .pass_modal{
+    width: auto;
+    background-color: #fFF;
+    color: #3e509c;
+    padding: 0 2px;
+    text-align: left;
+    border: none;
+    border-bottom:1px solid #3e509c;
+}
+.card-description.profile .pass_modal.no_change_pass{
+    display: none;
+}
+.card-description.profile .content_change_pass{
+    width: calc(100% + 4px);
+    visibility: hidden;
+    display: none;
+    transition: all 1s ease;
+}
+.card-description.profile .contra{
+    margin: 2px;
+    border: 1px solid #afb0b1;
+}

@@ -19,7 +19,7 @@
                     <input type="email" class="form-control" placeholder="Correo" name="correo" #correo="ngModel" ngModel required>
                 </div>
                 <div class="input-group mb-2">
-                    <input type="password" class="form-control form-custom" placeholder="Contraseña" name="contrasena" #contrasena="ngModel" ngModel required>
+                    <input type="password" class="contra form-control form-custom" placeholder="Contraseña" name="contrasena" #contrasena="ngModel" ngModel required>
                     <div class="input-group-prepend">
                         <div class="input-group-text"><i class="icon_change_pass far fa-eye" onclick="mostrarContrasena('contra')"></i></div>
                     </div>
@@ -37,9 +37,12 @@
                     </label>
                 </div> -->
                 <label for="" id="error"></label>
-                <button type="button" class="btn" (click)="loginWithGoogle()">Registrarse Google</button>
-                 <button type="button" class="btn" (click)="loginWithFacebook()">Registrarse Facebook</button>
                 <button type="submit" class="btn">Registrarse</button>
+                <p class="description">También puedes registrarte con:</p>
+                <button type="button" class="btn btn-google" (click)="loginWithGoogle()"> 
+                    <i class="fab fa-google"></i>Registrarse con Google</button>
+                <button type="button" class="btn btn-facebook" (click)="loginWithFacebook()">
+                    <i class="fab fa-facebook-f"></i>Registrarse con Facebook</button>
                 <p class="description">Si ya tienes una cuenta ingresa <a routerLink="/" class="link">aquí</a></p>
             </form> 
         </div>

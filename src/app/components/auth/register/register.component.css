@@ -16,6 +16,15 @@
     padding-right: 1.5rem;
     padding-left: 0;
 }
+.register .btn > i{
+    margin-right: 5px;
+}
+.register .btn-google{
+    background: #db3236;
+}
+.register .btn-facebook{
+    background: #4267B2;
+}
 .form-check .mapnetic-control-indicator{
     right: 0;
     margin-left: auto;

@@ -88,10 +88,17 @@ export class RegisterComponent implements OnInit {
       }
       data["referedBy"] = this.routerActive.snapshot.params.token;
       this.authFirebaseService.register(data).subscribe(res =>{
-        this.router.navigate(['/']);
+        $("#modalMail").click();
+        var cont = 0;
+        setInterval(() => {
+          if(cont == 0 ){this.router.navigate(['/']); cont++;clearInterval();}
+        },5000)
+        //this.router.navigate(['/']);
       },
       err =>{
-        if(err.error.code === "auth/email-already-exists") $("#error").text("El correo ingresado ya está en uso");
+        if(err.error.code === "auth/email-already-exists") {
+          $("#error").text("El correo ingresado ya está en uso");
+        }
       })
       
       // .then(res=>{

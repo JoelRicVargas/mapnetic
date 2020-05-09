@@ -6,14 +6,30 @@
                 <div class="item-feature">
                     <input type="hidden" id="documento">
                     <!-- <input type="text" value="--" class="edit_input" id="documento" disabled> -->
-                    <input type="text" class="edit_input" placeholder="Nombres" id="nombres" name="nombres" [ngModelOptions]="{standalone: true}" [(ngModel)]="data.nombres" required>
+                    <input type="text" class="edit_input" placeholder="Nombres" id="nombres" name="nombres" 
+                    [ngModelOptions]="{standalone: true}" [(ngModel)]="data.nombres" required>
                     <p class="description ml-2">Nombre</p>
                     <input type="text" [value]="data.apellidos" class="edit_input" placeholder="Apellidos" id="apellidos" name="apellidos" [ngModelOptions]="{standalone: true}" [(ngModel)]="data.apellidos" required>
                     <p class="description ml-2">Apellidos</p>
                     <input type="text" class="edit_input" placeholder="Correo electronico" id="correo" name="correo" [ngModelOptions]="{standalone: true}" [(ngModel)]="data.correo" required>
                     <p class="description ml-2">Correo electronico</p>
-                    <input type="text" value="-" class="edit_input" placeholder="Contraseña" id="contrasena" name="contrasena" [ngModelOptions]="{standalone: true}" [(ngModel)]="data.contrasena" type="password">
+                    <!-- <input type="text" value="-" class="contra edit_input" placeholder="Contraseña" id="contrasena" 
+                        name="contrasena" [ngModelOptions]="{standalone: true}" [(ngModel)]="data.contrasena" type="password"> -->
+                    <button class="pass_modal ml-2" onclick="changePass()" type="button">Cambiar contraseña</button>
+                    <button class="pass_modal no_change_pass ml-2" onclick="noChangePass()" type="button">Ocultar</button>
                     <p class="description ml-2">Contraseña</p>
+                    <div class="content_change_pass">
+                        <div class="input-group mb-2">
+                            <input type="password" class="contra form-control form-custom" placeholder="Contraseña" name="contrasena" #contrasena="ngModel" ngModel required>
+                            <div class="input-group-prepend">
+                                <div class="input-group-text"><i class="icon_change_pass far fa-eye" onclick="mostrarContrasena('contra')"></i></div>
+                            </div>
+                        </div>
+                        <div class="input-group mb-2">
+                            <input type="password" class="contra form-control form-custom"  placeholder="Confirmar contraseña"
+                            name="confirmar" #confirmar="ngModel" ngModel required>
+                        </div>
+                    </div>
                     <input type="text" [value]="data.direccion" class="edit_input" placeholder="Direccion" id="direccion" name="direccion" [ngModelOptions]="{standalone: true}" [(ngModel)]="data.direccion" required>
                     <p class="description ml-2">Dirección</p>
                     <input type="text" [value]="data.telefono" class="edit_input" placeholder="Telefono" id="telefono" name="telefono" [ngModelOptions]="{standalone: true}" [(ngModel)]="data.telefono" required>
@@ -41,12 +57,12 @@
                 <p class="description ml-2">Codigo de Referido</p>
                 <div class="stats">
                     <div class="stats_content">
-                        <h3 id="plan_actual">{{ user.plan ? (user.plan.name) : '-'}}</h3>
+                        <h3 id="plan_actual">{{ user.plan ? (user.plan.name) : 'Ninguno'}}</h3>
                         <p class="description">Plan Actual</p>
                     </div>
                     <div class="stats_content">
                         <h3 id="cantidad_ref">{{user.referidos || 0}}</h3>
-                        <p class="description">Cantidad de Referidos</p>
+                        <p class="description">Referidos directos</p>
                     </div>
                     <div class="stats_content">
                         <h3 id="dinero_generado">0.00</h3>
@@ -61,3 +77,23 @@
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
