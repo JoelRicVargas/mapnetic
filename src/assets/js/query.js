@@ -4,6 +4,7 @@ function edit_module(){
     $(".banner .overlayed").css('display','block');
     $("#btn_actualizar").css('display','block');
     $(".options").css('display','block');
+    $("#pwd").prop('disabled',false);
 };
 
 function close_edit_module(){
@@ -12,6 +13,7 @@ function close_edit_module(){
     $(".banner .overlayed").css('display','');
     $("#btn_actualizar").css('display','');
     $(".options").css('display','');
+    noChangePass();
 };
 
 function mostrarContrasena(input){
@@ -44,12 +46,14 @@ function changePass(){
     $('.content_change_pass').css('display','block');
     $('.pass_modal').css('display','none');
     $('.no_change_pass').css('display','block');
+    
 }
 function noChangePass(){
     $('.pass_modal').css('display','block');
     $('.no_change_pass').css('display','none');
     $('.content_change_pass').css('visibility','hidden');
     $('.content_change_pass').css('display','none');
+    $("#pwd").prop('disabled',true);
 }
 
 $('#terminosCondiciones').on('click', function (e) {

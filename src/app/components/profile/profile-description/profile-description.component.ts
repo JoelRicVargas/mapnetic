@@ -38,18 +38,20 @@ export class ProfileDescriptionComponent implements OnInit {
   }
 
   actualizar(data) {
+    $('#error').text("");
+    $('#success').text("");
     if(this.changeData){
-      if(data.contrasena && !data.confirmar) return alert("Debe confirmar la contraseña");
-      if(data.contrasena && data.confirmar && data.contrasena !== data.confirmar) return alert("Contraseñas no coinciden");
+      if(data.contrasena && !data.confirmar) return $('#error').text("Debe confirmar la contraseña");
+      if(data.contrasena && data.confirmar && data.contrasena !== data.confirmar) return $('#error').text("Contraseñas no coinciden");
       this.ApiService.update(data).subscribe(res=>{
         this.AuthFirebaseService.getUserData();
         this.changeData = false;
         this.editMode = false;
         close_edit_module();
-        alert("Actualizacion exitosa");
+        $('#success').text("Actualizacion exitosa");
       },err=>{
         console.log(err);
-        alert("Ha ocurrido un error");
+        $('#error').text("Ha ocurrido un error");
       });
     }
     else{

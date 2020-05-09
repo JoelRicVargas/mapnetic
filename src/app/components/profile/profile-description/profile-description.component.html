@@ -6,6 +6,8 @@
                 <div class="item-feature">
                     <input type="hidden" id="documento">
                     <!-- <input type="text" value="--" class="edit_input" id="documento" disabled> -->
+                    <label id="error"></label>
+                    <label id="success"></label>
                     <input (ngModelChange)="changeInput()" type="text" class="edit_input" placeholder="Nombres" id="nombres" name="nombres" 
                     [ngModelOptions]="{standalone: true}" [(ngModel)]="data.nombres" required>
                     <p class="description ml-2">Nombre</p>
@@ -15,7 +17,7 @@
                     <p class="description ml-2">Correo electronico</p>
                     <!-- <input (ngModelChange)="changeInput()" type="text" value="-" class="contra edit_input" placeholder="Contraseña" id="contrasena" 
                         name="contrasena" [ngModelOptions]="{standalone: true}" [(ngModel)]="data.contrasena" type="password"> -->
-                    <button class="pass_modal ml-2" (click)="changePassword = true;" onclick="changePass()" type="button">Cambiar contraseña</button>
+                    <button class="pass_modal ml-2" (click)="changePassword = true;" onclick="changePass()" type="button"  disabled id="pwd">Cambiar contraseña</button>
                     <button class="pass_modal no_change_pass ml-2" (click)="changePassword = false;" onclick="noChangePass()" type="button">Ocultar</button>
                     <p class="description ml-2">Contraseña</p>
                     <div class="content_change_pass">
