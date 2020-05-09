@@ -16,6 +16,7 @@ export class ProfileDescriptionComponent implements OnInit {
   @Input() data: any;
   db = firebase.firestore();
   user : any = {};
+  editMode : boolean = false;
   constructor(
     private profileService: ProfileService,
     private ApiService: ApiService,
@@ -30,11 +31,11 @@ export class ProfileDescriptionComponent implements OnInit {
 
   actualizar(data) {
     this.ApiService.update(data).subscribe(res=>{
-      console.log("Actualización Exitosa");
+      this.AuthFirebaseService.getUserData();
+      alert("Actualizacion exitosa");
     },err=>{
       console.log(err);
-    })
-    //this.profileService.actualizar();
+    });
   }
 
   copiarAlPortapapeles() {

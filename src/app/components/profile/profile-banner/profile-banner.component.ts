@@ -6,6 +6,7 @@ import { finalize } from 'rxjs/operators';
 import * as firebase from 'firebase';
 import { ProfileService } from 'src/app/services/service-profile.service';
 import { AuthFirebaseService } from 'src/app/services/auth.service';
+import { StorageService } from 'src/app/services/storage.service';
 
 
 
@@ -26,9 +27,16 @@ export class ProfileBannerComponent implements OnInit {
     private storage: AngularFireStorage,
     private ProfileService : ProfileService,
     private ngZone: NgZone,
-    private AuthFirebaseService: AuthFirebaseService
+    private AuthFirebaseService: AuthFirebaseService,
+    private StorageService : StorageService
     ) {
-
+      this.StorageService.changes.subscribe(res=>{
+        if(res.key === "userMapnetic"){
+          this.ngZone.run( () => {
+            this.data = res.value;
+          });
+        }
+      })
    }
 
   ngOnInit(): void {
