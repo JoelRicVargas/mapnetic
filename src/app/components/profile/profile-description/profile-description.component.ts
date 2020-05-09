@@ -17,6 +17,7 @@ export class ProfileDescriptionComponent implements OnInit {
   db = firebase.firestore();
   user : any = {};
   editMode : boolean = false;
+  changePassword : boolean = false;
   constructor(
     private profileService: ProfileService,
     private ApiService: ApiService,
@@ -30,6 +31,8 @@ export class ProfileDescriptionComponent implements OnInit {
   }
 
   actualizar(data) {
+    if(data.contrasena && !data.confirmar) return alert("Debe confirmar la contraseña");
+    if(data.contrasena && data.confirmar && data.contrasena !== data.confirmar) return alert("Contraseñas no coinciden");
     this.ApiService.update(data).subscribe(res=>{
       this.AuthFirebaseService.getUserData();
       alert("Actualizacion exitosa");

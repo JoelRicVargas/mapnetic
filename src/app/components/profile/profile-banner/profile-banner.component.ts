@@ -33,7 +33,7 @@ export class ProfileBannerComponent implements OnInit {
       this.StorageService.changes.subscribe(res=>{
         if(res.key === "userMapnetic"){
           this.ngZone.run( () => {
-            this.data = res.value;
+            this.data = Object.assign({},res.value);
           });
         }
       })
