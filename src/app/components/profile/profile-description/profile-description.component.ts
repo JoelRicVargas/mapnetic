@@ -7,6 +7,8 @@ import { ProfileService } from 'src/app/services/service-profile.service';
 import { ApiService } from 'src/app/services/api.service';
 import { AuthFirebaseService } from 'src/app/services/auth.service';
 
+declare var close_edit_module: Function;
+
 @Component({
   selector: 'app-profile-description',
   templateUrl: './profile-description.component.html',
@@ -18,6 +20,7 @@ export class ProfileDescriptionComponent implements OnInit {
   user : any = {};
   editMode : boolean = false;
   changePassword : boolean = false;
+  changeData : boolean = false;
   constructor(
     private profileService: ProfileService,
     private ApiService: ApiService,
@@ -26,19 +29,33 @@ export class ProfileDescriptionComponent implements OnInit {
 
   }
 
+  changeInput(){
+    this.changeData = true;
+  }
+
   ngOnInit() {
     this.getAuth();
   }
 
   actualizar(data) {
-    if(data.contrasena && !data.confirmar) return alert("Debe confirmar la contraseña");
-    if(data.contrasena && data.confirmar && data.contrasena !== data.confirmar) return alert("Contraseñas no coinciden");
-    this.ApiService.update(data).subscribe(res=>{
-      this.AuthFirebaseService.getUserData();
-      alert("Actualizacion exitosa");
-    },err=>{
-      console.log(err);
-    });
+    if(this.changeData){
+      if(data.contrasena && !data.confirmar) return alert("Debe confirmar la contraseña");
+      if(data.contrasena && data.confirmar && data.contrasena !== data.confirmar) return alert("Contraseñas no coinciden");
+      this.ApiService.update(data).subscribe(res=>{
+        this.AuthFirebaseService.getUserData();
+        this.changeData = false;
+        this.editMode = false;
+        close_edit_module();
+        alert("Actualizacion exitosa");
+      },err=>{
+        console.log(err);
+        alert("Ha ocurrido un error");
+      });
+    }
+    else{
+      this.editMode = false;
+      close_edit_module();
+    }
   }
 
   copiarAlPortapapeles() {
