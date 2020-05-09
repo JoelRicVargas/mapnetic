@@ -15,8 +15,16 @@ export class ProfileComponent implements AfterViewInit {
   db = firebase.firestore();
   constructor(
     private AuthFirebaseService : AuthFirebaseService,
-    private ngZone: NgZone
+    private ngZone: NgZone,
+    private StorageService : StorageService
     ) {
+      this.StorageService.changes.subscribe(res=>{
+        if(res.key === "userMapnetic"){
+          this.ngZone.run( () => {
+            this.data = res.value;
+          });
+        }
+      })
       this.data = {};
     }
 

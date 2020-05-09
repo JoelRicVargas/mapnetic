@@ -6,6 +6,14 @@ function edit_module(){
     $(".options").css('display','block');
 };
 
+function close_edit_module(){
+    $(".edit_input").css('pointer-events','none');
+    $(".edit_input").removeClass('edit');
+    $(".banner .overlayed").css('display','');
+    $("#btn_actualizar").css('display','');
+    $(".options").css('display','');
+};
+
 function mostrarContrasena(input){
     var tipo = $("."+input);
     if(tipo.attr('type') == "password"){

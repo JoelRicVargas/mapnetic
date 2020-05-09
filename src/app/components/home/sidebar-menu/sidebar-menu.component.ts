@@ -18,11 +18,11 @@ export class SidebarMenuComponent implements OnInit {
     private StorageService : StorageService,
     private AuthFirebaseService: AuthFirebaseService
     ) { 
-    if(localStorage.getItem("userMapnetic")){
-      this.ngZone.run( () => {
-        this.getUserData();
-      });
-    };
+      this.StorageService.changes.subscribe(res=>{
+        if(res.key === "userMapnetic") this.ngZone.run( () => {
+          this.data = res.value;
+        });
+      })
     //this.profileService.obtener_usuario(this.registro);
     // this.StorageService.changes.subscribe(data=>{
     //  if(data.key === "userMapnetic" && data.value) this.ngZone.run( () => {
