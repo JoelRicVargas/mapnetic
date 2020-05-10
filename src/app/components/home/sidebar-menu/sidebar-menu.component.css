@@ -21,6 +21,9 @@ a, a:hover, a:focus {
     box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
     z-index: 99999;
 }
+::-webkit-scrollbar:horizontal {
+    height: 5px !important;    /* Tamaño del scroll en horizontal */
+}
 #sidebar.active {
     left: 0;
 }
@@ -79,6 +82,8 @@ a, a:hover, a:focus {
 #sidebar .sidebar-header.user .user-description h3{
     color: #FFF;
     margin-bottom: 0;
+    max-width: 168px;
+    overflow-y: hidden;
 }
 #sidebar .sidebar-header.user .user-description h3{
     font-size: 1.8em;

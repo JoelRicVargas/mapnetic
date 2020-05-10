@@ -732,6 +732,13 @@ label[for="input_file"] {
 }
 @media (max-width: 575.98px) {
     /***/
+
+    body{
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
     .content-form{
         padding-right: 0;
         padding-left: 0;

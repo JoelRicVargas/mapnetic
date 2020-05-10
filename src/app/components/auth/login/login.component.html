@@ -12,11 +12,11 @@
                 <div class="form-group">
                     <!--{{observador()}}-->
                   <input type="email" class="form-control" id="email" aria-describedby="emailHelp" 
-                  placeholder="Enter email" name="email" ngModel #email="ngModel" required>
+                  placeholder="correo" name="email" ngModel #email="ngModel" required>
                 </div>
                 <div class="input-group mb-2">
                     <input type="password" class="contra form-control form-custom" id="contra" 
-                    placeholder="Password" name="contra" ngModel #contra="ngModel" required>
+                    placeholder="contraseña" name="contra" ngModel #contra="ngModel" required>
                     <div class="input-group-prepend">
                         <div class="input-group-text"><i class="icon_change_pass far fa-eye" onclick="mostrarContrasena('contra')"></i></div>
                     </div>
@@ -27,7 +27,7 @@
                         <span class="mapnetic-control-indicator"></span> -->
                         <!-- <span class="mapnetic-control-description">Mapnetic checkbox</span> -->
                     </label>
-                    <a routerLink="/usernamerecovery" class="link">Ólvide mi contraseña</a>
+                    <a routerLink="/usernamerecovery" class="link">Olvidé mi contraseña</a>
                 </div>
                 <!-- routerLink="/home" -->
 
@@ -43,17 +43,17 @@
                         <a href="https://www.facebook.com/MapneticLatam/"><i class="fab fa-facebook-f"></i></a>
                     </div>
                     <div class="social-media-btn">
-                        <i class="fa fa-instagram"></i>
+                        <a href="https://www.instagram.com/mapnetic.app/"><i class="fa fa-instagram"></i></a>
                     </div>
                     <div class="social-media-btn">
-                        <i class="fab fa-twitter"></i>
+                            <a href="https://twitter.com/MapneticApp/"><i class="fab fa-twitter"></i></a>
                     </div>
                     <!-- <div class="social-media-btn">
                         <i class="fab fa-github"></i>
                     </div> -->
                 </div>
                 <!-- <button type="button" class="btn btn-secundary">Continuar como visitante</button> -->
-                <p class="description">Si no tienes una cuenta registrarte <a routerLink="register">aquí</a></p>
+                <p class="description">Si no tienes una cuenta, regístrate <a routerLink="register">aquí</a></p>
             </form>   
         </div>
     </div>

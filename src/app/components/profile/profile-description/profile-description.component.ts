@@ -51,7 +51,7 @@ export class ProfileDescriptionComponent implements OnInit {
         $('#success').text("Actualizacion exitosa");
       },err=>{
         console.log(err);
-        $('#error').text("Ha ocurrido un error");
+       
       });
     }
     else{
