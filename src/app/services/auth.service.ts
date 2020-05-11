@@ -95,6 +95,10 @@ export class AuthFirebaseService {
     return this.http.post<any>(environment.url + "auth/updateProfile", data).pipe();
   }
 
+  updateRefersCount(data): Observable<any> {
+    return this.http.post<any>(environment.url+ "auth/updateRefersCount",data).pipe();
+  }
+  
   // updateUser(data): Observable<any> {
   //   return this.http.post<any>(environment.url + "auth/updateUser", data).pipe();
   // }

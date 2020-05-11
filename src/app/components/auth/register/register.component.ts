@@ -93,88 +93,26 @@ export class RegisterComponent implements OnInit {
         setInterval(() => {
           if(cont == 0 ){this.router.navigate(['/']); cont++;clearInterval();}
         },5000)
-        //this.router.navigate(['/']);
       },
       err =>{
         if(err.error.code === "auth/email-already-exists") {
           $("#error").text("El correo ingresado ya está en uso");
         }
       })
-      
-      // .then(res=>{
-      //   this.updateProfileWithSing(data);
-      //   setTimeout(()=>{
-      //     this.router.navigate(['/']);  
-      //   },3000)
-      //   return 
-      // }).catch(err=>{
-      //   var errorCode = err.code;
-      //   var errorMessage = err.message;
-
-      //   console.log(errorCode);
-      //   console.log(errorCode);
-      //   // ...
-      //   noError = false;
-
-      //   if(err.code === "auth/email-already-in-use") $("#error").text("El correo ingresado ya está en uso");
-      // });
-      
-      // firebase.auth().createUserWithEmailAndPassword(f.correo ,f.contrasena)
-      // .catch(function(error) {
-      //   // Handle Errors here.
-      //   var errorCode = error.code;
-      //   var errorMessage = error.message;
-
-      //   console.log(errorCode);
-      //   console.log(errorCode);
-      //   // ...
-      //   noError = false;
-      //   $("#error").text("El correo ingresado ya está en uso");
-      // }).then(() =>{
-      //   if(noError){
-      //     var user = firebase.auth().currentUser;
-      //     user.sendEmailVerification().then(function() {
-      //       // Email sent
-      //       console.log("Correo enviado.");
-      //     }).catch(function(error) {
-      //       $("#error").text("Ocurrio un error inesperado al tratar de enviar el correo de verificación.");
-      //       console.log(error);
-      //     });
-      //     this.insertarRegistro(f);
-      //   }
-      // });
     }else{
       $("#error").text("Las contraseñas no coinciden");
     }
   }
 
-  updateProfileWithSing(data,id?){
-    const updateWithSing = () => {
-      firebase.auth().signInWithEmailAndPassword(data.correo,data.contrasena).then(async res=>{
-        let token = await firebase.auth().currentUser.getIdToken();
-        this.authFirebaseService.setTokenToLocalstorage(token);
-        this.authFirebaseService.updateProfile(data).subscribe(res => {
-            
-        }, err => {
-          console.log(err);
-        })
-      }).catch(err=>{
-        console.log(err);
-      });
-    }
-    if(id){
-      this.db.collection("users").doc(id).set(data,{merge:true}).then(res=>{
-        console.log("Actualización Exitosa")
-      },err=>{
-        updateWithSing();
-      })
-    }else updateWithSing();
-  }
-
   async updateProfileByDatabase(data){
     let token = await firebase.auth().currentUser;
     this.db.collection("users").doc(token.uid).set(data,{merge:true}).then(res=>{
-      console.log(res);
+      if(data.referedBy){
+        this.authFirebaseService.updateRefersCount(data).subscribe(res=>{
+          console.log("Usuario referido de : "+data.referedBy);
+        });
+      }
+      this.redirectProfile();
     }).catch(err => {
       console.log(err);
       this.updateProfile(data);
@@ -183,7 +121,7 @@ export class RegisterComponent implements OnInit {
 
   updateProfile(data){
     this.authFirebaseService.updateProfile(data).subscribe(res => {
-      console.log(res);
+      this.redirectProfile();
     }, err => {
       console.log(err);
     })
@@ -207,7 +145,6 @@ export class RegisterComponent implements OnInit {
         if(this.routerActive.snapshot.params.token) dataUpdate["referedBy"] = this.routerActive.snapshot.params.token;
         setTimeout(()=>{
           this.updateProfileByDatabase(dataUpdate);
-          this.redirectProfile()
         },2000);
       }
       else {
@@ -234,7 +171,7 @@ export class RegisterComponent implements OnInit {
         if(this.routerActive.snapshot.params.token) dataUpdate["referedBy"] = this.routerActive.snapshot.params.token;
         setTimeout(()=>{
           this.updateProfileByDatabase(dataUpdate);
-          this.redirectProfile();
+          //this.redirectProfile();
         },2000);
       }
       else {
@@ -248,13 +185,11 @@ export class RegisterComponent implements OnInit {
   }
 
   getData(){
-    this.authFirebaseService.getUserData().then(res=>{
-      console.log(res);
-    })
+    this.authFirebaseService.getUserData();
   }
 
   refered(code) {
-    this.authFirebaseService.referedBy({ referCode: code }).subscribe(
+    this.authFirebaseService.referedBy({ referedBy: code }).subscribe(
       res => {
         console.log("Codigo de referencia actualizado");
       },
