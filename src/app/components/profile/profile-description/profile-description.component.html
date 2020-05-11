@@ -26,12 +26,12 @@
                         <div class="input-group mb-2">
                             <input (ngModelChange)="changeInput()" type="password" *ngIf="changePassword" class="contra form-control form-custom" placeholder="Contraseña" [ngModelOptions]="{standalone: true}" [(ngModel)]="data.contrasena" required>
                             <div class="input-group-prepend">
-                                <div class="input-group-text"><i class="icon_change_pass far fa-eye" onclick="mostrarContrasena('contra')"></i></div>
+                                <div class="input-group-text"><i class="icon_change_pass far fa-eye-slash" onclick="mostrarContrasena('contra')"></i></div>
                             </div>
                         </div>
                         <div class="input-group mb-2">
-                            <input (ngModelChange)="changeInput()" type="password" *ngIf="changePassword" class="contra form-control form-custom"  placeholder="Confirmar contraseña"
-                            name="confirmar" [ngModelOptions]="{standalone: true}" [(ngModel)]="data.confirmar" required>
+                            <input (ngModelChange)="changeInput()" type="password" *ngIf="changePassword" class="contra form-control form-custom"  placeholder="Confirmar contraseña" 
+                            name="confirmar" [ngModelOptions]="{standalone: true}" [(ngModel)]="data.confirmar"   required>
                         </div>
                     </div>
                     <p style="color: red;" *ngIf="changePassword && data.contrasena!=data.confirmar">Contraseñas no coinciden</p>
@@ -58,7 +58,7 @@
                         <div class="input-group-text btn" id="btn_copy" (click)="copiarAlPortapapeles()">
                             Copiar</div>
                     </div>
-                    <input type="text" [value]="'http://localhost:4200/#/register/'+(data.codigo_ref ? data.codigo_ref : '' )" readonly class="form-control" id="cod_referidos" placeholder="Codigo de referido" disabled>
+                    <input type="text" [value]="'https://mapnetic.app/#/register/'+(data.codigo_ref ? data.codigo_ref : '' )" readonly class="form-control" id="cod_referidos" placeholder="Codigo de referido" disabled>
                 </div>
                 <p id="state_copy"></p>
                 <p class="description ml-2">Código de Referido</p>

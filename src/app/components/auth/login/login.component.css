@@ -8,11 +8,17 @@
     font-size: 2em;
 }
 .login .logo{
-    display: block;
     margin: auto;
-    margin-bottom: -15px;
+    background-image: url("../../../../assets/images/global/logo.png");
     max-height: 120px;
+    background-size: 100% 100%;
+    margin-bottom: -15px;
+    max-width: 120px;
+    min-width: 120px;
+    min-height: 120px;
+
 }
+
 .login form .form-check .link{
     display: block;
     margin-left: auto;
