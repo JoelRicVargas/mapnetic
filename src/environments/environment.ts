@@ -5,28 +5,28 @@
 import { BehaviorSubject } from 'rxjs';
 
 export const environment = {
-  url : "https://us-central1-mapnetinc-app.cloudfunctions.net/api/",
-  firebase:{
-    apiKey: "AIzaSyDYzwylfpXRB2MoBXEyW7XPwI6R2M_qztc",
-    authDomain: "mapnetinc-app.firebaseapp.com",
-    databaseURL: "https://mapnetinc-app.firebaseio.com",
-    projectId: "mapnetinc-app",
-    storageBucket: "mapnetinc-app.appspot.com",
-    messagingSenderId: "771791152709",
-    appId: "1:771791152709:web:e4d17ca24cad9b5543252c",
-    measurementId: "G-MJMYHKXX54",
-  },
-  // url: "https://us-central1-mapnetic-b096b.cloudfunctions.net/api/",
-  // firebase: {
-  //   "apiKey": "AIzaSyBQuonUM8fK-FYKyTxdM7yM7dl_nyjEBCg",
-  //   "authDomain": "mapnetic-b096b.firebaseapp.com",
-  //   "databaseURL": "https://mapnetic-b096b.firebaseio.com",
-  //   "projectId": "mapnetic-b096b",
-  //   "storageBucket": "mapnetic-b096b.appspot.com",
-  //   "messagingSenderId": "596624856836",
-  //   "appId": "1:596624856836:web:be53ce1566edd0b561a251",
-  //   "measurementId": "G-8M9HJ9RC9P"
-  // }
+  // url : "https://us-central1-mapnetinc-app.cloudfunctions.net/api/",
+  // firebase:{
+  //   apiKey: "AIzaSyDYzwylfpXRB2MoBXEyW7XPwI6R2M_qztc",
+  //   authDomain: "mapnetinc-app.firebaseapp.com",
+  //   databaseURL: "https://mapnetinc-app.firebaseio.com",
+  //   projectId: "mapnetinc-app",
+  //   storageBucket: "mapnetinc-app.appspot.com",
+  //   messagingSenderId: "771791152709",
+  //   appId: "1:771791152709:web:e4d17ca24cad9b5543252c",
+  //   measurementId: "G-MJMYHKXX54",
+  // },
+  url: "https://us-central1-mapnetic-b096b.cloudfunctions.net/api/",
+  firebase: {
+    "apiKey": "AIzaSyBQuonUM8fK-FYKyTxdM7yM7dl_nyjEBCg",
+    "authDomain": "mapnetic-b096b.firebaseapp.com",
+    "databaseURL": "https://mapnetic-b096b.firebaseio.com",
+    "projectId": "mapnetic-b096b",
+    "storageBucket": "mapnetic-b096b.appspot.com",
+    "messagingSenderId": "596624856836",
+    "appId": "1:596624856836:web:be53ce1566edd0b561a251",
+    "measurementId": "G-8M9HJ9RC9P"
+  }
 };
 
 export const FirestoreStub = {

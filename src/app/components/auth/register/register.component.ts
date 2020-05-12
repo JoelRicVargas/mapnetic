@@ -143,8 +143,9 @@ export class RegisterComponent implements OnInit {
           apellidos: authenticateData.family_name,
         }
         if(this.routerActive.snapshot.params.token) dataUpdate["referedBy"] = this.routerActive.snapshot.params.token;
+        await this.db.collection("users").doc(currentUser.uid).set(dataUpdate);
         setTimeout(()=>{
-          this.updateProfileByDatabase(dataUpdate);
+          this.redirectProfile();
         },2000);
       }
       else {
@@ -169,9 +170,9 @@ export class RegisterComponent implements OnInit {
           apellidos: authenticateData.last_name,
         }
         if(this.routerActive.snapshot.params.token) dataUpdate["referedBy"] = this.routerActive.snapshot.params.token;
+        await this.db.collection("users").doc(currentUser.uid).set(dataUpdate,{merge:true});
         setTimeout(()=>{
-          this.updateProfileByDatabase(dataUpdate);
-          //this.redirectProfile();
+          this.redirectProfile();
         },2000);
       }
       else {

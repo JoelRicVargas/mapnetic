@@ -21,17 +21,17 @@ export class NetworkerBannerComponent implements OnInit {
   }
 
   getUserData(){
-    return this.AuthFirebaseService.getUserData().then(res=> {
-      if(!res) return;
-      let dataAux :any = {};
-      Object.keys(res).map(key =>{
-        dataAux[key] = res[key];
-      });
-      dataAux["displayName"] = (dataAux.nombres || '')+"  "+ (dataAux.apellidos)
-      this.ngZone.run( () => {
-        this.data = dataAux;
-     });
-    }).catch(err=>console.log(err));
+    // return this.AuthFirebaseService.getUserData().then(res=> {
+    //   if(!res) return;
+    //   let dataAux :any = {};
+    //   Object.keys(res).map(key =>{
+    //     dataAux[key] = res[key];
+    //   });
+    //   dataAux["displayName"] = (dataAux.nombres || '')+"  "+ (dataAux.apellidos)
+    //   this.ngZone.run( () => {
+    //     this.data = dataAux;
+    //  });
+    // }).catch(err=>console.log(err));
   }
 
 

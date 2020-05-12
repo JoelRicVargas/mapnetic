@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { auth } from 'firebase';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import * as firebase from 'firebase';
 import { StorageService } from './storage.service';
@@ -57,28 +57,40 @@ export class AuthFirebaseService {
   getUserData() {
     let data: any = {}
     let authUser = firebase.auth().currentUser;
-    authUser = JSON.parse(JSON.stringify(authUser));
-    if (!authUser) return new Promise(resolve => {
-      resolve(null)
-    });
-    if(authUser.displayName){
-      let displayName = authUser.displayName.split(" ");
-      if(displayName.length>1){
-        data["nombres"]=displayName[0];
-        data["apellidos"]=displayName[1];
-      }
-    }
-    return firebase.firestore().collection("users").doc(authUser.uid).get().then(res => {
-      data.correo = authUser.email;
-      let dataFS = res.data();
-      data.photo = authUser.photoURL;
-      Object.keys(dataFS).map(key => {
-        if (!data[key] && dataFS[key]) data[key] = dataFS[key];
-        else if(["photo","cover","nombres","apellidos"].indexOf(key)!==-1 && dataFS[key]) data[key] = dataFS[key];
-      });
-      this.StorageService.store("userMapnetic", data);
-      return data;
-    });
+    // if(authUser.displayName){
+    //   let displayName = authUser.displayName.split(" ");
+    //   if(displayName.length>1){
+    //     data["nombres"]=displayName[0];
+    //     data["apellidos"]=displayName[1];
+    //   }
+    // }
+    return new Observable ((observable)=>{
+      firebase.firestore().collection("users").doc(authUser.uid).onSnapshot(
+        snapshot =>{
+          authUser = JSON.parse(JSON.stringify(authUser));
+          let dataFS = snapshot.data();
+          dataFS.correo = authUser.email;
+          if(!dataFS.photo && authUser.photoURL) dataFS.photo = authUser.photoURL; 
+          // Object.keys(dataFS).map(key => {
+          //   if (!data[key] && dataFS[key]) data[key] = dataFS[key];
+          //   else if(["photo","cover","nombres","apellidos"].indexOf(key)!==-1 && dataFS[key]) data[key] = dataFS[key];
+          // });
+          this.StorageService.store("userMapnetic", dataFS);
+          return observable.next(dataFS);
+        }
+      ) 
+    })
+    // get().then(res => {
+    //   data.correo = authUser.email;
+    //   let dataFS = res.data();
+    //   data.photo = authUser.photoURL;
+    //   Object.keys(dataFS).map(key => {
+    //     if (!data[key] && dataFS[key]) data[key] = dataFS[key];
+    //     else if(["photo","cover","nombres","apellidos"].indexOf(key)!==-1 && dataFS[key]) data[key] = dataFS[key];
+    //   });
+    //   this.StorageService.store("userMapnetic", data);
+    //   return data;
+    // });
   }
 
   async googleSignin() {

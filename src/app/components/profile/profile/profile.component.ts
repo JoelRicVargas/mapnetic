@@ -18,13 +18,13 @@ export class ProfileComponent implements AfterViewInit {
     private ngZone: NgZone,
     private StorageService : StorageService
     ) {
-      this.StorageService.changes.subscribe(res=>{
-        if(res.key === "userMapnetic"){
-          this.ngZone.run( () => {
-            this.data = res.value;
-          });
-        }
-      })
+      // this.StorageService.changes.subscribe(res=>{
+      //   if(res.key === "userMapnetic"){
+      //     this.ngZone.run( () => {
+      //       this.data = res.value;
+      //     });
+      //   }
+      // })
       this.data = {};
     }
 
@@ -34,16 +34,15 @@ export class ProfileComponent implements AfterViewInit {
   
 
   getUserData(){
-    return this.AuthFirebaseService.getUserData().then(res=> {
-      if(!res) return;
-      let dataAux = {};
-      Object.keys(res).map(key =>{
-        dataAux[key] = res[key];
-      })
-      this.ngZone.run( () => {
-        this.data = dataAux;
-     });
-    }).catch(err=>console.log(err));
+    return this.AuthFirebaseService.getUserData().subscribe(res=>{
+          let dataAux = {};
+          Object.keys(res).map(key =>{
+            dataAux[key] = res[key];
+          })
+          this.ngZone.run( () => {
+            this.data = dataAux;
+         });
+    });
   }
 
 

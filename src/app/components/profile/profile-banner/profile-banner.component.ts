@@ -30,13 +30,13 @@ export class ProfileBannerComponent implements OnInit {
     private AuthFirebaseService: AuthFirebaseService,
     private StorageService : StorageService
     ) {
-      this.StorageService.changes.subscribe(res=>{
-        if(res.key === "userMapnetic"){
-          this.ngZone.run( () => {
-            this.data = Object.assign({},res.value);
-          });
-        }
-      })
+      // this.StorageService.changes.subscribe(res=>{
+      //   if(res.key === "userMapnetic"){
+      //     this.ngZone.run( () => {
+      //       this.data = Object.assign({},res.value);
+      //     });
+      //   }
+      // })
    }
 
   ngOnInit(): void {
@@ -44,16 +44,25 @@ export class ProfileBannerComponent implements OnInit {
   } 
 
   getUserData(){
-    return this.AuthFirebaseService.getUserData().then(res=> {
-      if(!res) return;
+    return this.AuthFirebaseService.getUserData().subscribe(res=>{
       let dataAux = {};
       Object.keys(res).map(key =>{
         dataAux[key] = res[key];
-      }) 
+      })
       this.ngZone.run( () => {
         this.data = dataAux;
-     });
-    }).catch(err=>console.log(err));
+      });
+    });
+    //.then(res=> {
+    //   if(!res) return;
+    //   let dataAux = {};
+    //   Object.keys(res).map(key =>{
+    //     dataAux[key] = res[key];
+    //   }) 
+    //   this.ngZone.run( () => {
+    //     this.data = dataAux;
+    //  });
+    // }).catch(err=>console.log(err));
   }
 
   async uploadPerfil($event){
