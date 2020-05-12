@@ -29,7 +29,6 @@ export class LoginComponent implements OnInit {
   }
   
   loginFacebookUser() : void{
-    alert("sasas");
     this.authService.loginFacebookUser()
     .then((response) => {
       this.router.navigate(['/profile']);

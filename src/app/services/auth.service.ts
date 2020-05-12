@@ -7,6 +7,7 @@ import { environment } from 'src/environments/environment';
 import * as firebase from 'firebase';
 import { StorageService } from './storage.service';
 import { resolve } from 'dns';
+import { ApiService } from './api.service';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,7 @@ export class AuthFirebaseService {
   constructor(
     private afAuth: AngularFireAuth,
     private http: HttpClient,
-    private StorageService: StorageService
+    private StorageService: StorageService,
   ) { }
 
   setTokenToLocalstorage(token) {
@@ -120,6 +121,25 @@ export class AuthFirebaseService {
     return this.http.get<any>(environment.url + "auth/getAuth").pipe();
   }
 
+  verifyRefers(){
+    let authUser = firebase.auth().currentUser;
+    if(authUser){
+      if(authUser.providerData.filter(x => x.providerId === "password").length>0){
+        firebase.firestore().collection("users").doc(authUser.uid).get().then(res=>{
+          if(res.exists){
+            let data = null, referedBy = null;
+            data = res.data();
+            if(data){
+              if(data.referedBy) this.updateRefersCount(data).subscribe(res=>{
+                console.log("Usuario referido de : "+data.referedBy);
+              });
+            }
+          }
+        })
+      }
+    }
+  }
+  
   referedBy(data): Observable<any> {
     return this.http.post<any>(environment.url + "auth/referedBy", data).pipe();
   }

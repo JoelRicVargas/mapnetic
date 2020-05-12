@@ -21,7 +21,16 @@ export class NetworkerBannerComponent implements OnInit {
   }
 
   getUserData(){
-    // return this.AuthFirebaseService.getUserData().then(res=> {
+     return this.AuthFirebaseService.getUserData().subscribe(res=>{
+      let dataAux = {};
+      Object.keys(res).map(key =>{
+        dataAux[key] = res[key];
+      })
+      this.ngZone.run( () => {
+        this.data = dataAux;
+      });
+    });
+    //.then(res=> {
     //   if(!res) return;
     //   let dataAux :any = {};
     //   Object.keys(res).map(key =>{
