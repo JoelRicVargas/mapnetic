@@ -71,6 +71,10 @@ export class AuthFirebaseService {
           authUser = JSON.parse(JSON.stringify(authUser));
           let dataFS = snapshot.data();
           dataFS.correo = authUser.email;
+          if(authUser.emailVerified && !dataFS.emailVerified && dataFS.referedBy){
+            snapshot.ref.set({emailVerified:true},{merge:true});
+            this.updateRefersCount({referedBy:dataFS.referedBy});
+          }
           if(!dataFS.photo && authUser.photoURL) dataFS.photo = authUser.photoURL; 
           // Object.keys(dataFS).map(key => {
           //   if (!data[key] && dataFS[key]) data[key] = dataFS[key];
