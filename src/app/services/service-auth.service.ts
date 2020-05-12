@@ -30,7 +30,12 @@ export class AuthService {
         if (user != null) {            
             if(user.emailVerified == false){
               $("#error").text("Su correo no fue verificado se enviará un nuevo link de verificación.");
-              user.sendEmailVerification()
+              // var actionCodeSettings = {
+              //   url: "https://mapnetic.app/#/emailIsVerified/" + firebase.auth().currentUser.email
+              // };
+              user.sendEmailVerification(
+                //actionCodeSettings
+                )
               .then(() =>  {
                 console.log('enviando correo');
               }).catch(error => {
