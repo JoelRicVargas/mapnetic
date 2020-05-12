@@ -1,10 +1,11 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import * as firebase from 'firebase';
 import * as $ from 'jquery';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from 'src/app/services/service-auth.service';
 import { NgForm } from '@angular/forms';
 import { error } from 'protractor';
+import { AuthFirebaseService } from 'src/app/services/auth.service';
 
 
 @Component({
@@ -12,12 +13,24 @@ import { error } from 'protractor';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit,AfterViewInit {
   
   @ViewChild('f') form : NgForm;
-  constructor(private router : Router, private authService : AuthService) { }
+  email = null;
+  constructor(private router : Router, private authService : AuthService,
+    private routerActive : ActivatedRoute,
+    private AuthFirebaseService : AuthFirebaseService
+    ) { }
 
   ngOnInit(): void {
+  }
+
+  ngAfterViewInit(){
+    if(this.routerActive.snapshot.params.email){
+      this.AuthFirebaseService.emailIsVerified({email:this.routerActive.snapshot.params.email}).subscribe(res=>{
+        console.log(res);
+      })
+    }
   }
 
   login(f){

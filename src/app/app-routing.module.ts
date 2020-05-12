@@ -28,6 +28,7 @@ import { AuthGuard } from './guards/auth.guard';
 const routes: Routes = [
   //Auth
   { path : '', component : LoginComponent },
+  { path : 'emailIsVerified/:email', component : LoginComponent },
   { path : 'register', component : RegisterComponent },
   { path : 'register/:token', component : RegisterComponent },
   { path : 'usernamerecovery', component : RecoveryPasswordComponent },

@@ -6,6 +6,7 @@ import * as firebase from 'firebase';
 import { AngularFirestore } from 'angularfire2/firestore';
 import * as $ from 'jquery';
 import { AuthFirebaseService } from './auth.service';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -26,26 +27,16 @@ export class AuthService {
         var user = firebase.auth().currentUser;
         let token = await user.getIdToken();
         this.authFirebaseService.setTokenToLocalstorage(token);
-        if (user != null) {
-            // user.providerData.forEach(function (profile) {
-            //   console.log("Sign-in provider: " + profile.providerId);
-            //   console.log("  Provider-specific UID: " + profile.uid);
-            //   console.log("  Name: " + profile.displayName);
-            //   console.log("  Email: " + profile.email);
-            //   console.log("  Photo URL: " + profile.photoURL);
-            // });
-            
+        if (user != null) {            
             if(user.emailVerified == false){
               $("#error").text("Su correo no fue verificado se enviará un nuevo link de verificación.");
               user.sendEmailVerification()
               .then(() =>  {
                 console.log('enviando correo');
-                console.log(user);
               }).catch(error => {
                 this.authFirebaseService.resendVerificationEmail();
               });
             }else{
-              this.authFirebaseService.verifyRefers();
               this.router.navigate(["/profile"]);
             }
         }else{
