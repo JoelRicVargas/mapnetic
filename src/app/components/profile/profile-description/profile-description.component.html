@@ -43,7 +43,7 @@
                 </div>
                 <div class="edit_content">
                     <i class="fas fa-pencil-alt" *ngIf="!editMode" (click)="editMode = true" onclick="edit_module()"></i>
-                    <i class="fas fa-pencil-alt" *ngIf="editMode" (click)="actualizar(data)"></i> 
+                    <i class="fas fa-save" *ngIf="editMode" (click)="actualizar(data)" id="btn_update"></i> 
                 </div>
                 <!-- <button type="submit" class="btn btn-custom" id="btn_actualizar">Actualizar</button> -->
             </div>

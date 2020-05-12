@@ -29,7 +29,7 @@ export class AuthService {
         this.authFirebaseService.setTokenToLocalstorage(token);
         if (user != null) {            
             if(user.emailVerified == false){
-              $("#error").text("Su correo no fue verificado se enviará un nuevo link de verificación.");
+              $("#error").text("Verifique su cuenta con el link de activación en su bandeja de entrada.");
               // var actionCodeSettings = {
               //   url: "https://mapnetic.app/#/emailIsVerified/" + firebase.auth().currentUser.email
               // };
