@@ -39,10 +39,10 @@ const routes: Routes = [
   { path : 'dashboard', component : ProfileComponent, canActivate : [AuthGuard] },
   { path : 'networker' , component : ProfileComponent, canActivate : [AuthGuard] },
   { path : 'chat', component :ProfileComponent, canActivate : [AuthGuard] },
-  { path : 'commerce', component :ProfileComponent, canActivate : [AuthGuard] },
+  { path : 'commerce', component :CommerceComponent, canActivate : [AuthGuard] },
   { path : 'wallet', component : ProfileComponent, canActivate : [AuthGuard] },
-  { path : 'package', component : ProfileComponent, canActivate : [AuthGuard] },
-  { path : 'packagebuy/:id',component : ProfileComponent, canActivate : [AuthGuard] }
+  { path : 'package', component : PackageComponent, canActivate : [AuthGuard] },
+  { path : 'packagebuy/:id',component : PackageBuyComponent, canActivate : [AuthGuard] }
 ];
 
 @NgModule({
