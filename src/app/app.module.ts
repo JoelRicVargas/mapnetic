@@ -51,6 +51,7 @@ import { AngularFireStorageModule } from 'angularfire2/storage';
 //Services
 import { AuthService } from './services/service-auth.service';
 import { ModalLoginComponent } from './components/auth/modal-login/modal-login.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
 @NgModule({
   declarations: [
     AppComponent,
@@ -97,6 +98,7 @@ import { ModalLoginComponent } from './components/auth/modal-login/modal-login.c
     AngularFireAuthModule,
     AngularFirestoreModule.enablePersistence(),
     HttpClientModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   providers: [
     AuthService,

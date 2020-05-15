@@ -16,6 +16,7 @@ export const environment = {
   //    appId: "1:771791152709:web:e4d17ca24cad9b5543252c",
   //    measurementId: "G-MJMYHKXX54",
   //  },
+  production:false,
   url: "https://us-central1-mapnetic-b096b.cloudfunctions.net/api/",
   firebase: {
     "apiKey": "AIzaSyBQuonUM8fK-FYKyTxdM7yM7dl_nyjEBCg",
